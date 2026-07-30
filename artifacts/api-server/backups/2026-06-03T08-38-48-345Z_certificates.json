@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "name": {
+      "uz": "IELTS",
+      "en": "IELTS",
+      "ru": "IELTS"
+    },
+    "subject": "English",
+    "level": "International",
+    "quantity": 45,
+    "year": 2024
+  },
+  {
+    "id": "2",
+    "name": {
+      "uz": "Cambridge B2",
+      "en": "Cambridge B2",
+      "ru": "Cambridge B2"
+    },
+    "subject": "English",
+    "level": "International",
+    "quantity": 32,
+    "year": 2024
+  },
+  {
+    "id": "3",
+    "name": {
+      "uz": "SAT",
+      "en": "SAT",
+      "ru": "SAT"
+    },
+    "subject": "Math/English",
+    "level": "International",
+    "quantity": 28,
+    "year": 2024
+  },
+  {
+    "id": "4",
+    "name": {
+      "uz": "Milliy olimpiada 1-o'rin",
+      "en": "National Olympiad 1st Place",
+      "ru": "Национальная олимпиада 1 место"
+    },
+    "subject": "Math",
+    "level": "National",
+    "quantity": 12,
+    "year": 2024
+  },
+  {
+    "id": "5",
+    "name": {
+      "uz": "Milliy olimpiada 1-o'rin",
+      "en": "National Olympiad 1st Place",
+      "ru": "Национальная олимпиада 1 место"
+    },
+    "subject": "Physics",
+    "level": "National",
+    "quantity": 8,
+    "year": 2024
+  }
+]

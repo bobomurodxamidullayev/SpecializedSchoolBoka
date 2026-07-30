@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1",
+    "name": {
+      "uz": "Alibek Yusupov",
+      "en": "Alibek Yusupov",
+      "ru": "Алибек Юсупов"
+    },
+    "achievement": {
+      "uz": "Xalqaro Matematika Olimpiadasi — Oltin medal",
+      "en": "International Mathematics Olympiad — Gold Medal",
+      "ru": "Международная олимпиада по математике — Золотая медаль"
+    },
+    "olympiad": {
+      "uz": "Xalqaro Matematika Olimpiadasi (IMO)",
+      "en": "International Mathematics Olympiad (IMO)",
+      "ru": "Международная олимпиада по математике (IMO)"
+    },
+    "medalType": "gold",
+    "country": "🇬🇧 London, UK",
+    "year": 2024,
+    "bio": {
+      "uz": "",
+      "en": "",
+      "ru": ""
+    },
+    "photo": ""
+  },
+  {
+    "id": "2",
+    "name": {
+      "uz": "Sarvinoz Qodirova",
+      "en": "Sarvinoz Qodirova",
+      "ru": "Сарвиноз Кадырова"
+    },
+    "achievement": {
+      "uz": "Xalqaro Fizika Olimpiadasi — Kumush medal",
+      "en": "International Physics Olympiad — Silver Medal",
+      "ru": "Международная олимпиада по физике — Серебряная медаль"
+    },
+    "olympiad": {
+      "uz": "Xalqaro Fizika Olimpiadasi (IPhO)",
+      "en": "International Physics Olympiad (IPhO)",
+      "ru": "Международная олимпиада по физике (IPhO)"
+    },
+    "medalType": "silver",
+    "country": "🇯🇵 Tokyo, Japan",
+    "year": 2024,
+    "bio": {
+      "uz": "",
+      "en": "",
+      "ru": ""
+    },
+    "photo": ""
+  }
+]

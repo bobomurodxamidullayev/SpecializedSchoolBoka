@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "title": {
+      "uz": "Navruz bayrami 2024",
+      "en": "Navruz Festival 2024",
+      "ru": "Праздник Навруз 2024"
+    },
+    "description": {
+      "uz": "",
+      "en": "",
+      "ru": ""
+    },
+    "category": "Events",
+    "date": "2024-03-21",
+    "images": [
+      "/api/uploads/1780494900303-3efdf83aff84.jpg"
+    ]
+  },
+  {
+    "id": "2",
+    "title": {
+      "uz": "Matematik olimpiada",
+      "en": "Math Olympiad Finals",
+      "ru": "Финал математической олимпиады"
+    },
+    "description": {
+      "uz": "",
+      "en": "",
+      "ru": ""
+    },
+    "category": "Competitions",
+    "date": "2024-04-15",
+    "images": []
+  },
+  {
+    "id": "c5dd8130-f1a7-4e2c-a084-252919ddee88",
+    "images": [
+      "/api/uploads/1780475638736-cc768a3856e5.jpg"
+    ],
+    "title": {
+      "uz": "suvvv",
+      "en": "water",
+      "ru": "voda"
+    },
+    "description": {
+      "uz": "suvv",
+      "en": "water",
+      "ru": "vodaa"
+    },
+    "category": "Events",
+    "date": "2026-06-03"
+  },
+  {
+    "id": "06169220-8aa5-4a14-9b5e-a07a3504dddd",
+    "images": [
+      "/api/uploads/1780480653684-2b19da6888c5.jpg"
+    ],
+    "title": {
+      "uz": "Schooo lifeee",
+      "en": "dasda",
+      "ru": "dasda"
+    },
+    "description": {
+      "uz": "dasda",
+      "en": "dasdasd",
+      "ru": "dasdadas"
+    },
+    "category": "School Life",
+    "date": "2026-06-03"
+  }
+]

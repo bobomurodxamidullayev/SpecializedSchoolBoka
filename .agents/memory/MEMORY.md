@@ -1,0 +1,2 @@
+- [Admin Panel Architecture](admin-panel-arch.md) — file-based JSON admin panel; sessions via express-session; bcryptjs; uploads at /api/uploads/; process.cwd() for paths.
+- [Wouter Routing Pattern](wouter-routing.md) — flat Switch with explicit admin routes before public catch-all works cleanly; no nested Router needed.

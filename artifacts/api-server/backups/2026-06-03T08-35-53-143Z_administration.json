@@ -1,0 +1,64 @@
+[
+  {
+    "id": "1",
+    "name": {
+      "uz": "Azizbek Rahimov",
+      "en": "Azizbek Rahimov",
+      "ru": "Азизбек Рахимов"
+    },
+    "position": {
+      "uz": "Direktor",
+      "en": "Principal",
+      "ru": "Директор"
+    },
+    "degree": {
+      "uz": "Pedagogika fanlari doktori (PhD)",
+      "en": "PhD in Pedagogy",
+      "ru": "Доктор педагогических наук (PhD)"
+    },
+    "bio": {
+      "uz": "",
+      "en": "",
+      "ru": ""
+    },
+    "phone": "+998 90 123 45 67",
+    "email": "director@qch-school.uz",
+    "receptionTime": {
+      "uz": "Dushanba–Juma, 09:00–18:00",
+      "en": "Mon–Fri, 09:00–18:00",
+      "ru": "Пн–Пт, 09:00–18:00"
+    },
+    "photo": ""
+  },
+  {
+    "id": "2",
+    "name": {
+      "uz": "Dilnoza Karimova",
+      "en": "Dilnoza Karimova",
+      "ru": "Дилноза Каримова"
+    },
+    "position": {
+      "uz": "O'quv ishlari bo'yicha direktor o'rinbosari",
+      "en": "Vice Principal (Academic)",
+      "ru": "Заместитель директора по учебной работе"
+    },
+    "degree": {
+      "uz": "Filologiya fanlari nomzodi",
+      "en": "Candidate of Philological Sciences",
+      "ru": "Кандидат филологических наук"
+    },
+    "bio": {
+      "uz": "",
+      "en": "",
+      "ru": ""
+    },
+    "phone": "+998 93 456 78 90",
+    "email": "academic@qch-school.uz",
+    "receptionTime": {
+      "uz": "Dushanba–Shanba, 08:30–17:00",
+      "en": "Mon–Sat, 08:30–17:00",
+      "ru": "Пн–Сб, 08:30–17:00"
+    },
+    "photo": ""
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "1",
+    "order": 1,
+    "name": {
+      "uz": "Ariza topshirish",
+      "en": "Application",
+      "ru": "Подача заявки"
+    },
+    "description": {
+      "uz": "Online ariza to'ldiring va hujjatlarni yuklang",
+      "en": "Fill out the online application and upload documents",
+      "ru": "Заполните онлайн-заявку и загрузите документы"
+    },
+    "deadline": "2026-05-01",
+    "status": "active"
+  },
+  {
+    "id": "2",
+    "order": 2,
+    "name": {
+      "uz": "Kirish imtihoni",
+      "en": "Entrance Exam",
+      "ru": "Вступительный экзамен"
+    },
+    "description": {
+      "uz": "Matematika va ingliz tilidan yozma imtihon",
+      "en": "Written exam in Mathematics and English",
+      "ru": "Письменный экзамен по математике и английскому языку"
+    },
+    "deadline": "2026-05-20",
+    "status": "upcoming"
+  },
+  {
+    "id": "3",
+    "order": 3,
+    "name": {
+      "uz": "Suhbat",
+      "en": "Interview",
+      "ru": "Собеседование"
+    },
+    "description": {
+      "uz": "O'qituvchilar bilan individual suhbat",
+      "en": "Individual interview with teachers",
+      "ru": "Индивидуальное собеседование с учителями"
+    },
+    "deadline": "2026-06-01",
+    "status": "upcoming"
+  },
+  {
+    "id": "4",
+    "order": 4,
+    "name": {
+      "uz": "Qabul",
+      "en": "Enrollment",
+      "ru": "Зачисление"
+    },
+    "description": {
+      "uz": "Qabul natijalari e'lon qilinadi",
+      "en": "Admission results announced",
+      "ru": "Объявление результатов приёма"
+    },
+    "deadline": "2026-06-15",
+    "status": "upcoming"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "title": {
+      "uz": "Xalqaro matematika olimpiadasida oltin medal",
+      "en": "Gold Medal at International Math Olympiad",
+      "ru": "Золотая медаль на Международной математической олимпиаде"
+    },
+    "slug": "gold-medal-math-olympiad",
+    "content": {
+      "uz": "",
+      "en": "Three of our 11th-grade students brought home gold medals from the IMO.",
+      "ru": ""
+    },
+    "category": "Achievements",
+    "author": "Press Service",
+    "readTime": "5",
+    "publishDate": "2024-03-15",
+    "coverImage": "",
+    "status": "published",
+    "featured": true
+  },
+  {
+    "id": "2",
+    "title": {
+      "uz": "Yangi Robototexnika va AI laboratoriyasi",
+      "en": "New Robotics & AI Lab Opened",
+      "ru": "Открыта новая лаборатория Робототехники и ИИ"
+    },
+    "slug": "new-robotics-lab",
+    "content": {
+      "uz": "",
+      "en": "State-of-the-art robotics and AI laboratory with 40 workstations.",
+      "ru": ""
+    },
+    "category": "Facilities",
+    "author": "Admin Office",
+    "readTime": "3",
+    "publishDate": "2024-02-28",
+    "coverImage": "",
+    "status": "published",
+    "featured": false
+  }
+]

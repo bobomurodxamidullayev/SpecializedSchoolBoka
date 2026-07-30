@@ -1,0 +1,86 @@
+[
+  {
+    "id": "7a0f369a-9546-4d28-87e4-5c77841f3e03",
+    "status": "published",
+    "featured": false,
+    "title": {
+      "uz": "sasa",
+      "en": "",
+      "ru": ""
+    },
+    "slug": "ssasasa-sadas-dasd--das-ddsa",
+    "content": {
+      "uz": "asaas",
+      "en": "",
+      "ru": ""
+    },
+    "category": "Achievements",
+    "author": "",
+    "readTime": "1",
+    "publishDate": "2026-06-04",
+    "coverImage": "/api/uploads/1780546808217-3412fd0d8da3.jpg"
+  },
+  {
+    "id": "b5d73197-b815-41b1-a4fe-d0a524b39c70",
+    "status": "published",
+    "featured": false,
+    "title": {
+      "uz": "MAY",
+      "en": "",
+      "ru": ""
+    },
+    "slug": "may",
+    "content": {
+      "uz": "jslorem ipsum",
+      "en": "",
+      "ru": ""
+    },
+    "category": "Other",
+    "author": "",
+    "readTime": "0",
+    "publishDate": "2026-06-04",
+    "coverImage": "/api/uploads/1780481897831-e31997171c91.jpg"
+  },
+  {
+    "id": "1",
+    "title": {
+      "uz": "Xalqaro matematika olimpiadasida oltin medal",
+      "en": "Gold Medal at International Math Olympiad",
+      "ru": "Золотая медаль на Международной математической олимпиаде"
+    },
+    "slug": "gold-medal-math-olympiad",
+    "content": {
+      "uz": "",
+      "en": "Three of our 11th-grade students brought home gold medals from the IMO.",
+      "ru": ""
+    },
+    "category": "Achievements",
+    "author": "Press Service",
+    "readTime": "5",
+    "publishDate": "2024-03-15",
+    "coverImage": "",
+    "status": "published",
+    "featured": true
+  },
+  {
+    "id": "2",
+    "title": {
+      "uz": "Yangi Robototexnika va AI laboratoriyasi",
+      "en": "New Robotics & AI Lab Opened",
+      "ru": "Открыта новая лаборатория Робототехники и ИИ"
+    },
+    "slug": "new-robotics-lab",
+    "content": {
+      "uz": "",
+      "en": "State-of-the-art robotics and AI laboratory with 40 workstations.",
+      "ru": ""
+    },
+    "category": "Facilities",
+    "author": "Admin Office",
+    "readTime": "3",
+    "publishDate": "2024-02-28",
+    "coverImage": "",
+    "status": "published",
+    "featured": false
+  }
+]

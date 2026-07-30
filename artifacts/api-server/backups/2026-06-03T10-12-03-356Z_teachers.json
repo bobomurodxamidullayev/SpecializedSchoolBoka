@@ -1,0 +1,87 @@
+[
+  {
+    "id": "1",
+    "name": "Bo'riqulov Avazbek To'lqinjonovich",
+    "subject": "English",
+    "grade": "1-toifa",
+    "phone": "+998 93 132 94 02",
+    "university": "ADU",
+    "graduationYear": 2020,
+    "experience": 4,
+    "email": "",
+    "bio": {
+      "uz": "",
+      "en": "",
+      "ru": ""
+    },
+    "photo": ""
+  },
+  {
+    "id": "2",
+    "name": "Urazbayeva Balnura Erjanovna",
+    "subject": "English",
+    "grade": "Oliy toifa",
+    "phone": "+998 99 872 68 61",
+    "university": "TDJTSU",
+    "graduationYear": 2016,
+    "experience": 8,
+    "email": "",
+    "bio": {
+      "uz": "",
+      "en": "",
+      "ru": ""
+    },
+    "photo": ""
+  },
+  {
+    "id": "3",
+    "name": "Sherzod Abdullayev Baxtiyorovich",
+    "subject": "Math",
+    "grade": "Oliy toifa",
+    "phone": "+998 90 312 45 67",
+    "university": "NUUz",
+    "graduationYear": 2007,
+    "experience": 16,
+    "email": "",
+    "bio": {
+      "uz": "",
+      "en": "",
+      "ru": ""
+    },
+    "photo": ""
+  },
+  {
+    "id": "4",
+    "name": "Malika Toshpulatova Ibrohimovna",
+    "subject": "Physics",
+    "grade": "Oliy toifa",
+    "phone": "+998 90 234 56 78",
+    "university": "ToshDTU",
+    "graduationYear": 2010,
+    "experience": 13,
+    "email": "",
+    "bio": {
+      "uz": "",
+      "en": "",
+      "ru": ""
+    },
+    "photo": ""
+  },
+  {
+    "id": "5",
+    "name": "Otabek Murodov Shodmonovich",
+    "subject": "IT",
+    "grade": "Oliy toifa",
+    "phone": "+998 90 789 01 23",
+    "university": "TUIT",
+    "graduationYear": 2014,
+    "experience": 10,
+    "email": "",
+    "bio": {
+      "uz": "",
+      "en": "",
+      "ru": ""
+    },
+    "photo": ""
+  }
+]

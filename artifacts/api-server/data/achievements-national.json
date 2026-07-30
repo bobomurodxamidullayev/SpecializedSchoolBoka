@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1",
+    "order": 1,
+    "subject": "Mathematics",
+    "award": "1st Place",
+    "count": 8,
+    "color": "from-blue-500 to-indigo-600"
+  },
+  {
+    "id": "2",
+    "order": 2,
+    "subject": "Physics",
+    "award": "1st Place",
+    "count": 6,
+    "color": "from-violet-500 to-purple-600"
+  },
+  {
+    "id": "3",
+    "order": 3,
+    "subject": "Chemistry",
+    "award": "1st–2nd",
+    "count": 5,
+    "color": "from-orange-500 to-red-600"
+  },
+  {
+    "id": "4",
+    "order": 4,
+    "subject": "Informatics",
+    "award": "1st Place",
+    "count": 7,
+    "color": "from-cyan-500 to-teal-600"
+  },
+  {
+    "id": "5",
+    "order": 5,
+    "subject": "Biology",
+    "award": "Top 3",
+    "count": 4,
+    "color": "from-emerald-500 to-green-600"
+  },
+  {
+    "id": "6",
+    "order": 6,
+    "subject": "English",
+    "award": "1st Place",
+    "count": 3,
+    "color": "from-amber-500 to-yellow-600"
+  },
+  {
+    "id": "6e0b0cae-54f3-46a5-a256-2d5ba5e7d9b8",
+    "order": 7,
+    "subject": "Iqtisod",
+    "award": "3st Place",
+    "count": 12,
+    "color": "from-pink-500 to-rose-600"
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "id": "1",
+    "order": 1,
+    "name": {
+      "uz": "Aniq fanlar",
+      "en": "Exact Sciences",
+      "ru": "Точные науки"
+    },
+    "desc": {
+      "uz": "Matematika, Fizika, Kimyo, Astronomiya — mantiqiy fikrlash va ilmiy tadqiqot ko'nikmalarini rivojlantiradi.",
+      "en": "Mathematics, Physics, Chemistry, Astronomy — developing logical thinking and scientific research skills.",
+      "ru": "Математика, Физика, Химия, Астрономия — развитие логического мышления и научно-исследовательских навыков."
+    },
+    "students": 320,
+    "teachers": 24,
+    "labs": 4,
+    "subjects": {
+      "uz": "Matematika\nFizika\nKimyo\nAstronomiya\nInformatika (asoslar)",
+      "en": "Mathematics\nPhysics\nChemistry\nAstronomy\nComputer Science (basics)",
+      "ru": "Математика\nФизика\nХимия\nАстрономия\nИнформатика (основы)"
+    },
+    "careers": {
+      "uz": "Muhandislik\nIlmiy tadqiqot\nMoliya\nMimarlik\nMeditsina",
+      "en": "Engineering\nScientific Research\nFinance\nArchitecture\nMedicine",
+      "ru": "Инженерия\nНаучные исследования\nФинансы\nАрхитектура\nМедицина"
+    }
+  },
+  {
+    "id": "2",
+    "order": 2,
+    "name": {
+      "uz": "Tabiiy fanlar",
+      "en": "Natural Sciences",
+      "ru": "Естественные науки"
+    },
+    "desc": {
+      "uz": "Biologiya, Kimyo, Ekologiya — tirik organizmlar va atrof-muhitni o'rganishga yo'naltirilgan.",
+      "en": "Biology, Chemistry, Ecology — focused on living organisms and the environment.",
+      "ru": "Биология, Химия, Экология — изучение живых организмов и окружающей среды."
+    },
+    "students": 280,
+    "teachers": 22,
+    "labs": 6,
+    "subjects": {
+      "uz": "Biologiya\nKimyo\nEkologiya\nAnatamiya\nGenetika",
+      "en": "Biology\nChemistry\nEcology\nAnatomy\nGenetics",
+      "ru": "Биология\nХимия\nЭкология\nАнатомия\nГенетика"
+    },
+    "careers": {
+      "uz": "Tibbiyot\nFarmatsevtika\nBiotexnologiya\nEkologiya\nQishloq xo'jaligi",
+      "en": "Medicine\nPharmaceuticals\nBiotechnology\nEcology\nAgriculture",
+      "ru": "Медицина\nФармацевтика\nБиотехнологии\nЭкология\nСельское хозяйство"
+    }
+  },
+  {
+    "id": "3",
+    "order": 3,
+    "name": {
+      "uz": "Axborot texnologiyalari",
+      "en": "Information Technology",
+      "ru": "Информационные технологии"
+    },
+    "desc": {
+      "uz": "Dasturlash, Sun'iy intellekt, Robototexnika — raqamli kelajakka yo'l ochadi.",
+      "en": "Programming, AI, Robotics — opening the path to a digital future.",
+      "ru": "Программирование, ИИ, Робототехника — открывая путь в цифровое будущее."
+    },
+    "students": 250,
+    "teachers": 18,
+    "labs": 5,
+    "subjects": {
+      "uz": "Dasturlash\nSun'iy intellekt\nRobototexnika\nMa'lumotlar bazasi\nKiberxavfsizlik",
+      "en": "Programming\nArtificial Intelligence\nRobotics\nDatabases\nCybersecurity",
+      "ru": "Программирование\nИскусственный интеллект\nРобототехника\nБазы данных\nКибербезопасность"
+    },
+    "careers": {
+      "uz": "Dastur muhandisi\nMa'lumotlar olimi\nKiberhavfsizlik mutaxassisi\nAI tadqiqotchisi\nIT menedjer",
+      "en": "Software Engineer\nData Scientist\nCybersecurity Specialist\nAI Researcher\nIT Manager",
+      "ru": "Программный инженер\nУчёный по данным\nСпециалист по кибербезопасности\nИсследователь ИИ\nIT-менеджер"
+    }
+  },
+  {
+    "id": "4",
+    "order": 4,
+    "name": {
+      "uz": "Tillar va gumanitar fanlar",
+      "en": "Languages & Humanities",
+      "ru": "Языки и гуманитарные науки"
+    },
+    "desc": {
+      "uz": "Ingliz, Rus, O'zbek, Xitoy — ko'p tilli aloqa va madaniy bilimlarni rivojlantiradi.",
+      "en": "English, Russian, Uzbek, Chinese — developing multilingual communication and cultural knowledge.",
+      "ru": "Английский, Русский, Узбекский, Китайский — развитие многоязычного общения и культурных знаний."
+    },
+    "students": 350,
+    "teachers": 21,
+    "labs": 3,
+    "subjects": {
+      "uz": "Ingliz tili\nRus tili\nO'zbek adabiyoti\nTarix\nFalsafa",
+      "en": "English Language\nRussian Language\nUzbek Literature\nHistory\nPhilosophy",
+      "ru": "Английский язык\nРусский язык\nУзбекская литература\nИстория\nФилософия"
+    },
+    "careers": {
+      "uz": "Tarjimon\nDiplomat\nJurnalist\nO'qituvchi\nXalqaro biznes",
+      "en": "Translator\nDiplomat\nJournalist\nTeacher\nInternational Business",
+      "ru": "Переводчик\nДипломат\nЖурналист\nПреподаватель\nМеждународный бизнес"
+    }
+  },
+  {
+    "id": "88283ea2-7763-4b2e-88b0-3c24f0f8d3b0",
+    "order": 5,
+    "name": {
+      "uz": "NEW DIRECTON",
+      "en": "",
+      "ru": ""
+    },
+    "desc": {
+      "uz": "YANGI YONALISHU BU",
+      "en": "",
+      "ru": ""
+    },
+    "students": 100,
+    "teachers": 3,
+    "labs": 0,
+    "subjects": {
+      "uz": "MATH\nENGLISH",
+      "en": "",
+      "ru": ""
+    },
+    "careers": {
+      "uz": "NEW JOB",
+      "en": "",
+      "ru": ""
+    }
+  }
+]

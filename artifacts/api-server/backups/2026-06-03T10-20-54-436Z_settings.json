@@ -1,0 +1,83 @@
+{
+  "schoolName": {
+    "uz": "QCh Maktab",
+    "en": "QCh School",
+    "ru": "Школа QCh"
+  },
+  "slogan": {
+    "uz": "Prezident maktabi",
+    "en": "Presidential Specialized School",
+    "ru": "Президентская специализированная школа"
+  },
+  "description": {
+    "uz": "O'zbekistonning eng yaxshi ixtisoslashtirilgan maktabi",
+    "en": "Uzbekistan's premier specialized educational institution",
+    "ru": "Ведущее специализированное учебное заведение Узбекистана"
+  },
+  "heroTitle": {
+    "uz": "Kelajak bugundan boshlanadi",
+    "en": "The Future Starts Today",
+    "ru": "Будущее начинается сегодня"
+  },
+  "heroStats": [
+    {
+      "value": "1200+",
+      "label": {
+        "uz": "O'quvchi",
+        "en": "Students",
+        "ru": "Учащихся"
+      }
+    },
+    {
+      "value": "85+",
+      "label": {
+        "uz": "O'qituvchi",
+        "en": "Teachers",
+        "ru": "Учителей"
+      }
+    },
+    {
+      "value": "18+",
+      "label": {
+        "uz": "Laboratoriya",
+        "en": "Laboratories",
+        "ru": "Лабораторий"
+      }
+    },
+    {
+      "value": "150+",
+      "label": {
+        "uz": "Medal",
+        "en": "Medals",
+        "ru": "Медалей"
+      }
+    }
+  ],
+  "phone": "+998 90 123 45 67",
+  "phone2": "+998 93 456 78 90",
+  "email": "info@qch-school.uz",
+  "email2": "director@qch-school.uz",
+  "address": {
+    "uz": "Quyi Chirchiq tumani, Toshkent viloyati, O'zbekiston",
+    "en": "Quyi Chirchiq District, Tashkent Region, Uzbekistan",
+    "ru": "Куйи Чирчикский район, Ташкентская область, Узбекистан"
+  },
+  "workingHours": "Dushanba–Shanba, 08:00–18:00",
+  "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.1!2d69.6!3d41.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDEzMDAw!5e0!3m2!1sen!2suz!4v1234567890",
+  "social": {
+    "telegram": "https://t.me/qchschool",
+    "instagram": "https://instagram.com/qchschool",
+    "youtube": "https://youtube.com/@qchschool"
+  },
+  "seoTitle": {
+    "uz": "QCh Maktab - Prezident Ixtisoslashtirilgan Maktabi",
+    "en": "QCh School - Presidential Specialized School",
+    "ru": "Школа QCh - Президентская специализированная школа"
+  },
+  "seoDescription": {
+    "uz": "O'zbekistonning eng yaxshi ixtisoslashtirilgan maktabi",
+    "en": "Uzbekistan's premier specialized educational institution",
+    "ru": "Ведущее специализированное учебное заведение Узбекистана"
+  },
+  "copyright": "© 2024 QCh School. All rights reserved."
+}

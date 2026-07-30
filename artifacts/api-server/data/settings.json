@@ -1,0 +1,83 @@
+{
+  "schoolName": {
+    "uz": "Bekobod ixtisoslashtirilgan maktabi",
+    "en": "Bekobod Specialized School",
+    "ru": "Бекабадская спецшкола"
+  },
+  "slogan": {
+    "uz": "Prezident maktabi",
+    "en": "Presidential Specialized School",
+    "ru": "Президентская специализированная школа"
+  },
+  "description": {
+    "uz": "O'zbekistonning eng yaxshi ixtisoslashtirilgan maktabi",
+    "en": "Uzbekistan's premier specialized educational institution",
+    "ru": "Ведущее специализированное учебное заведение Узбекистана"
+  },
+  "heroTitle": {
+    "uz": "Kelajak bugundan boshlanadi qani goo",
+    "en": "The Future Starts Today",
+    "ru": "Будущее начинается сегодня"
+  },
+  "heroStats": [
+    {
+      "value": "1500+",
+      "label": {
+        "uz": "O'quvchi",
+        "en": "Students",
+        "ru": "Учащихся"
+      }
+    },
+    {
+      "value": "85+",
+      "label": {
+        "uz": "O'qituvchi",
+        "en": "Teachers",
+        "ru": "Учителей"
+      }
+    },
+    {
+      "value": "18+",
+      "label": {
+        "uz": "Laboratoriya",
+        "en": "Laboratories",
+        "ru": "Лабораторий"
+      }
+    },
+    {
+      "value": "150+",
+      "label": {
+        "uz": "Medal",
+        "en": "Medals",
+        "ru": "Медалей"
+      }
+    }
+  ],
+  "phone": "+998 90 123 45 67",
+  "phone2": "+998 93 456 78 90",
+  "email": "info@qch-school.uz",
+  "email2": "director@qch-school.uz",
+  "address": {
+    "uz": "Toshkent viloyati, Bekobod tumani",
+    "en": "Bekobod district, Tashkent region, Uzbekistan",
+    "ru": "Ташкентская область, Бекабадский район"
+  },
+  "workingHours": "Dushanba–Shanba, 08:00–18:00",
+  "mapUrl": "https://maps.app.goo.gl/6x1F4iZT48UBT9ZU7",
+  "social": {
+    "telegram": "https://t.me/qchschool",
+    "instagram": "https://instagram.com/qchschool",
+    "youtube": "https://youtube.com/@qchschool"
+  },
+  "seoTitle": {
+    "uz": "QCh Maktab - Prezident Ixtisoslashtirilgan Maktabi",
+    "en": "QCh School - Presidential Specialized School",
+    "ru": "Школа QCh - Президентская специализированная школа"
+  },
+  "seoDescription": {
+    "uz": "O'zbekistonning eng yaxshi ixtisoslashtirilgan maktabi",
+    "en": "Uzbekistan's premier specialized educational institution",
+    "ru": "Ведущее специализированное учебное заведение Узбекистана"
+  },
+  "copyright": "© 2026 Bekobod ixtisoslashtirilgan maktabi."
+}

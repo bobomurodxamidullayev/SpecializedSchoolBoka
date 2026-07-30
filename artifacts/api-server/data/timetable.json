@@ -1,0 +1,2362 @@
+[
+  {
+    "id": "1",
+    "grade": "5-sinf",
+    "day": "Dushanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "O'zbek tili",
+    "teacher": "Hasanova F.T.",
+    "room": "201"
+  },
+  {
+    "id": "2",
+    "grade": "5-sinf",
+    "day": "Dushanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Matematika",
+    "teacher": "Abdullayev Sh.",
+    "room": "105"
+  },
+  {
+    "id": "3",
+    "grade": "5-sinf",
+    "day": "Dushanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Tarix",
+    "teacher": "Tursunov B.H.",
+    "room": "301"
+  },
+  {
+    "id": "4",
+    "grade": "5-sinf",
+    "day": "Dushanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Ingliz tili",
+    "teacher": "Bo'riqulov A.T.",
+    "room": "202"
+  },
+  {
+    "id": "5",
+    "grade": "5-sinf",
+    "day": "Dushanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Biologiya",
+    "teacher": "Sayidova G.X.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "6",
+    "grade": "5-sinf",
+    "day": "Dushanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Xoliqov J.M.",
+    "room": "Zal"
+  },
+  {
+    "id": "7",
+    "grade": "5-sinf",
+    "day": "Seshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Matematika",
+    "teacher": "Abdullayev Sh.",
+    "room": "105"
+  },
+  {
+    "id": "8",
+    "grade": "5-sinf",
+    "day": "Seshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Fizika",
+    "teacher": "Toshpulatova M.I.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "9",
+    "grade": "5-sinf",
+    "day": "Seshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Ingliz tili",
+    "teacher": "Bo'riqulov A.T.",
+    "room": "202"
+  },
+  {
+    "id": "10",
+    "grade": "5-sinf",
+    "day": "Seshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Kimyo",
+    "teacher": "Nazarova G.X.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "11",
+    "grade": "5-sinf",
+    "day": "Seshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "O'zbek tili",
+    "teacher": "Hasanova F.T.",
+    "room": "201"
+  },
+  {
+    "id": "12",
+    "grade": "5-sinf",
+    "day": "Seshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Informatika",
+    "teacher": "Murodov O.Sh.",
+    "room": "IT-1"
+  },
+  {
+    "id": "13",
+    "grade": "5-sinf",
+    "day": "Chorshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Biologiya",
+    "teacher": "Sayidova G.X.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "14",
+    "grade": "5-sinf",
+    "day": "Chorshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Tarix",
+    "teacher": "Tursunov B.H.",
+    "room": "301"
+  },
+  {
+    "id": "15",
+    "grade": "5-sinf",
+    "day": "Chorshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Matematika",
+    "teacher": "Abdullayev Sh.",
+    "room": "105"
+  },
+  {
+    "id": "16",
+    "grade": "5-sinf",
+    "day": "Chorshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Rus tili",
+    "teacher": "Xamrayeva Z.B.",
+    "room": "203"
+  },
+  {
+    "id": "17",
+    "grade": "5-sinf",
+    "day": "Chorshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Ingliz tili",
+    "teacher": "Bo'riqulov A.T.",
+    "room": "202"
+  },
+  {
+    "id": "18",
+    "grade": "5-sinf",
+    "day": "Chorshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Chizmachilik",
+    "teacher": "Murodov O.Sh.",
+    "room": "IT-1"
+  },
+  {
+    "id": "19",
+    "grade": "5-sinf",
+    "day": "Payshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Fizika",
+    "teacher": "Toshpulatova M.I.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "20",
+    "grade": "5-sinf",
+    "day": "Payshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "O'zbek tili",
+    "teacher": "Hasanova F.T.",
+    "room": "201"
+  },
+  {
+    "id": "21",
+    "grade": "5-sinf",
+    "day": "Payshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Kimyo",
+    "teacher": "Nazarova G.X.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "22",
+    "grade": "5-sinf",
+    "day": "Payshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Matematika",
+    "teacher": "Abdullayev Sh.",
+    "room": "105"
+  },
+  {
+    "id": "23",
+    "grade": "5-sinf",
+    "day": "Payshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Tarix",
+    "teacher": "Tursunov B.H.",
+    "room": "301"
+  },
+  {
+    "id": "24",
+    "grade": "5-sinf",
+    "day": "Payshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Musiqa",
+    "teacher": "—",
+    "room": "Musiqa xonasi"
+  },
+  {
+    "id": "25",
+    "grade": "5-sinf",
+    "day": "Juma",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Ingliz tili",
+    "teacher": "Bo'riqulov A.T.",
+    "room": "202"
+  },
+  {
+    "id": "26",
+    "grade": "5-sinf",
+    "day": "Juma",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Rus tili",
+    "teacher": "Xamrayeva Z.B.",
+    "room": "203"
+  },
+  {
+    "id": "27",
+    "grade": "5-sinf",
+    "day": "Juma",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Biologiya",
+    "teacher": "Sayidova G.X.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "28",
+    "grade": "5-sinf",
+    "day": "Juma",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "O'zbek tili",
+    "teacher": "Hasanova F.T.",
+    "room": "201"
+  },
+  {
+    "id": "29",
+    "grade": "5-sinf",
+    "day": "Juma",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Xoliqov J.M.",
+    "room": "Zal"
+  },
+  {
+    "id": "30",
+    "grade": "5-sinf",
+    "day": "Shanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Matematika",
+    "teacher": "Abdullayev Sh.",
+    "room": "105"
+  },
+  {
+    "id": "31",
+    "grade": "5-sinf",
+    "day": "Shanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Ingliz tili",
+    "teacher": "Bo'riqulov A.T.",
+    "room": "202"
+  },
+  {
+    "id": "32",
+    "grade": "5-sinf",
+    "day": "Shanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Informatika",
+    "teacher": "Murodov O.Sh.",
+    "room": "IT-1"
+  },
+  {
+    "id": "33",
+    "grade": "5-sinf",
+    "day": "Shanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Tarix",
+    "teacher": "Tursunov B.H.",
+    "room": "301"
+  },
+  {
+    "id": "34",
+    "grade": "6-sinf",
+    "day": "Dushanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Algebra",
+    "teacher": "Murodova Z.A.",
+    "room": "106"
+  },
+  {
+    "id": "35",
+    "grade": "6-sinf",
+    "day": "Dushanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Ingliz tili",
+    "teacher": "Urazbayeva B.E.",
+    "room": "204"
+  },
+  {
+    "id": "36",
+    "grade": "6-sinf",
+    "day": "Dushanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Kimyo",
+    "teacher": "Qodirov J.H.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "37",
+    "grade": "6-sinf",
+    "day": "Dushanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "O'zbek tili",
+    "teacher": "Norqo'ziyev I.S.",
+    "room": "201"
+  },
+  {
+    "id": "38",
+    "grade": "6-sinf",
+    "day": "Dushanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Biologiya",
+    "teacher": "Mirzayev Sh.O.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "39",
+    "grade": "6-sinf",
+    "day": "Dushanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Nazarova U.Sh.",
+    "room": "Zal"
+  },
+  {
+    "id": "40",
+    "grade": "6-sinf",
+    "day": "Seshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Fizika",
+    "teacher": "Xoliqov S.M.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "41",
+    "grade": "6-sinf",
+    "day": "Seshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Algebra",
+    "teacher": "Murodova Z.A.",
+    "room": "106"
+  },
+  {
+    "id": "42",
+    "grade": "6-sinf",
+    "day": "Seshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Rus tili",
+    "teacher": "Alekseyeva N.V.",
+    "room": "203"
+  },
+  {
+    "id": "43",
+    "grade": "6-sinf",
+    "day": "Seshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Ingliz tili",
+    "teacher": "Urazbayeva B.E.",
+    "room": "204"
+  },
+  {
+    "id": "44",
+    "grade": "6-sinf",
+    "day": "Seshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Tarix",
+    "teacher": "Yusupova N.H.",
+    "room": "301"
+  },
+  {
+    "id": "45",
+    "grade": "6-sinf",
+    "day": "Seshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Informatika",
+    "teacher": "Umarov B.D.",
+    "room": "IT-1"
+  },
+  {
+    "id": "46",
+    "grade": "6-sinf",
+    "day": "Chorshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "O'zbek tili",
+    "teacher": "Norqo'ziyev I.S.",
+    "room": "201"
+  },
+  {
+    "id": "47",
+    "grade": "6-sinf",
+    "day": "Chorshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Kimyo",
+    "teacher": "Qodirov J.H.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "48",
+    "grade": "6-sinf",
+    "day": "Chorshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Fizika",
+    "teacher": "Xoliqov S.M.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "49",
+    "grade": "6-sinf",
+    "day": "Chorshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Algebra",
+    "teacher": "Murodova Z.A.",
+    "room": "106"
+  },
+  {
+    "id": "50",
+    "grade": "6-sinf",
+    "day": "Chorshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Ingliz tili",
+    "teacher": "Urazbayeva B.E.",
+    "room": "204"
+  },
+  {
+    "id": "51",
+    "grade": "6-sinf",
+    "day": "Chorshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Musiqa",
+    "teacher": "—",
+    "room": "Musiqa xonasi"
+  },
+  {
+    "id": "52",
+    "grade": "6-sinf",
+    "day": "Payshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Biologiya",
+    "teacher": "Mirzayev Sh.O.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "53",
+    "grade": "6-sinf",
+    "day": "Payshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Tarix",
+    "teacher": "Yusupova N.H.",
+    "room": "301"
+  },
+  {
+    "id": "54",
+    "grade": "6-sinf",
+    "day": "Payshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Algebra",
+    "teacher": "Murodova Z.A.",
+    "room": "106"
+  },
+  {
+    "id": "55",
+    "grade": "6-sinf",
+    "day": "Payshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Rus tili",
+    "teacher": "Alekseyeva N.V.",
+    "room": "203"
+  },
+  {
+    "id": "56",
+    "grade": "6-sinf",
+    "day": "Payshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Kimyo",
+    "teacher": "Qodirov J.H.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "57",
+    "grade": "6-sinf",
+    "day": "Payshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Nazarova U.Sh.",
+    "room": "Zal"
+  },
+  {
+    "id": "58",
+    "grade": "6-sinf",
+    "day": "Juma",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Ingliz tili",
+    "teacher": "Urazbayeva B.E.",
+    "room": "204"
+  },
+  {
+    "id": "59",
+    "grade": "6-sinf",
+    "day": "Juma",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Algebra",
+    "teacher": "Murodova Z.A.",
+    "room": "106"
+  },
+  {
+    "id": "60",
+    "grade": "6-sinf",
+    "day": "Juma",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "O'zbek tili",
+    "teacher": "Norqo'ziyev I.S.",
+    "room": "201"
+  },
+  {
+    "id": "61",
+    "grade": "6-sinf",
+    "day": "Juma",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Biologiya",
+    "teacher": "Mirzayev Sh.O.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "62",
+    "grade": "6-sinf",
+    "day": "Juma",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Informatika",
+    "teacher": "Umarov B.D.",
+    "room": "IT-1"
+  },
+  {
+    "id": "63",
+    "grade": "6-sinf",
+    "day": "Shanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Fizika",
+    "teacher": "Xoliqov S.M.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "64",
+    "grade": "6-sinf",
+    "day": "Shanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Kimyo",
+    "teacher": "Qodirov J.H.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "65",
+    "grade": "6-sinf",
+    "day": "Shanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Ingliz tili",
+    "teacher": "Urazbayeva B.E.",
+    "room": "204"
+  },
+  {
+    "id": "66",
+    "grade": "6-sinf",
+    "day": "Shanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Tarix",
+    "teacher": "Yusupova N.H.",
+    "room": "301"
+  },
+  {
+    "id": "67",
+    "grade": "7-sinf",
+    "day": "Dushanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Algebra",
+    "teacher": "Qodirov J.B.",
+    "room": "107"
+  },
+  {
+    "id": "68",
+    "grade": "7-sinf",
+    "day": "Dushanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Fizika",
+    "teacher": "Yo'ldosheva M.S.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "69",
+    "grade": "7-sinf",
+    "day": "Dushanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Ingliz tili",
+    "teacher": "Davronova U.A.",
+    "room": "205"
+  },
+  {
+    "id": "70",
+    "grade": "7-sinf",
+    "day": "Dushanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Kimyo",
+    "teacher": "Holmatov N.R.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "71",
+    "grade": "7-sinf",
+    "day": "Dushanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "O'zbek tili",
+    "teacher": "Tursunova M.K.",
+    "room": "201"
+  },
+  {
+    "id": "72",
+    "grade": "7-sinf",
+    "day": "Dushanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Xoliqov J.M.",
+    "room": "Zal"
+  },
+  {
+    "id": "73",
+    "grade": "7-sinf",
+    "day": "Dushanba",
+    "period": 7,
+    "time": "13:40 – 14:25",
+    "subject": "Informatika",
+    "teacher": "Murodov O.Sh.",
+    "room": "IT-2"
+  },
+  {
+    "id": "74",
+    "grade": "7-sinf",
+    "day": "Seshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Biologiya",
+    "teacher": "Rahimova D.B.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "75",
+    "grade": "7-sinf",
+    "day": "Seshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Algebra",
+    "teacher": "Qodirov J.B.",
+    "room": "107"
+  },
+  {
+    "id": "76",
+    "grade": "7-sinf",
+    "day": "Seshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Rus tili",
+    "teacher": "Toshpo'latov A.X.",
+    "room": "203"
+  },
+  {
+    "id": "77",
+    "grade": "7-sinf",
+    "day": "Seshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Fizika",
+    "teacher": "Yo'ldosheva M.S.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "78",
+    "grade": "7-sinf",
+    "day": "Seshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Ingliz tili",
+    "teacher": "Davronova U.A.",
+    "room": "205"
+  },
+  {
+    "id": "79",
+    "grade": "7-sinf",
+    "day": "Seshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Tarix",
+    "teacher": "Bekzod T.H.",
+    "room": "302"
+  },
+  {
+    "id": "80",
+    "grade": "7-sinf",
+    "day": "Chorshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Kimyo",
+    "teacher": "Holmatov N.R.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "81",
+    "grade": "7-sinf",
+    "day": "Chorshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "O'zbek tili",
+    "teacher": "Tursunova M.K.",
+    "room": "201"
+  },
+  {
+    "id": "82",
+    "grade": "7-sinf",
+    "day": "Chorshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Algebra",
+    "teacher": "Qodirov J.B.",
+    "room": "107"
+  },
+  {
+    "id": "83",
+    "grade": "7-sinf",
+    "day": "Chorshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Biologiya",
+    "teacher": "Rahimova D.B.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "84",
+    "grade": "7-sinf",
+    "day": "Chorshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Ingliz tili",
+    "teacher": "Davronova U.A.",
+    "room": "205"
+  },
+  {
+    "id": "85",
+    "grade": "7-sinf",
+    "day": "Chorshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Xoliqov J.M.",
+    "room": "Zal"
+  },
+  {
+    "id": "86",
+    "grade": "7-sinf",
+    "day": "Payshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Fizika",
+    "teacher": "Yo'ldosheva M.S.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "87",
+    "grade": "7-sinf",
+    "day": "Payshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Tarix",
+    "teacher": "Bekzod T.H.",
+    "room": "302"
+  },
+  {
+    "id": "88",
+    "grade": "7-sinf",
+    "day": "Payshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Rus tili",
+    "teacher": "Toshpo'latov A.X.",
+    "room": "203"
+  },
+  {
+    "id": "89",
+    "grade": "7-sinf",
+    "day": "Payshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Algebra",
+    "teacher": "Qodirov J.B.",
+    "room": "107"
+  },
+  {
+    "id": "90",
+    "grade": "7-sinf",
+    "day": "Payshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Kimyo",
+    "teacher": "Holmatov N.R.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "91",
+    "grade": "7-sinf",
+    "day": "Payshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Informatika",
+    "teacher": "Murodov O.Sh.",
+    "room": "IT-2"
+  },
+  {
+    "id": "92",
+    "grade": "7-sinf",
+    "day": "Juma",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Ingliz tili",
+    "teacher": "Davronova U.A.",
+    "room": "205"
+  },
+  {
+    "id": "93",
+    "grade": "7-sinf",
+    "day": "Juma",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Biologiya",
+    "teacher": "Rahimova D.B.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "94",
+    "grade": "7-sinf",
+    "day": "Juma",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "O'zbek tili",
+    "teacher": "Tursunova M.K.",
+    "room": "201"
+  },
+  {
+    "id": "95",
+    "grade": "7-sinf",
+    "day": "Juma",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Fizika",
+    "teacher": "Yo'ldosheva M.S.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "96",
+    "grade": "7-sinf",
+    "day": "Juma",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Tarix",
+    "teacher": "Bekzod T.H.",
+    "room": "302"
+  },
+  {
+    "id": "97",
+    "grade": "7-sinf",
+    "day": "Shanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Algebra",
+    "teacher": "Qodirov J.B.",
+    "room": "107"
+  },
+  {
+    "id": "98",
+    "grade": "7-sinf",
+    "day": "Shanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Kimyo",
+    "teacher": "Holmatov N.R.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "99",
+    "grade": "7-sinf",
+    "day": "Shanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Informatika",
+    "teacher": "Murodov O.Sh.",
+    "room": "IT-2"
+  },
+  {
+    "id": "100",
+    "grade": "7-sinf",
+    "day": "Shanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Ingliz tili",
+    "teacher": "Davronova U.A.",
+    "room": "205"
+  },
+  {
+    "id": "101",
+    "grade": "8-sinf",
+    "day": "Dushanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Geometriya",
+    "teacher": "Abdullayev Sh.",
+    "room": "108"
+  },
+  {
+    "id": "102",
+    "grade": "8-sinf",
+    "day": "Dushanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Fizika",
+    "teacher": "Toshpulatova M.I.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "103",
+    "grade": "8-sinf",
+    "day": "Dushanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Ingliz tili",
+    "teacher": "Nuriddinova A.N.",
+    "room": "206"
+  },
+  {
+    "id": "104",
+    "grade": "8-sinf",
+    "day": "Dushanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Kimyo",
+    "teacher": "Nazarova G.X.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "105",
+    "grade": "8-sinf",
+    "day": "Dushanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "O'zbek tili",
+    "teacher": "Hasanova F.T.",
+    "room": "201"
+  },
+  {
+    "id": "106",
+    "grade": "8-sinf",
+    "day": "Dushanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Informatika",
+    "teacher": "Umarov B.D.",
+    "room": "IT-1"
+  },
+  {
+    "id": "107",
+    "grade": "8-sinf",
+    "day": "Dushanba",
+    "period": 7,
+    "time": "13:40 – 14:25",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Nazarova U.Sh.",
+    "room": "Zal"
+  },
+  {
+    "id": "108",
+    "grade": "8-sinf",
+    "day": "Seshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Algebra",
+    "teacher": "Murodova Z.A.",
+    "room": "107"
+  },
+  {
+    "id": "109",
+    "grade": "8-sinf",
+    "day": "Seshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Biologiya",
+    "teacher": "Sayidova G.X.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "110",
+    "grade": "8-sinf",
+    "day": "Seshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Rus tili",
+    "teacher": "Xamrayeva Z.B.",
+    "room": "203"
+  },
+  {
+    "id": "111",
+    "grade": "8-sinf",
+    "day": "Seshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Geometriya",
+    "teacher": "Abdullayev Sh.",
+    "room": "108"
+  },
+  {
+    "id": "112",
+    "grade": "8-sinf",
+    "day": "Seshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Ingliz tili",
+    "teacher": "Nuriddinova A.N.",
+    "room": "206"
+  },
+  {
+    "id": "113",
+    "grade": "8-sinf",
+    "day": "Seshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Tarix",
+    "teacher": "Tursunov B.H.",
+    "room": "302"
+  },
+  {
+    "id": "114",
+    "grade": "8-sinf",
+    "day": "Chorshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Kimyo",
+    "teacher": "Nazarova G.X.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "115",
+    "grade": "8-sinf",
+    "day": "Chorshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Algebra",
+    "teacher": "Murodova Z.A.",
+    "room": "107"
+  },
+  {
+    "id": "116",
+    "grade": "8-sinf",
+    "day": "Chorshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Fizika",
+    "teacher": "Toshpulatova M.I.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "117",
+    "grade": "8-sinf",
+    "day": "Chorshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "O'zbek tili",
+    "teacher": "Hasanova F.T.",
+    "room": "201"
+  },
+  {
+    "id": "118",
+    "grade": "8-sinf",
+    "day": "Chorshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Ingliz tili",
+    "teacher": "Nuriddinova A.N.",
+    "room": "206"
+  },
+  {
+    "id": "119",
+    "grade": "8-sinf",
+    "day": "Chorshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Biologiya",
+    "teacher": "Sayidova G.X.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "120",
+    "grade": "8-sinf",
+    "day": "Payshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Geometriya",
+    "teacher": "Abdullayev Sh.",
+    "room": "108"
+  },
+  {
+    "id": "121",
+    "grade": "8-sinf",
+    "day": "Payshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Tarix",
+    "teacher": "Tursunov B.H.",
+    "room": "302"
+  },
+  {
+    "id": "122",
+    "grade": "8-sinf",
+    "day": "Payshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Rus tili",
+    "teacher": "Xamrayeva Z.B.",
+    "room": "203"
+  },
+  {
+    "id": "123",
+    "grade": "8-sinf",
+    "day": "Payshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Kimyo",
+    "teacher": "Nazarova G.X.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "124",
+    "grade": "8-sinf",
+    "day": "Payshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Informatika",
+    "teacher": "Umarov B.D.",
+    "room": "IT-1"
+  },
+  {
+    "id": "125",
+    "grade": "8-sinf",
+    "day": "Payshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Nazarova U.Sh.",
+    "room": "Zal"
+  },
+  {
+    "id": "126",
+    "grade": "8-sinf",
+    "day": "Juma",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Ingliz tili",
+    "teacher": "Nuriddinova A.N.",
+    "room": "206"
+  },
+  {
+    "id": "127",
+    "grade": "8-sinf",
+    "day": "Juma",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Biologiya",
+    "teacher": "Sayidova G.X.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "128",
+    "grade": "8-sinf",
+    "day": "Juma",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Algebra",
+    "teacher": "Murodova Z.A.",
+    "room": "107"
+  },
+  {
+    "id": "129",
+    "grade": "8-sinf",
+    "day": "Juma",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Geometriya",
+    "teacher": "Abdullayev Sh.",
+    "room": "108"
+  },
+  {
+    "id": "130",
+    "grade": "8-sinf",
+    "day": "Juma",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Fizika",
+    "teacher": "Toshpulatova M.I.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "131",
+    "grade": "8-sinf",
+    "day": "Shanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Kimyo",
+    "teacher": "Nazarova G.X.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "132",
+    "grade": "8-sinf",
+    "day": "Shanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Algebra",
+    "teacher": "Murodova Z.A.",
+    "room": "107"
+  },
+  {
+    "id": "133",
+    "grade": "8-sinf",
+    "day": "Shanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Ingliz tili",
+    "teacher": "Nuriddinova A.N.",
+    "room": "206"
+  },
+  {
+    "id": "134",
+    "grade": "8-sinf",
+    "day": "Shanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Informatika",
+    "teacher": "Umarov B.D.",
+    "room": "IT-1"
+  },
+  {
+    "id": "135",
+    "grade": "9-sinf",
+    "day": "Dushanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Matematika tahlili",
+    "teacher": "Toshmatov B.H.",
+    "room": "109"
+  },
+  {
+    "id": "136",
+    "grade": "9-sinf",
+    "day": "Dushanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Fizika (chuqur)",
+    "teacher": "Xoliqov S.M.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "137",
+    "grade": "9-sinf",
+    "day": "Dushanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Ingliz tili",
+    "teacher": "Xabibullayeva S.M.",
+    "room": "207"
+  },
+  {
+    "id": "138",
+    "grade": "9-sinf",
+    "day": "Dushanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Kimyo (chuqur)",
+    "teacher": "Qodirov J.H.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "139",
+    "grade": "9-sinf",
+    "day": "Dushanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "O'zbek adabiyoti",
+    "teacher": "Norqo'ziyev I.S.",
+    "room": "201"
+  },
+  {
+    "id": "140",
+    "grade": "9-sinf",
+    "day": "Dushanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Informatika",
+    "teacher": "Murodov O.Sh.",
+    "room": "IT-2"
+  },
+  {
+    "id": "141",
+    "grade": "9-sinf",
+    "day": "Dushanba",
+    "period": 7,
+    "time": "13:40 – 14:25",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Xoliqov J.M.",
+    "room": "Zal"
+  },
+  {
+    "id": "142",
+    "grade": "9-sinf",
+    "day": "Seshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Algebra va analiz",
+    "teacher": "Toshmatov B.H.",
+    "room": "109"
+  },
+  {
+    "id": "143",
+    "grade": "9-sinf",
+    "day": "Seshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Biologiya",
+    "teacher": "Rahimova D.B.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "144",
+    "grade": "9-sinf",
+    "day": "Seshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Rus tili",
+    "teacher": "Alekseyeva N.V.",
+    "room": "203"
+  },
+  {
+    "id": "145",
+    "grade": "9-sinf",
+    "day": "Seshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Matematika tahlili",
+    "teacher": "Toshmatov B.H.",
+    "room": "109"
+  },
+  {
+    "id": "146",
+    "grade": "9-sinf",
+    "day": "Seshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Ingliz tili",
+    "teacher": "Xabibullayeva S.M.",
+    "room": "207"
+  },
+  {
+    "id": "147",
+    "grade": "9-sinf",
+    "day": "Seshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Tarix",
+    "teacher": "Yusupova N.H.",
+    "room": "302"
+  },
+  {
+    "id": "148",
+    "grade": "9-sinf",
+    "day": "Chorshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Fizika (chuqur)",
+    "teacher": "Xoliqov S.M.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "149",
+    "grade": "9-sinf",
+    "day": "Chorshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Kimyo (chuqur)",
+    "teacher": "Qodirov J.H.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "150",
+    "grade": "9-sinf",
+    "day": "Chorshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Matematika tahlili",
+    "teacher": "Toshmatov B.H.",
+    "room": "109"
+  },
+  {
+    "id": "151",
+    "grade": "9-sinf",
+    "day": "Chorshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "O'zbek adabiyoti",
+    "teacher": "Norqo'ziyev I.S.",
+    "room": "201"
+  },
+  {
+    "id": "152",
+    "grade": "9-sinf",
+    "day": "Chorshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Ingliz tili",
+    "teacher": "Xabibullayeva S.M.",
+    "room": "207"
+  },
+  {
+    "id": "153",
+    "grade": "9-sinf",
+    "day": "Chorshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Biologiya",
+    "teacher": "Rahimova D.B.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "154",
+    "grade": "9-sinf",
+    "day": "Payshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Algebra va analiz",
+    "teacher": "Toshmatov B.H.",
+    "room": "109"
+  },
+  {
+    "id": "155",
+    "grade": "9-sinf",
+    "day": "Payshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Tarix",
+    "teacher": "Yusupova N.H.",
+    "room": "302"
+  },
+  {
+    "id": "156",
+    "grade": "9-sinf",
+    "day": "Payshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Rus tili",
+    "teacher": "Alekseyeva N.V.",
+    "room": "203"
+  },
+  {
+    "id": "157",
+    "grade": "9-sinf",
+    "day": "Payshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Fizika (chuqur)",
+    "teacher": "Xoliqov S.M.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "158",
+    "grade": "9-sinf",
+    "day": "Payshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Kimyo (chuqur)",
+    "teacher": "Qodirov J.H.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "159",
+    "grade": "9-sinf",
+    "day": "Payshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Informatika",
+    "teacher": "Murodov O.Sh.",
+    "room": "IT-2"
+  },
+  {
+    "id": "160",
+    "grade": "9-sinf",
+    "day": "Juma",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Ingliz tili",
+    "teacher": "Xabibullayeva S.M.",
+    "room": "207"
+  },
+  {
+    "id": "161",
+    "grade": "9-sinf",
+    "day": "Juma",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Biologiya",
+    "teacher": "Rahimova D.B.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "162",
+    "grade": "9-sinf",
+    "day": "Juma",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Matematika tahlili",
+    "teacher": "Toshmatov B.H.",
+    "room": "109"
+  },
+  {
+    "id": "163",
+    "grade": "9-sinf",
+    "day": "Juma",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Fizika (chuqur)",
+    "teacher": "Xoliqov S.M.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "164",
+    "grade": "9-sinf",
+    "day": "Juma",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Xoliqov J.M.",
+    "room": "Zal"
+  },
+  {
+    "id": "165",
+    "grade": "9-sinf",
+    "day": "Shanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Kimyo (chuqur)",
+    "teacher": "Qodirov J.H.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "166",
+    "grade": "9-sinf",
+    "day": "Shanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Algebra va analiz",
+    "teacher": "Toshmatov B.H.",
+    "room": "109"
+  },
+  {
+    "id": "167",
+    "grade": "9-sinf",
+    "day": "Shanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Ingliz tili",
+    "teacher": "Xabibullayeva S.M.",
+    "room": "207"
+  },
+  {
+    "id": "168",
+    "grade": "9-sinf",
+    "day": "Shanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Informatika",
+    "teacher": "Murodov O.Sh.",
+    "room": "IT-2"
+  },
+  {
+    "id": "169",
+    "grade": "10-sinf",
+    "day": "Dushanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Oliy matematika",
+    "teacher": "Abdullayev Sh.",
+    "room": "110"
+  },
+  {
+    "id": "170",
+    "grade": "10-sinf",
+    "day": "Dushanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Nazariy fizika",
+    "teacher": "Toshpulatova M.I.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "171",
+    "grade": "10-sinf",
+    "day": "Dushanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Ingliz tili (IELTS)",
+    "teacher": "Urazbayeva B.E.",
+    "room": "208"
+  },
+  {
+    "id": "172",
+    "grade": "10-sinf",
+    "day": "Dushanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Organik kimyo",
+    "teacher": "Nazarova G.X.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "173",
+    "grade": "10-sinf",
+    "day": "Dushanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "O'zbek tili",
+    "teacher": "Hasanova F.T.",
+    "room": "201"
+  },
+  {
+    "id": "174",
+    "grade": "10-sinf",
+    "day": "Dushanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Dasturlash (Python)",
+    "teacher": "Umarov B.D.",
+    "room": "IT-1"
+  },
+  {
+    "id": "175",
+    "grade": "10-sinf",
+    "day": "Dushanba",
+    "period": 7,
+    "time": "13:40 – 14:25",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Nazarova U.Sh.",
+    "room": "Zal"
+  },
+  {
+    "id": "176",
+    "grade": "10-sinf",
+    "day": "Seshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Nazariy fizika",
+    "teacher": "Toshpulatova M.I.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "177",
+    "grade": "10-sinf",
+    "day": "Seshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Oliy matematika",
+    "teacher": "Abdullayev Sh.",
+    "room": "110"
+  },
+  {
+    "id": "178",
+    "grade": "10-sinf",
+    "day": "Seshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Rus tili",
+    "teacher": "Xamrayeva Z.B.",
+    "room": "203"
+  },
+  {
+    "id": "179",
+    "grade": "10-sinf",
+    "day": "Seshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Ingliz tili (IELTS)",
+    "teacher": "Urazbayeva B.E.",
+    "room": "208"
+  },
+  {
+    "id": "180",
+    "grade": "10-sinf",
+    "day": "Seshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Genetika va biologiya",
+    "teacher": "Sayidova G.X.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "181",
+    "grade": "10-sinf",
+    "day": "Seshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Tarix",
+    "teacher": "Tursunov B.H.",
+    "room": "302"
+  },
+  {
+    "id": "182",
+    "grade": "10-sinf",
+    "day": "Chorshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Organik kimyo",
+    "teacher": "Nazarova G.X.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "183",
+    "grade": "10-sinf",
+    "day": "Chorshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Oliy matematika",
+    "teacher": "Abdullayev Sh.",
+    "room": "110"
+  },
+  {
+    "id": "184",
+    "grade": "10-sinf",
+    "day": "Chorshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Nazariy fizika",
+    "teacher": "Toshpulatova M.I.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "185",
+    "grade": "10-sinf",
+    "day": "Chorshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Dasturlash (Python)",
+    "teacher": "Umarov B.D.",
+    "room": "IT-1"
+  },
+  {
+    "id": "186",
+    "grade": "10-sinf",
+    "day": "Chorshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Ingliz tili (IELTS)",
+    "teacher": "Urazbayeva B.E.",
+    "room": "208"
+  },
+  {
+    "id": "187",
+    "grade": "10-sinf",
+    "day": "Chorshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Genetika va biologiya",
+    "teacher": "Sayidova G.X.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "188",
+    "grade": "10-sinf",
+    "day": "Payshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Oliy matematika",
+    "teacher": "Abdullayev Sh.",
+    "room": "110"
+  },
+  {
+    "id": "189",
+    "grade": "10-sinf",
+    "day": "Payshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Tarix",
+    "teacher": "Tursunov B.H.",
+    "room": "302"
+  },
+  {
+    "id": "190",
+    "grade": "10-sinf",
+    "day": "Payshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Rus tili",
+    "teacher": "Xamrayeva Z.B.",
+    "room": "203"
+  },
+  {
+    "id": "191",
+    "grade": "10-sinf",
+    "day": "Payshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Organik kimyo",
+    "teacher": "Nazarova G.X.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "192",
+    "grade": "10-sinf",
+    "day": "Payshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Dasturlash (Python)",
+    "teacher": "Umarov B.D.",
+    "room": "IT-1"
+  },
+  {
+    "id": "193",
+    "grade": "10-sinf",
+    "day": "Payshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Nazarova U.Sh.",
+    "room": "Zal"
+  },
+  {
+    "id": "194",
+    "grade": "10-sinf",
+    "day": "Juma",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Ingliz tili (IELTS)",
+    "teacher": "Urazbayeva B.E.",
+    "room": "208"
+  },
+  {
+    "id": "195",
+    "grade": "10-sinf",
+    "day": "Juma",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Genetika va biologiya",
+    "teacher": "Sayidova G.X.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "196",
+    "grade": "10-sinf",
+    "day": "Juma",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Oliy matematika",
+    "teacher": "Abdullayev Sh.",
+    "room": "110"
+  },
+  {
+    "id": "197",
+    "grade": "10-sinf",
+    "day": "Juma",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Nazariy fizika",
+    "teacher": "Toshpulatova M.I.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "198",
+    "grade": "10-sinf",
+    "day": "Juma",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "O'zbek tili",
+    "teacher": "Hasanova F.T.",
+    "room": "201"
+  },
+  {
+    "id": "199",
+    "grade": "10-sinf",
+    "day": "Shanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Organik kimyo",
+    "teacher": "Nazarova G.X.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "200",
+    "grade": "10-sinf",
+    "day": "Shanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Dasturlash (Python)",
+    "teacher": "Umarov B.D.",
+    "room": "IT-1"
+  },
+  {
+    "id": "201",
+    "grade": "10-sinf",
+    "day": "Shanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Ingliz tili (IELTS)",
+    "teacher": "Urazbayeva B.E.",
+    "room": "208"
+  },
+  {
+    "id": "202",
+    "grade": "10-sinf",
+    "day": "Shanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Oliy matematika",
+    "teacher": "Abdullayev Sh.",
+    "room": "110"
+  },
+  {
+    "id": "203",
+    "grade": "11-sinf",
+    "day": "Dushanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Matematik analiz",
+    "teacher": "Abdullayev Sh.",
+    "room": "111"
+  },
+  {
+    "id": "204",
+    "grade": "11-sinf",
+    "day": "Dushanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Kvant fizikasi",
+    "teacher": "Xoliqov S.M.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "205",
+    "grade": "11-sinf",
+    "day": "Dushanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Ingliz tili (SAT/IELTS)",
+    "teacher": "Nuriddinova A.N.",
+    "room": "209"
+  },
+  {
+    "id": "206",
+    "grade": "11-sinf",
+    "day": "Dushanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Analitik kimyo",
+    "teacher": "Qodirov J.H.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "207",
+    "grade": "11-sinf",
+    "day": "Dushanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "O'zbek tili va adabiyoti",
+    "teacher": "Norqo'ziyev I.S.",
+    "room": "201"
+  },
+  {
+    "id": "208",
+    "grade": "11-sinf",
+    "day": "Dushanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Sun'iy intellekt",
+    "teacher": "Murodov O.Sh.",
+    "room": "IT-2"
+  },
+  {
+    "id": "209",
+    "grade": "11-sinf",
+    "day": "Dushanba",
+    "period": 7,
+    "time": "13:40 – 14:25",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Xoliqov J.M.",
+    "room": "Zal"
+  },
+  {
+    "id": "210",
+    "grade": "11-sinf",
+    "day": "Seshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Kvant fizikasi",
+    "teacher": "Xoliqov S.M.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "211",
+    "grade": "11-sinf",
+    "day": "Seshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Matematik analiz",
+    "teacher": "Abdullayev Sh.",
+    "room": "111"
+  },
+  {
+    "id": "212",
+    "grade": "11-sinf",
+    "day": "Seshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Rus tili",
+    "teacher": "Toshpo'latov A.X.",
+    "room": "203"
+  },
+  {
+    "id": "213",
+    "grade": "11-sinf",
+    "day": "Seshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Ingliz tili (SAT/IELTS)",
+    "teacher": "Nuriddinova A.N.",
+    "room": "209"
+  },
+  {
+    "id": "214",
+    "grade": "11-sinf",
+    "day": "Seshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Molekulyar biologiya",
+    "teacher": "Rahimova D.B.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "215",
+    "grade": "11-sinf",
+    "day": "Seshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Falsafa va etika",
+    "teacher": "Yusupova N.H.",
+    "room": "302"
+  },
+  {
+    "id": "216",
+    "grade": "11-sinf",
+    "day": "Chorshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Analitik kimyo",
+    "teacher": "Qodirov J.H.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "217",
+    "grade": "11-sinf",
+    "day": "Chorshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Matematik analiz",
+    "teacher": "Abdullayev Sh.",
+    "room": "111"
+  },
+  {
+    "id": "218",
+    "grade": "11-sinf",
+    "day": "Chorshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Kvant fizikasi",
+    "teacher": "Xoliqov S.M.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "219",
+    "grade": "11-sinf",
+    "day": "Chorshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Sun'iy intellekt",
+    "teacher": "Murodov O.Sh.",
+    "room": "IT-2"
+  },
+  {
+    "id": "220",
+    "grade": "11-sinf",
+    "day": "Chorshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Ingliz tili (SAT/IELTS)",
+    "teacher": "Nuriddinova A.N.",
+    "room": "209"
+  },
+  {
+    "id": "221",
+    "grade": "11-sinf",
+    "day": "Chorshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Molekulyar biologiya",
+    "teacher": "Rahimova D.B.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "222",
+    "grade": "11-sinf",
+    "day": "Payshanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Matematik analiz",
+    "teacher": "Abdullayev Sh.",
+    "room": "111"
+  },
+  {
+    "id": "223",
+    "grade": "11-sinf",
+    "day": "Payshanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Falsafa va etika",
+    "teacher": "Yusupova N.H.",
+    "room": "302"
+  },
+  {
+    "id": "224",
+    "grade": "11-sinf",
+    "day": "Payshanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Rus tili",
+    "teacher": "Toshpo'latov A.X.",
+    "room": "203"
+  },
+  {
+    "id": "225",
+    "grade": "11-sinf",
+    "day": "Payshanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Analitik kimyo",
+    "teacher": "Qodirov J.H.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "226",
+    "grade": "11-sinf",
+    "day": "Payshanba",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "Sun'iy intellekt",
+    "teacher": "Murodov O.Sh.",
+    "room": "IT-2"
+  },
+  {
+    "id": "227",
+    "grade": "11-sinf",
+    "day": "Payshanba",
+    "period": 6,
+    "time": "12:45 – 13:30",
+    "subject": "Jismoniy tarbiya",
+    "teacher": "Xoliqov J.M.",
+    "room": "Zal"
+  },
+  {
+    "id": "228",
+    "grade": "11-sinf",
+    "day": "Juma",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Ingliz tili (SAT/IELTS)",
+    "teacher": "Nuriddinova A.N.",
+    "room": "209"
+  },
+  {
+    "id": "229",
+    "grade": "11-sinf",
+    "day": "Juma",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Molekulyar biologiya",
+    "teacher": "Rahimova D.B.",
+    "room": "Lab-2"
+  },
+  {
+    "id": "230",
+    "grade": "11-sinf",
+    "day": "Juma",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Matematik analiz",
+    "teacher": "Abdullayev Sh.",
+    "room": "111"
+  },
+  {
+    "id": "231",
+    "grade": "11-sinf",
+    "day": "Juma",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Kvant fizikasi",
+    "teacher": "Xoliqov S.M.",
+    "room": "Lab-1"
+  },
+  {
+    "id": "232",
+    "grade": "11-sinf",
+    "day": "Juma",
+    "period": 5,
+    "time": "11:50 – 12:35",
+    "subject": "O'zbek tili va adabiyoti",
+    "teacher": "Norqo'ziyev I.S.",
+    "room": "201"
+  },
+  {
+    "id": "233",
+    "grade": "11-sinf",
+    "day": "Shanba",
+    "period": 1,
+    "time": "08:00 – 08:45",
+    "subject": "Analitik kimyo",
+    "teacher": "Qodirov J.H.",
+    "room": "Lab-3"
+  },
+  {
+    "id": "234",
+    "grade": "11-sinf",
+    "day": "Shanba",
+    "period": 2,
+    "time": "08:55 – 09:40",
+    "subject": "Sun'iy intellekt",
+    "teacher": "Murodov O.Sh.",
+    "room": "IT-2"
+  },
+  {
+    "id": "235",
+    "grade": "11-sinf",
+    "day": "Shanba",
+    "period": 3,
+    "time": "09:50 – 10:35",
+    "subject": "Ingliz tili (SAT/IELTS)",
+    "teacher": "Nuriddinova A.N.",
+    "room": "209"
+  },
+  {
+    "id": "236",
+    "grade": "11-sinf",
+    "day": "Shanba",
+    "period": 4,
+    "time": "10:55 – 11:40",
+    "subject": "Matematik analiz",
+    "teacher": "Abdullayev Sh.",
+    "room": "111"
+  }
+]

@@ -1,0 +1,133 @@
+{
+  "mission": {
+    "uz": "O'quvchilarga o'z salohiyatini to'liq ochishga imkon beruvchi, tez o'zgarayotgan zamonaviy dunyoda muvaffaqiyat qozonish uchun zarur bilim va ko'nikmalar bilan qurollantiramiz.",
+    "en": "To provide a world-class education that empowers students to reach their highest potential, equipping them with the knowledge, skills, and values needed to succeed in a rapidly changing global society.",
+    "ru": "Обеспечить мировое образование, которое позволяет студентам раскрыть весь свой потенциал, вооружив их знаниями, навыками и ценностями, необходимыми для успеха в быстро меняющемся мире."
+  },
+  "vision": {
+    "uz": "Innovatsion o'qitish usullari va chuqur akademik bilim uyg'unlashgan holda, maktabimiz jahon miqyosida tan olingan nufuzli muassasaga aylanishini maqsad qilamiz.",
+    "en": "To be recognized globally as a premier institution of excellence, where innovative teaching meets academic rigor, producing graduates who are lifelong learners and responsible global citizens.",
+    "ru": "Стать глобально признанным учреждением превосходства, где инновационное преподавание сочетается с академической строгостью."
+  },
+  "philosophy": [
+    {
+      "id": "1",
+      "order": 1,
+      "title": {
+        "uz": "Chuqur Bilim",
+        "en": "Academic Rigor",
+        "ru": "Академическая строгость"
+      },
+      "desc": {
+        "uz": "Tanqidiy fikrlash va ijodiy yondashuvni rivojlantiradigan kuchli o'quv dasturi.",
+        "en": "Challenging curriculum designed to stretch boundaries and foster critical thinking.",
+        "ru": "Сложная учебная программа, разработанная для расширения границ и развития критического мышления."
+      }
+    },
+    {
+      "id": "2",
+      "order": 2,
+      "title": {
+        "uz": "Birgalikda O'rganish",
+        "en": "Collaborative Learning",
+        "ru": "Совместное обучение"
+      },
+      "desc": {
+        "uz": "Jamoaviy ish, muloqot va o'rtoqlar o'rtasida bilim almashishga alohida e'tibor beriladi.",
+        "en": "Emphasis on teamwork, communication, and peer-to-peer knowledge sharing.",
+        "ru": "Акцент на командной работе, общении и обмене знаниями между коллегами."
+      }
+    },
+    {
+      "id": "3",
+      "order": 3,
+      "title": {
+        "uz": "Dunyo Miqyosida",
+        "en": "Global Perspective",
+        "ru": "Глобальная перспектива"
+      },
+      "desc": {
+        "uz": "Har bir fanda xalqaro standartlar va zamonaviy talablarni asosiy mezon sifatida qabul qilamiz.",
+        "en": "Integrating international standards and perspectives into every subject.",
+        "ru": "Интеграция международных стандартов и перспектив в каждый предмет."
+      }
+    }
+  ],
+  "timeline": [
+    {
+      "id": "1",
+      "order": 1,
+      "year": "2012",
+      "title": {
+        "uz": "Maktab tashkil topdii",
+        "en": "Foundation",
+        "ru": "Основание"
+      },
+      "desc": {
+        "uz": "Mahalliy iste'dodli yoshlarni tarbiyalash maqsadida maktabga asos solindi.",
+        "en": "School established with a vision to nurture local talent.",
+        "ru": "Школа основана с целью воспитания местных талантов."
+      }
+    },
+    {
+      "id": "2",
+      "order": 2,
+      "year": "2015",
+      "title": {
+        "uz": "Birinchi bitiruvchilar",
+        "en": "First Graduates",
+        "ru": "Первые выпускники"
+      },
+      "desc": {
+        "uz": "Birinchi o'quvchilar yuqori natijalar bilan maktabni tamomladi.",
+        "en": "Our first cohort of students graduates with outstanding results.",
+        "ru": "Первый поток студентов окончил школу с отличными результатами."
+      }
+    },
+    {
+      "id": "3",
+      "order": 3,
+      "year": "2018",
+      "title": {
+        "uz": "Prezident maqomi berildi",
+        "en": "Presidential Status",
+        "ru": "Президентский статус"
+      },
+      "desc": {
+        "uz": "Akademik yutuqlar uchun Prezident Ixtisoslashtirilgan Maktabi maqomiga sazovor bo'ldi.",
+        "en": "Elevated to Presidential Specialized School status for academic excellence.",
+        "ru": "Получила статус Президентской специализированной школы за академическое превосходство."
+      }
+    },
+    {
+      "id": "4",
+      "order": 4,
+      "year": "2021",
+      "title": {
+        "uz": "Yangi bino",
+        "en": "New Campus",
+        "ru": "Новый кампус"
+      },
+      "desc": {
+        "uz": "Zamonaviy laboratoriyalarga ega yangi o'quv binosiga ko'chib o'tildi.",
+        "en": "Moved to a state-of-the-art modern facility with advanced laboratories.",
+        "ru": "Переехали в современное учебное здание с передовыми лабораториями."
+      }
+    },
+    {
+      "id": "5",
+      "order": 5,
+      "year": "2024",
+      "title": {
+        "uz": "Xalqaro tan olinish",
+        "en": "International Recognition",
+        "ru": "Международное признание"
+      },
+      "desc": {
+        "uz": "Xalqaro akkreditatsiya qo'lga kiritildi va bir nechta olimpiada oltin medali qo'lga olindi.",
+        "en": "Achieved international accreditation and multiple Olympiad golds.",
+        "ru": "Получила международную аккредитацию и несколько золотых медалей олимпиад."
+      }
+    }
+  ]
+}

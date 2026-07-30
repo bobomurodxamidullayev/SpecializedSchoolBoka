@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "title": {
+      "uz": "Navruz bayrami 2024",
+      "en": "Navruz Festival 2024",
+      "ru": "Праздник Навруз 2024"
+    },
+    "description": {
+      "uz": "",
+      "en": "",
+      "ru": ""
+    },
+    "category": "Events",
+    "date": "2024-03-21",
+    "images": []
+  },
+  {
+    "id": "2",
+    "title": {
+      "uz": "Matematik olimpiada",
+      "en": "Math Olympiad Finals",
+      "ru": "Финал математической олимпиады"
+    },
+    "description": {
+      "uz": "",
+      "en": "",
+      "ru": ""
+    },
+    "category": "Competitions",
+    "date": "2024-04-15",
+    "images": []
+  }
+]

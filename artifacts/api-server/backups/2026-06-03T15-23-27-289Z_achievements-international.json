@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "order": 1,
+    "subject": "Mathematics",
+    "competition": "IMO 2024",
+    "award": "Gold Medal",
+    "flag": "🇬🇧",
+    "country": "London, UK"
+  },
+  {
+    "id": "2",
+    "order": 2,
+    "subject": "Physics",
+    "competition": "APhO 2024",
+    "award": "Silver Medal",
+    "flag": "🇯🇵",
+    "country": "Tokyo, Japan"
+  },
+  {
+    "id": "3",
+    "order": 3,
+    "subject": "Informatics",
+    "competition": "IOI 2023",
+    "award": "Bronze Medal",
+    "flag": "🇭🇺",
+    "country": "Budapest, Hungary"
+  },
+  {
+    "id": "4",
+    "order": 4,
+    "subject": "Chemistry",
+    "competition": "IChO 2024",
+    "award": "Silver Medal",
+    "flag": "🇸🇦",
+    "country": "Riyadh, KSA"
+  }
+]

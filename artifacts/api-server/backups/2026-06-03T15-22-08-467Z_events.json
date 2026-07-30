@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1",
+    "order": 1,
+    "title": {
+      "uz": "Ochiq eshiklar kuni",
+      "en": "Open Day for Prospective Students",
+      "ru": "День открытых дверей"
+    },
+    "date": "2024-04-10",
+    "time": "10:00",
+    "location": {
+      "uz": "Asosiy zal",
+      "en": "Main Hall",
+      "ru": "Главный зал"
+    },
+    "description": {
+      "uz": "Ota-onalar va o'quvchilar maktab bilan tanishishlari va o'qituvchilar bilan uchrashishlari mumkin.",
+      "en": "Parents and students are welcome to tour the school and meet our faculty.",
+      "ru": "Родители и учащиеся могут ознакомиться со школой и встретиться с преподавателями."
+    },
+    "category": "Academic"
+  },
+  {
+    "id": "2",
+    "order": 2,
+    "title": {
+      "uz": "Fan yarmarkasi 2024",
+      "en": "Science Fair 2024",
+      "ru": "Ярмарка науки 2024"
+    },
+    "date": "2024-04-24",
+    "time": "09:00",
+    "location": {
+      "uz": "Fan qanoti",
+      "en": "Science Wing",
+      "ru": "Научный корпус"
+    },
+    "description": {
+      "uz": "O'quvchi fan va muhandislik loyihalarining yillik ko'rgazmasi.",
+      "en": "Annual exhibition of student science and engineering projects, judged by external experts.",
+      "ru": "Ежегодная выставка научных и инженерных проектов учащихся."
+    },
+    "category": "Academic"
+  },
+  {
+    "id": "3",
+    "order": 3,
+    "title": {
+      "uz": "Milliy matematika olimpiadasiga tayyorlov lagerl",
+      "en": "National Math Olympiad Preparation Camp",
+      "ru": "Подготовительный лагерь к национальной олимпиаде по математике"
+    },
+    "date": "2024-05-05",
+    "time": "08:00",
+    "location": {
+      "uz": "Ma'ruza zali A",
+      "en": "Lecture Hall A",
+      "ru": "Лекционный зал A"
+    },
+    "description": {
+      "uz": "Matematika fakulteti rahbarligida 3 kunlik intensiv tayyorlov lagerl.",
+      "en": "Intensive 3-day preparation camp led by our award-winning Mathematics faculty.",
+      "ru": "Интенсивный 3-дневный подготовительный лагерь под руководством преподавателей математики."
+    },
+    "category": "Competition"
+  },
+  {
+    "id": "4",
+    "order": 4,
+    "title": {
+      "uz": "2024 yil bitiruvchilar marosimi",
+      "en": "Graduation Ceremony — Class of 2024",
+      "ru": "Церемония выпуска — класс 2024"
+    },
+    "date": "2024-06-15",
+    "time": "11:00",
+    "location": {
+      "uz": "Ochiq amfiteatr",
+      "en": "Outdoor Amphitheatre",
+      "ru": "Открытый амфитеатр"
+    },
+    "description": {
+      "uz": "Mukofotlar, ijrolar va asosiy nutq bilan bitiruvchilarni tabriklash.",
+      "en": "Celebrate our graduating class with awards, performances, and a keynote address.",
+      "ru": "Поздравляем выпускников с наградами, выступлениями и основным докладом."
+    },
+    "category": "Community"
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "1",
+    "order": 1,
+    "category": "Admissions",
+    "question": {
+      "uz": "Qabul uchun qanday ariza topshirish mumkin?",
+      "en": "How can I apply for admission?",
+      "ru": "Как подать заявку на поступление?"
+    },
+    "answer": {
+      "uz": "Qabul har yili may oyida ochiladi. Matematika va ingliz tilidan kirish imtihonlari bilan onlayn ariza yuboring. Tanlangan nomzodlar suhbatga taklif etiladi.",
+      "en": "Admissions open each May. Submit an online application followed by entrance exams in Math and English. Shortlisted candidates are invited for an interview.",
+      "ru": "Приём открывается каждый май. Подайте онлайн-заявку, затем сдайте вступительные экзамены по математике и английскому языку."
+    }
+  },
+  {
+    "id": "2",
+    "order": 2,
+    "category": "Academic",
+    "question": {
+      "uz": "O'qitish tili qanday?",
+      "en": "What is the language of instruction?",
+      "ru": "Какой язык обучения?"
+    },
+    "answer": {
+      "uz": "Asosiy o'qitish tili o'zbek tili, ingliz va rus tili darslari ham keng o'qitiladi.",
+      "en": "The primary language of instruction is Uzbek, with extensive courses in English and Russian. STEM subjects are taught in English in upper grades.",
+      "ru": "Основной язык обучения — узбекский, с расширенными курсами английского и русского языков."
+    }
+  },
+  {
+    "id": "3",
+    "order": 3,
+    "category": "Facilities",
+    "question": {
+      "uz": "Maktab yotoqxona xizmatini ko'rsatadimi?",
+      "en": "Does the school provide accommodation?",
+      "ru": "Предоставляет ли школа жилье?"
+    },
+    "answer": {
+      "uz": "Ha, boshqa viloyatlardan kelgan o'quvchilar uchun zamonaviy yotoqxonamiz mavjud.",
+      "en": "Yes, we have a fully equipped modern dormitory for students coming from other regions with supervised study halls and recreational areas.",
+      "ru": "Да, у нас есть современное общежитие для студентов из других регионов."
+    }
+  },
+  {
+    "id": "4",
+    "order": 4,
+    "category": "Admissions",
+    "question": {
+      "uz": "QCh maktabi qaysi sinflarga qabul qiladi?",
+      "en": "What grades does QCh School accept?",
+      "ru": "В какие классы принимает школа QCh?"
+    },
+    "answer": {
+      "uz": "Biz 5-11-sinfga kiruvchi o'quvchilarni qabul qilamiz. Asosiy qabul 5-sinfda bo'ladi.",
+      "en": "We accept students entering grades 5 through 11. The main intake is at grade 5, with limited spaces available at other grade levels.",
+      "ru": "Мы принимаем учащихся в 5–11 классы. Основной прием в 5-й класс."
+    }
+  },
+  {
+    "id": "5",
+    "order": 5,
+    "category": "Academic",
+    "question": {
+      "uz": "Xalqaro sertifikatlar olish mumkinmi?",
+      "en": "Are international certifications available?",
+      "ru": "Доступны ли международные сертификаты?"
+    },
+    "answer": {
+      "uz": "Ha — Cambridge IGCSE, IELTS tayyorlov va SAT dasturlari 9–11-sinf o'quvchilari uchun o'quv rejasiga kiritilgan.",
+      "en": "Yes — Cambridge IGCSE, IELTS preparation, and SAT readiness programs are embedded in our curriculum for grades 9–11.",
+      "ru": "Да — программы Cambridge IGCSE, подготовка к IELTS и SAT включены в учебный план для 9–11 классов."
+    }
+  }
+]
