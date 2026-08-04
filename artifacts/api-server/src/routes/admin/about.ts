@@ -6,33 +6,51 @@ const router = Router();
 const FILE = "about.json";
 
 // Default bo'sh struktura (Frontend crash bo'lmasligi uchun)
+// IMPORTANT: All fields the frontend AdminAbout component reads MUST be present here
+// so that even an empty/uninitialized about.json returns a fully-shaped object.
 const DEFAULT_ABOUT = {
+  // Fields used by the legacy public /about route
   title: { uz: "", en: "", ru: "" },
   description: { uz: "", en: "", ru: "" },
   content: { uz: "", en: "", ru: "" },
   heroTitle: { uz: "", en: "", ru: "" },
   heroSubtitle: { uz: "", en: "", ru: "" },
-  features: [],
-  stats: [],
-  history: [],
-  images: [],
-  values: []
+  features: [] as any[],
+  stats: [] as any[],
+  history: [] as any[],
+  images: [] as any[],
+  values: [] as any[],
+  // Fields used by the AdminAbout frontend component
+  mission: { uz: "", en: "", ru: "" },
+  vision: { uz: "", en: "", ru: "" },
+  philosophy: [] as any[],
+  timeline: [] as any[],
 };
 
 // requireAdmin olib tashlandi - endi oddiy foydalanuvchilar ham ko'ra oladi
 router.get("/", async (_req, res) => {
   try {
     const rawData = await readData<Record<string, any>>(FILE, {});
-    
-    // Massivlar undefined bo'lib qolmasligini ta'minlaymiz
+    const raw = rawData || {};
+
+    // Spread defaults first so any key present in raw overwrites them,
+    // then explicitly re-assert every array field so they are NEVER undefined
+    // even when Firebase/disk returns a partial or legacy document.
     const safeData = {
       ...DEFAULT_ABOUT,
-      ...(rawData || {}),
-      features: Array.isArray(rawData?.features) ? rawData.features : [],
-      stats: Array.isArray(rawData?.stats) ? rawData.stats : [],
-      history: Array.isArray(rawData?.history) ? rawData.history : [],
-      images: Array.isArray(rawData?.images) ? rawData.images : [],
-      values: Array.isArray(rawData?.values) ? rawData.values : []
+      ...raw,
+      // Legacy array fields
+      features:   Array.isArray(raw.features)   ? raw.features   : [],
+      stats:      Array.isArray(raw.stats)       ? raw.stats       : [],
+      history:    Array.isArray(raw.history)     ? raw.history     : [],
+      images:     Array.isArray(raw.images)      ? raw.images      : [],
+      values:     Array.isArray(raw.values)      ? raw.values      : [],
+      // Admin-panel array fields — the primary crash source
+      philosophy: Array.isArray(raw.philosophy)  ? raw.philosophy  : [],
+      timeline:   Array.isArray(raw.timeline)    ? raw.timeline    : [],
+      // LangObj fields — ensure they are objects, never undefined
+      mission:    (raw.mission && typeof raw.mission === "object")   ? raw.mission   : DEFAULT_ABOUT.mission,
+      vision:     (raw.vision  && typeof raw.vision  === "object")   ? raw.vision    : DEFAULT_ABOUT.vision,
     };
 
     res.json({ ok: true, data: safeData });

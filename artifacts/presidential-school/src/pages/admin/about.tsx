@@ -13,7 +13,38 @@ import { Plus, Pencil, Trash2, Save } from "lucide-react";
 type LangObj = { uz: string; en: string; ru: string };
 interface PhilosophyItem { id: string; order: number; title: LangObj; desc: LangObj }
 interface TimelineItem { id: string; order: number; year: string; title: LangObj; desc: LangObj }
-interface AboutDoc { mission: LangObj; vision: LangObj; philosophy: PhilosophyItem[]; timeline: TimelineItem[] }
+
+/** The shape the API *should* return. All array/object fields are marked optional
+ *  here so TypeScript lets us accept partial payloads safely. */
+interface AboutDocRaw {
+  mission?: LangObj | null;
+  vision?: LangObj | null;
+  philosophy?: PhilosophyItem[] | null;
+  timeline?: TimelineItem[] | null;
+}
+
+/** Normalized in-memory shape used throughout the component.
+ *  Every field is guaranteed to be non-null after normalizeDoc(). */
+interface AboutDoc {
+  mission: LangObj;
+  vision: LangObj;
+  philosophy: PhilosophyItem[];
+  timeline: TimelineItem[];
+}
+
+const EMPTY_LANG: LangObj = { uz: "", en: "", ru: "" };
+
+/** Normalizes any raw API response into a fully-initialized AboutDoc.
+ *  This is the single defensive boundary — once data passes through here
+ *  the rest of the component can assume all fields exist. */
+function normalizeDoc(raw: AboutDocRaw | null | undefined): AboutDoc {
+  return {
+    mission:   (raw?.mission   && typeof raw.mission   === "object") ? raw.mission   : { ...EMPTY_LANG },
+    vision:    (raw?.vision    && typeof raw.vision    === "object") ? raw.vision    : { ...EMPTY_LANG },
+    philosophy: Array.isArray(raw?.philosophy) ? raw!.philosophy! : [],
+    timeline:   Array.isArray(raw?.timeline)   ? raw!.timeline!   : [],
+  };
+}
 
 const EMPTY_PHILO: Omit<PhilosophyItem, "id" | "order"> = { title: { uz: "", en: "", ru: "" }, desc: { uz: "", en: "", ru: "" } };
 const EMPTY_TL: Omit<TimelineItem, "id" | "order"> = { year: String(new Date().getFullYear()), title: { uz: "", en: "", ru: "" }, desc: { uz: "", en: "", ru: "" } };
@@ -38,9 +69,9 @@ export default function AdminAbout() {
   const [deleteTarget, setDeleteTarget] = useState<{ type: "philo" | "tl"; id: string } | null>(null);
 
   const load = () => {
-    api<{ ok: boolean; data: AboutDoc }>("/about")
-      .then((d) => setDoc(d.data))
-      .catch(() => {})
+    api<{ ok: boolean; data: AboutDocRaw }>("/about")
+      .then((d) => setDoc(normalizeDoc(d?.data)))
+      .catch(() => setDoc(normalizeDoc(null)))
       .finally(() => setLoading(false));
   };
   useEffect(() => { load(); }, []);
@@ -60,9 +91,10 @@ export default function AdminAbout() {
     try {
       const newDoc = { ...doc };
       if (editingPhilo) {
-        newDoc.philosophy = doc.philosophy.map((p) => p.id === editingPhilo.id ? { ...p, ...formPhilo } : p);
+        newDoc.philosophy = (doc.philosophy || []).map((p) => p.id === editingPhilo.id ? { ...p, ...formPhilo } : p);
       } else {
-        newDoc.philosophy = [...doc.philosophy, { id: crypto.randomUUID(), order: doc.philosophy.length + 1, ...formPhilo }];
+        const current = doc.philosophy || [];
+        newDoc.philosophy = [...current, { id: crypto.randomUUID(), order: current.length + 1, ...formPhilo }];
       }
       await api("/about", { method: "PUT", body: JSON.stringify(newDoc) });
       setDoc(newDoc); setPhiloModal(false);
@@ -77,9 +109,10 @@ export default function AdminAbout() {
     try {
       const newDoc = { ...doc };
       if (editingTl) {
-        newDoc.timeline = doc.timeline.map((t) => t.id === editingTl.id ? { ...t, ...formTl } : t);
+        newDoc.timeline = (doc.timeline || []).map((t) => t.id === editingTl.id ? { ...t, ...formTl } : t);
       } else {
-        newDoc.timeline = [...doc.timeline, { id: crypto.randomUUID(), order: doc.timeline.length + 1, ...formTl }];
+        const current = doc.timeline || [];
+        newDoc.timeline = [...current, { id: crypto.randomUUID(), order: current.length + 1, ...formTl }];
       }
       await api("/about", { method: "PUT", body: JSON.stringify(newDoc) });
       setDoc(newDoc); setTlModal(false);
@@ -93,8 +126,8 @@ export default function AdminAbout() {
     if (!deleteTarget || !doc) return; setSaving(true);
     try {
       const newDoc = { ...doc };
-      if (deleteTarget.type === "philo") newDoc.philosophy = doc.philosophy.filter((p) => p.id !== deleteTarget.id);
-      else newDoc.timeline = doc.timeline.filter((t) => t.id !== deleteTarget.id);
+      if (deleteTarget.type === "philo") newDoc.philosophy = (doc.philosophy || []).filter((p) => p.id !== deleteTarget.id);
+      else newDoc.timeline = (doc.timeline || []).filter((t) => t.id !== deleteTarget.id);
       await api("/about", { method: "PUT", body: JSON.stringify(newDoc) });
       setDoc(newDoc); setDeleteTarget(null);
       toast({ title: "O'chirildi" });
@@ -114,7 +147,7 @@ export default function AdminAbout() {
         <div className="flex gap-2 border-b border-white/10">
           {(["main", "philo", "timeline"] as const).map((t) => (
             <button key={t} onClick={() => setTab(t)} className={`px-4 py-2 text-sm font-medium rounded-t-lg transition-colors ${tab === t ? "bg-amber-400/15 text-amber-400 border-b-2 border-amber-400" : "text-slate-400 hover:text-white"}`}>
-              {t === "main" ? "Missiya va Vizyon" : t === "philo" ? `Falsafa (${doc.philosophy.length})` : `Tarix (${doc.timeline.length})`}
+              {t === "main" ? "Missiya va Vizyon" : t === "philo" ? `Falsafa (${(doc.philosophy?.length ?? 0)})` : `Tarix (${(doc.timeline?.length ?? 0)})`}
             </button>
           ))}
         </div>
@@ -142,7 +175,7 @@ export default function AdminAbout() {
             <div className="flex justify-end">
               <Button onClick={() => { setEditingPhilo(null); setFormPhilo(EMPTY_PHILO); setPhiloModal(true); }} className="bg-amber-400 hover:bg-amber-300 text-[#080e1e] font-semibold"><Plus className="w-4 h-4 mr-2" /> Qo'shish</Button>
             </div>
-            {doc.philosophy.length === 0 ? <div className="text-slate-400 text-center py-12">Hali falsafa elementi yo'q</div> : doc.philosophy.map((p) => (
+            {(doc.philosophy?.length ?? 0) === 0 ? <div className="text-slate-400 text-center py-12">Hali falsafa elementi yo'q</div> : (doc.philosophy || []).map((p) => (
               <div key={p.id} className="bg-[#0c1428] border border-white/10 rounded-xl p-4 flex items-start gap-4">
                 <div className="flex-1 min-w-0">
                   <div className="font-semibold text-white">{p.title.en || p.title.uz}</div>
@@ -162,7 +195,7 @@ export default function AdminAbout() {
             <div className="flex justify-end">
               <Button onClick={() => { setEditingTl(null); setFormTl(EMPTY_TL); setTlModal(true); }} className="bg-amber-400 hover:bg-amber-300 text-[#080e1e] font-semibold"><Plus className="w-4 h-4 mr-2" /> Qo'shish</Button>
             </div>
-            {doc.timeline.length === 0 ? <div className="text-slate-400 text-center py-12">Hali tarix elementi yo'q</div> : doc.timeline.map((t) => (
+            {(doc.timeline?.length ?? 0) === 0 ? <div className="text-slate-400 text-center py-12">Hali tarix elementi yo'q</div> : (doc.timeline || []).map((t) => (
               <div key={t.id} className="bg-[#0c1428] border border-white/10 rounded-xl p-4 flex items-start gap-4">
                 <div className="w-16 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0 font-bold text-primary text-sm">{t.year}</div>
                 <div className="flex-1 min-w-0">
