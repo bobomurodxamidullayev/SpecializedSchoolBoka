@@ -2,19 +2,9 @@
   "version": 2,
   "builds": [
     {
-      // Point Vercel at the pre-built ESM bundle produced by esbuild (build.mjs),
-      // NOT at the raw .ts source. This prevents Vercel's @vercel/node runtime
-      // from running its own tsc pass on src/ and crawling into workspace libs,
-      // which caused the "Emit skipped" crash on lib/api-zod/src/index.ts.
-      //
-      // esbuild already bundles all TypeScript (including workspace packages)
-      // into this single .mjs file, so @vercel/node receives plain JavaScript
-      // and skips TypeScript compilation entirely.
       "src": "dist/app.mjs",
       "use": "@vercel/node",
       "config": {
-        // Disable @vercel/node's built-in TypeScript compilation — the file
-        // is already compiled JavaScript from esbuild.
         "includeFiles": ["dist/**"]
       }
     }
@@ -25,4 +15,4 @@
       "destination": "/dist/app.mjs"
     }
   ]
-}
+}

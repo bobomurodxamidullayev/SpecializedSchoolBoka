@@ -4,20 +4,12 @@
     "outDir": "dist",
     "rootDir": "src",
     "types": ["node"],
-    // noEmit: this config is used by `tsc -p tsconfig.json --noEmit` for
-    // type-checking only. esbuild handles all actual JS output.
-    // Do NOT set composite:true here — api-server is a leaf node, not a
-    // referenced library, so composite mode is neither required nor desired.
     "noEmit": true,
     "skipLibCheck": true
   },
-  // references: tells tsc to resolve @workspace/api-zod and @workspace/db
-  // types from their composite-built .d.ts outputs (in dist/) instead of
-  // crawling raw .ts source files, which would bypass composite mode and
-  // re-trigger the "Emit skipped" error.
   "references": [
     { "path": "../../lib/api-zod" },
     { "path": "../../lib/db" }
   ],
   "include": ["src"]
-}
+}

@@ -1,22 +1,13 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    // composite is required for tsc --build project references.
-    // It mandates that declaration files are emitted so downstream
-    // packages can type-check against pre-built .d.ts rather than raw .ts.
     "composite": true,
     "declaration": true,
     "declarationMap": true,
-    // emitDeclarationOnly: we only need type declarations, not JS output.
-    // esbuild handles the actual JS bundling, so we never want tsc to emit JS.
     "emitDeclarationOnly": true,
     "outDir": "dist",
     "rootDir": "src",
-    // NOTE: noEmit is intentionally absent. noEmit:true conflicts with
-    // composite mode — composite REQUIRES declarations to be written to disk.
-    // For typecheck-only runs (e.g. `tsc --noEmit`) the flag is passed on
-    // the CLI, not embedded here, so this config stays emit-capable.
     "skipLibCheck": true
   },
   "include": ["src"]
-}
+}

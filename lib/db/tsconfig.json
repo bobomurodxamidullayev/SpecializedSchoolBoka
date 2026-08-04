@@ -1,8 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    // composite + emitDeclarationOnly: tsc --build emits only .d.ts files.
-    // esbuild handles JS bundling; tsc is only responsible for type declarations.
     "composite": true,
     "declaration": true,
     "declarationMap": true,
