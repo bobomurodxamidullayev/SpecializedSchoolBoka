@@ -3,18 +3,39 @@ import admin from "firebase-admin";
 import fs from "fs";
 import path from "path";
 
-const serviceAccountKey = process.env.FIREBASE_SERVICE_ACCOUNT
-  ? JSON.parse(Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT, "base64").toString())
-  : null;
+let serviceAccountKey: any = null;
+
+if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+  try {
+    const rawEnv = process.env.FIREBASE_SERVICE_ACCOUNT.trim();
+    // Agar env to'g'ridan-to'g'ri JSON formatida berilgan bo'lsa
+    if (rawEnv.startsWith("{")) {
+      serviceAccountKey = JSON.parse(rawEnv);
+    } else {
+      // Base64 bo'lsa dekod qilamiz va newlinelarni to'g'rilaymiz
+      const decoded = Buffer.from(rawEnv, "base64").toString("utf-8");
+      // Escape qilingan belgilardagi xatoliklarni tozalaymiz
+      const cleanJson = decoded.replace(/\\n/g, "\\n");
+      serviceAccountKey = JSON.parse(cleanJson);
+    }
+  } catch (err) {
+    logger.error("FIREBASE_SERVICE_ACCOUNT JSON parsing xatosi:", err);
+    serviceAccountKey = null;
+  }
+}
 
 if (serviceAccountKey && !admin.apps.length) {
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccountKey),
-    databaseURL: process.env.FIREBASE_DATABASE_URL,
-  });
-  logger.info("Firebase Realtime Database ulandi");
+  try {
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccountKey),
+      databaseURL: process.env.FIREBASE_DATABASE_URL,
+    });
+    logger.info("Firebase Realtime Database ulandi");
+  } catch (err) {
+    logger.error("Firebase initializeApp xatosi:", err);
+  }
 } else if (!serviceAccountKey) {
-  logger.info("Firebase sozlanmagan. Mahalliy fayl tizimi ishlatiladi.");
+  logger.info("Firebase sozlanmagan yoki xato kiritilgan. Mahalliy fayl tizimi ishlatiladi.");
 }
 
 const db = admin.apps.length ? admin.database() : null;
