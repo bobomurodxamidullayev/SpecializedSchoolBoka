@@ -8,13 +8,10 @@ let serviceAccountKey: any = null;
 if (process.env.FIREBASE_SERVICE_ACCOUNT) {
   try {
     const rawEnv = process.env.FIREBASE_SERVICE_ACCOUNT.trim();
-    // Agar env to'g'ridan-to'g'ri JSON formatida berilgan bo'lsa
     if (rawEnv.startsWith("{")) {
       serviceAccountKey = JSON.parse(rawEnv);
     } else {
-      // Base64 bo'lsa dekod qilamiz va newlinelarni to'g'rilaymiz
       const decoded = Buffer.from(rawEnv, "base64").toString("utf-8");
-      // Escape qilingan belgilardagi xatoliklarni tozalaymiz
       const cleanJson = decoded.replace(/\\n/g, "\\n");
       serviceAccountKey = JSON.parse(cleanJson);
     }
@@ -35,16 +32,25 @@ if (serviceAccountKey && !admin.apps.length) {
     logger.error("Firebase initializeApp xatosi:", err);
   }
 } else if (!serviceAccountKey) {
-  logger.info("Firebase sozlanmagan yoki xato kiritilgan. Mahalliy fayl tizimi ishlatiladi.");
+  logger.info("Firebase sozlanmagan. Mahalliy / xotira rejimi ishlatiladi.");
 }
 
 const db = admin.apps.length ? admin.database() : null;
 
+// Xotira keshlanishi (Vercel-da disk xatosini oldini olish uchun)
+const memoryStore: Record<string, any> = {};
+
 const DATA_DIR = path.join(process.cwd(), "data");
 
-function ensureDataDir() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+function ensureDataDirSafe(): boolean {
+  try {
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
+    return true;
+  } catch (err) {
+    // Vercel serverless muhitida diskka yozib bo'lmaydi
+    return false;
   }
 }
 
@@ -57,23 +63,36 @@ export async function readData<T>(filename: string, defaultValue: T): Promise<T>
       return defaultValue;
     } catch (error) {
       logger.error(`Firebase o'qishda xato: ${filename}`, error);
-      return defaultValue;
     }
   }
 
+  // Xotiradan o'qish
+  if (memoryStore[filename] !== undefined) {
+    return memoryStore[filename] as T;
+  }
+
+  // Diskdan o'qish (agar iloj bo'lsa)
   try {
-    ensureDataDir();
-    const filePath = path.join(DATA_DIR, filename);
-    if (!fs.existsSync(filePath)) return defaultValue;
-    const raw = fs.readFileSync(filePath, "utf-8");
-    return JSON.parse(raw) as T;
+    if (ensureDataDirSafe()) {
+      const filePath = path.join(DATA_DIR, filename);
+      if (fs.existsSync(filePath)) {
+        const raw = fs.readFileSync(filePath, "utf-8");
+        const parsed = JSON.parse(raw) as T;
+        memoryStore[filename] = parsed;
+        return parsed;
+      }
+    }
   } catch (error) {
     logger.error(`Fayl o'qishda xato: ${filename}`, error);
-    return defaultValue;
   }
+
+  return defaultValue;
 }
 
 export async function writeData<T>(filename: string, data: T): Promise<void> {
+  // Har doim birinchi xotirada saqlab turamiz
+  memoryStore[filename] = data;
+
   if (db) {
     try {
       const refName = filename.replace(".json", "");
@@ -81,17 +100,17 @@ export async function writeData<T>(filename: string, data: T): Promise<void> {
       return;
     } catch (error) {
       logger.error(`Firebase yozishda xato: ${filename}`, error);
-      throw error;
     }
   }
 
+  // Diskka saqlashga urinib ko'ramiz (serverless-da xato bersa ham to'xtamaydi)
   try {
-    ensureDataDir();
-    const filePath = path.join(DATA_DIR, filename);
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
+    if (ensureDataDirSafe()) {
+      const filePath = path.join(DATA_DIR, filename);
+      fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
+    }
   } catch (error) {
-    logger.error(`Fayl yozishda xato: ${filename}`, error);
-    throw error;
+    logger.warn(`Diskka yozib bo'lmadi (Vercel Read-Only): ${filename}`);
   }
 }
 
@@ -102,8 +121,5 @@ export async function initializeData(): Promise<void> {
 export const UPLOADS_DIR = path.join(process.cwd(), "uploads");
 
 export async function ensureDirs(): Promise<void> {
-  ensureDataDir();
-  if (!fs.existsSync(UPLOADS_DIR)) {
-    fs.mkdirSync(UPLOADS_DIR, { recursive: true });
-  }
+  ensureDataDirSafe();
 }
