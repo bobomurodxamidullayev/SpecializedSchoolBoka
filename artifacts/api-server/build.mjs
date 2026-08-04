@@ -15,7 +15,16 @@ async function buildAll() {
   await rm(distDir, { recursive: true, force: true });
 
   await esbuild({
-    entryPoints: [path.resolve(artifactDir, "src/index.ts")],
+    // Use src/app.ts (not src/index.ts) as the entry point for the Vercel build.
+    //
+    // src/app.ts   → `export default app`  ← correct for Vercel serverless:
+    //                  Vercel's @vercel/node runtime manages the HTTP lifecycle
+    //                  and calls the exported Express handler directly.
+    //
+    // src/index.ts → calls `app.listen()`  ← correct for standalone long-running
+    //                  server (e.g. local dev, Docker), but WRONG for serverless
+    //                  because listen() can't bind a port in a serverless context.
+    entryPoints: [path.resolve(artifactDir, "src/app.ts")],
     platform: "node",
     bundle: true,
     format: "esm",
