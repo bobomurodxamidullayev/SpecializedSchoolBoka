@@ -39,21 +39,43 @@ export default function AdminSettings() {
 
   useEffect(() => {
     api<{ ok: boolean; data: Settings }>("/settings")
-      .then((d) => setForm({ ...DEF, ...d.data, heroStats: d.data.heroStats || DEF.heroStats, social: { ...DEF.social, ...d.data.social } }))
-      .catch(() => {}).finally(() => setLoading(false));
+      .then((d) => {
+        const resData = d?.data || ({} as Settings);
+        setForm({
+          ...DEF,
+          ...resData,
+          schoolName: { ...DEF.schoolName, ...(resData.schoolName || {}) },
+          slogan: { ...DEF.slogan, ...(resData.slogan || {}) },
+          description: { ...DEF.description, ...(resData.description || {}) },
+          heroTitle: { ...DEF.heroTitle, ...(resData.heroTitle || {}) },
+          address: { ...DEF.address, ...(resData.address || {}) },
+          seoTitle: { ...DEF.seoTitle, ...(resData.seoTitle || {}) },
+          seoDescription: { ...DEF.seoDescription, ...(resData.seoDescription || {}) },
+          heroStats: Array.isArray(resData.heroStats) && resData.heroStats.length > 0 ? resData.heroStats : DEF.heroStats,
+          social: { ...DEF.social, ...(resData.social || {}) }
+        });
+      })
+      .catch((err) => {
+        console.error("Settings load error:", err);
+      })
+      .finally(() => setLoading(false));
   }, [api]);
 
   const save = async (e: React.FormEvent) => {
     e.preventDefault(); setSaving(true);
-    try { await api("/settings", { method: "PUT", body: JSON.stringify(form) }); toast({ title: "Sozlamalar saqlandi" }); queryClient.invalidateQueries({ queryKey: ["cms", "settings"] }); }
+    try { 
+      await api("/settings", { method: "PUT", body: JSON.stringify(form) }); 
+      toast({ title: "Sozlamalar saqlandi" }); 
+      queryClient.invalidateQueries({ queryKey: ["cms", "settings"] }); 
+    }
     catch (e) { toast({ title: "Xato", description: (e as Error).message, variant: "destructive" }); }
     finally { setSaving(false); }
   };
 
-  const addStat = () => setForm((f) => ({ ...f, heroStats: [...f.heroStats, { value: "", label: { uz: "", en: "", ru: "" } }] }));
-  const removeStat = (i: number) => setForm((f) => ({ ...f, heroStats: f.heroStats.filter((_, idx) => idx !== i) }));
+  const addStat = () => setForm((f) => ({ ...f, heroStats: [...(f.heroStats || []), { value: "", label: { uz: "", en: "", ru: "" } }] }));
+  const removeStat = (i: number) => setForm((f) => ({ ...f, heroStats: (f.heroStats || []).filter((_, idx) => idx !== i) }));
   const updateStat = (i: number, field: "value" | "label", val: string | LangObj) =>
-    setForm((f) => ({ ...f, heroStats: f.heroStats.map((s, idx) => idx === i ? { ...s, [field]: val } : s) }));
+    setForm((f) => ({ ...f, heroStats: (f.heroStats || []).map((s, idx) => idx === i ? { ...s, [field]: val } : s) }));
 
   const savePassword = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -68,27 +90,29 @@ export default function AdminSettings() {
 
   if (loading) return <AdminLayout><div className="py-20 text-center text-slate-500">Yuklanmoqda...</div></AdminLayout>;
 
+  const statsList = Array.isArray(form?.heroStats) ? form.heroStats : DEF.heroStats;
+
   return (
     <AdminLayout>
       <div className="max-w-2xl mx-auto">
         <div className="mb-6"><h1 className="text-xl font-bold text-white">Global Sozlamalar</h1><p className="text-slate-400 text-sm mt-1">Saytning barcha asosiy ma'lumotlari</p></div>
         <form onSubmit={save} className="space-y-6">
           <Section title="Maktab haqida">
-            <LangInput label="Maktab nomi" value={form.schoolName} onChange={(v) => setForm({ ...form, schoolName: v })} />
-            <LangInput label="Slogan" value={form.slogan} onChange={(v) => setForm({ ...form, slogan: v })} />
-            <LangInput label="Tavsif" value={form.description} onChange={(v) => setForm({ ...form, description: v })} multiline />
-            <LangInput label="Hero sarlavha" value={form.heroTitle} onChange={(v) => setForm({ ...form, heroTitle: v })} />
+            <LangInput label="Maktab nomi" value={form.schoolName || DEF.schoolName} onChange={(v) => setForm({ ...form, schoolName: v })} />
+            <LangInput label="Slogan" value={form.slogan || DEF.slogan} onChange={(v) => setForm({ ...form, slogan: v })} />
+            <LangInput label="Tavsif" value={form.description || DEF.description} onChange={(v) => setForm({ ...form, description: v })} multiline />
+            <LangInput label="Hero sarlavha" value={form.heroTitle || DEF.heroTitle} onChange={(v) => setForm({ ...form, heroTitle: v })} />
           </Section>
 
           <Section title="Statistika (Hero)">
-            {form.heroStats.map((stat, i) => (
+            {statsList.map((stat, i) => (
               <div key={i} className="bg-white/5 rounded-lg p-3 space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-slate-400">Statistika #{i + 1}</span>
-                  {form.heroStats.length > 1 && <button type="button" onClick={() => removeStat(i)} className="text-red-400 hover:text-red-300"><Minus className="w-4 h-4" /></button>}
+                  {statsList.length > 1 && <button type="button" onClick={() => removeStat(i)} className="text-red-400 hover:text-red-300"><Minus className="w-4 h-4" /></button>}
                 </div>
-                <F label="Qiymat (masalan: 1200+)"><Input value={stat.value} onChange={(e) => updateStat(i, "value", e.target.value)} className="bg-white/5 border-white/10 text-white" /></F>
-                <LangInput label="Yorliq" value={stat.label} onChange={(v) => updateStat(i, "label", v)} />
+                <F label="Qiymat (masalan: 1200+)"><Input value={stat.value || ""} onChange={(e) => updateStat(i, "value", e.target.value)} className="bg-white/5 border-white/10 text-white" /></F>
+                <LangInput label="Yorliq" value={stat.label || DEF.heroStats[0].label} onChange={(v) => updateStat(i, "label", v)} />
               </div>
             ))}
             <Button type="button" variant="ghost" onClick={addStat} className="text-amber-400 hover:text-amber-300 text-sm"><Plus className="w-4 h-4 mr-1" /> Statistika qo'shish</Button>
@@ -96,28 +120,28 @@ export default function AdminSettings() {
 
           <Section title="Aloqa">
             <div className="grid grid-cols-2 gap-3">
-              <F label="Asosiy telefon"><Input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="bg-white/5 border-white/10 text-white" /></F>
-              <F label="Qo'shimcha telefon"><Input value={form.phone2} onChange={(e) => setForm({ ...form, phone2: e.target.value })} className="bg-white/5 border-white/10 text-white" /></F>
-              <F label="Asosiy email"><Input value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="bg-white/5 border-white/10 text-white" /></F>
-              <F label="Director email"><Input value={form.email2} onChange={(e) => setForm({ ...form, email2: e.target.value })} className="bg-white/5 border-white/10 text-white" /></F>
+              <F label="Asosiy telefon"><Input value={form.phone || ""} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="bg-white/5 border-white/10 text-white" /></F>
+              <F label="Qo'shimcha telefon"><Input value={form.phone2 || ""} onChange={(e) => setForm({ ...form, phone2: e.target.value })} className="bg-white/5 border-white/10 text-white" /></F>
+              <F label="Asosiy email"><Input value={form.email || ""} onChange={(e) => setForm({ ...form, email: e.target.value })} className="bg-white/5 border-white/10 text-white" /></F>
+              <F label="Director email"><Input value={form.email2 || ""} onChange={(e) => setForm({ ...form, email2: e.target.value })} className="bg-white/5 border-white/10 text-white" /></F>
             </div>
-            <LangInput label="Manzil" value={form.address} onChange={(v) => setForm({ ...form, address: v })} />
-            <F label="Ish vaqti"><Input value={form.workingHours} onChange={(e) => setForm({ ...form, workingHours: e.target.value })} className="bg-white/5 border-white/10 text-white" /></F>
-            <F label="Google Maps embed URL"><Input value={form.mapUrl} onChange={(e) => setForm({ ...form, mapUrl: e.target.value })} className="bg-white/5 border-white/10 text-white" placeholder="https://www.google.com/maps/embed?pb=..." /></F>
+            <LangInput label="Manzil" value={form.address || DEF.address} onChange={(v) => setForm({ ...form, address: v })} />
+            <F label="Ish vaqti"><Input value={form.workingHours || ""} onChange={(e) => setForm({ ...form, workingHours: e.target.value })} className="bg-white/5 border-white/10 text-white" /></F>
+            <F label="Google Maps embed URL"><Input value={form.mapUrl || ""} onChange={(e) => setForm({ ...form, mapUrl: e.target.value })} className="bg-white/5 border-white/10 text-white" placeholder="https://www.google.com/maps/embed?pb=..." /></F>
           </Section>
 
           <Section title="Ijtimoiy tarmoqlar">
             <div className="space-y-3">
-              <F label="Telegram"><Input value={form.social.telegram} onChange={(e) => setForm({ ...form, social: { ...form.social, telegram: e.target.value } })} className="bg-white/5 border-white/10 text-white" /></F>
-              <F label="Instagram"><Input value={form.social.instagram} onChange={(e) => setForm({ ...form, social: { ...form.social, instagram: e.target.value } })} className="bg-white/5 border-white/10 text-white" /></F>
-              <F label="YouTube"><Input value={form.social.youtube} onChange={(e) => setForm({ ...form, social: { ...form.social, youtube: e.target.value } })} className="bg-white/5 border-white/10 text-white" /></F>
+              <F label="Telegram"><Input value={form.social?.telegram || ""} onChange={(e) => setForm({ ...form, social: { ...form.social, telegram: e.target.value } })} className="bg-white/5 border-white/10 text-white" /></F>
+              <F label="Instagram"><Input value={form.social?.instagram || ""} onChange={(e) => setForm({ ...form, social: { ...form.social, instagram: e.target.value } })} className="bg-white/5 border-white/10 text-white" /></F>
+              <F label="YouTube"><Input value={form.social?.youtube || ""} onChange={(e) => setForm({ ...form, social: { ...form.social, youtube: e.target.value } })} className="bg-white/5 border-white/10 text-white" /></F>
             </div>
           </Section>
 
           <Section title="SEO">
-            <LangInput label="SEO Sarlavha" value={form.seoTitle} onChange={(v) => setForm({ ...form, seoTitle: v })} />
-            <LangInput label="SEO Tavsif" value={form.seoDescription} onChange={(v) => setForm({ ...form, seoDescription: v })} multiline />
-            <F label="Copyright"><Input value={form.copyright} onChange={(e) => setForm({ ...form, copyright: e.target.value })} className="bg-white/5 border-white/10 text-white" /></F>
+            <LangInput label="SEO Sarlavha" value={form.seoTitle || DEF.seoTitle} onChange={(v) => setForm({ ...form, seoTitle: v })} />
+            <LangInput label="SEO Tavsif" value={form.seoDescription || DEF.seoDescription} onChange={(v) => setForm({ ...form, seoDescription: v })} multiline />
+            <F label="Copyright"><Input value={form.copyright || ""} onChange={(e) => setForm({ ...form, copyright: e.target.value })} className="bg-white/5 border-white/10 text-white" /></F>
           </Section>
 
           <Button type="submit" disabled={saving} className="bg-amber-400 hover:bg-amber-500 text-[#0f1b4d] font-semibold w-full">
