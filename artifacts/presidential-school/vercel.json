@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://special-schools-v3-api-server-x1s4.vercel.app/api/$1"
+      "destination": "https://boka-school-api-server.vercel.app/api/$1"
     },
     {
       "source": "/(.*)",
