@@ -15,8 +15,8 @@ if (process.env.FIREBASE_SERVICE_ACCOUNT) {
       const cleanJson = decoded.replace(/\\n/g, "\\n");
       serviceAccountKey = JSON.parse(cleanJson);
     }
-  } catch (err) {
-    logger.error("FIREBASE_SERVICE_ACCOUNT JSON parsing xatosi:", err);
+  } catch (err: unknown) {
+    logger.error({ err }, "FIREBASE_SERVICE_ACCOUNT JSON parsing xatosi:");
     serviceAccountKey = null;
   }
 }
@@ -28,8 +28,8 @@ if (serviceAccountKey && !admin.apps.length) {
       databaseURL: process.env.FIREBASE_DATABASE_URL,
     });
     logger.info("Firebase Realtime Database ulandi");
-  } catch (err) {
-    logger.error("Firebase initializeApp xatosi:", err);
+  } catch (err: unknown) {
+    logger.error({ err }, "Firebase initializeApp xatosi:");
   }
 } else if (!serviceAccountKey) {
   logger.info("Firebase sozlanmagan. Mahalliy / xotira rejimi ishlatiladi.");
@@ -48,7 +48,7 @@ function ensureDataDirSafe(): boolean {
       fs.mkdirSync(DATA_DIR, { recursive: true });
     }
     return true;
-  } catch (err) {
+  } catch (err: unknown) {
     // Vercel serverless muhitida diskka yozib bo'lmaydi
     return false;
   }
@@ -61,8 +61,8 @@ export async function readData<T>(filename: string, defaultValue: T): Promise<T>
       const snapshot = await db.ref(refName).once("value");
       if (snapshot.exists()) return snapshot.val() as T;
       return defaultValue;
-    } catch (error) {
-      logger.error(`Firebase o'qishda xato: ${filename}`, error);
+    } catch (error: unknown) {
+      logger.error({ err: error }, `Firebase o'qishda xato: ${filename}`);
     }
   }
 
@@ -82,8 +82,8 @@ export async function readData<T>(filename: string, defaultValue: T): Promise<T>
         return parsed;
       }
     }
-  } catch (error) {
-    logger.error(`Fayl o'qishda xato: ${filename}`, error);
+  } catch (error: unknown) {
+    logger.error({ err: error }, `Fayl o'qishda xato: ${filename}`);
   }
 
   return defaultValue;
@@ -98,8 +98,8 @@ export async function writeData<T>(filename: string, data: T): Promise<void> {
       const refName = filename.replace(".json", "");
       await db.ref(refName).set(data);
       return;
-    } catch (error) {
-      logger.error(`Firebase yozishda xato: ${filename}`, error);
+    } catch (error: unknown) {
+      logger.error({ err: error }, `Firebase yozishda xato: ${filename}`);
     }
   }
 
@@ -109,7 +109,7 @@ export async function writeData<T>(filename: string, data: T): Promise<void> {
       const filePath = path.join(DATA_DIR, filename);
       fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
     }
-  } catch (error) {
+  } catch (error: unknown) {
     logger.warn(`Diskka yozib bo'lmadi (Vercel Read-Only): ${filename}`);
   }
 }
