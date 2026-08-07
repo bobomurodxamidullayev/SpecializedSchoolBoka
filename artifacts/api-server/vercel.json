@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "dist/app.mjs",
-      "use": "@vercel/node"
+  "functions": {
+    "dist/app.mjs": {
+      "memory": 1024,
+      "maxDuration": 30
     }
-  ],
-  "routes": [
+  },
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "dist/app.mjs"
+      "source": "/(.*)",
+      "destination": "/dist/app.mjs"
     }
   ]
 }
