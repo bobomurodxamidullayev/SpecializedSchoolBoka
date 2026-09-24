@@ -18,12 +18,12 @@ export const translations = {
       timetable: "Dars jadvali",
     },
     branding: {
-      name: "Bekobod ixtisoslashtirilgan maktabi",
-      short: "Bekobod I.M.",
+      name: "Bo'ka ixtisoslashtirilgan maktabi",
+      short: "Bo'ka I.M.",
       sub: "Ixtisoslashtirilgan maktab",
     },
     hero: {
-      title: "Bekobod ixtisoslashtirilgan maktabi",
+      title: "Bo'ka ixtisoslashtirilgan maktabi",
       subtitle: "Bilim — kelajak poydevori",
       cta1: "Qabul 2026",
       cta2: "Maktab haqida",
@@ -252,7 +252,7 @@ export const translations = {
       },
       sendButton: "Yuborish",
       mapText: "Xarita",
-      mapSubtext: "Toshkent viloyati, Bekobod tumani",
+      mapSubtext: "Toshkent viloyati, Bo'ka tumani",
     },
     students: {
       heroSubtitle:
@@ -378,12 +378,12 @@ export const translations = {
       timetable: "Timetable",
     },
     branding: {
-      name: "Bekobod Specialized School",
-      short: "Bekobod S.S.",
+      name: "Bo'ka Specialized School",
+      short: "Bo'ka S.S.",
       sub: "Specialized School",
     },
     hero: {
-      title: "Bekobod Specialized School",
+      title: "Bo'ka Specialized School",
       subtitle: "Education for the Future",
       cta1: "Admissions 2026",
       cta2: "About Us",
@@ -612,7 +612,7 @@ export const translations = {
       },
       sendButton: "Send Message",
       mapText: "Interactive Map",
-      mapSubtext: "Bekobod district, Tashkent region",
+      mapSubtext: "Bo'ka district, Tashkent region",
     },
     students: {
       heroSubtitle:

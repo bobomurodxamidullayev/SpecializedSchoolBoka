@@ -34,7 +34,7 @@ export default function Contact() {
   const { data: contact } = useCmsContact();
   const [formState, setFormState] = useState<FormState>("idle");
 
-  const addressFallback = language === "uz" ? "Toshkent viloyati, Bekobod tumani" : language === "en" ? "Bekobod District, Tashkent Region" : "Ташкентская область, Бекабадский район";
+  const addressFallback = language === "uz" ? "Toshkent viloyati, Bo'ka tumani" : language === "en" ? "Bo'ka District, Tashkent Region" : "Ташкентская область, Букаский район";
   const address = contact ? pickLang(contact.address, language) : addressFallback;
   const phones = [contact?.phone, contact?.phone2].filter(Boolean).join("\n") || "+998 71 123 45 67";
   const emails = [contact?.email, contact?.email2].filter(Boolean).join("\n") || "info@bekobod-school.uz";

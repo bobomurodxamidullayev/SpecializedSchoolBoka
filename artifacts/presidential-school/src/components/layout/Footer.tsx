@@ -15,7 +15,7 @@ export function Footer() {
   const address = contact ? pickLang(contact.address, language) : t("contact.mapSubtext");
   const phone = contact?.phone ?? settings?.phone ?? "+998 71 123 45 67";
   const email = contact?.email ?? settings?.email ?? "info@bekobod-school.uz";
-  const copyright = settings?.copyright ?? `© ${new Date().getFullYear()} Bekobod tumani ixtisoslashtirilgan maktabi.`;
+  const copyright = settings?.copyright ?? `© ${new Date().getFullYear()} Bo'ka tumani ixtisoslashtirilgan maktabi.`;
   const telegram = contact?.telegram ?? settings?.social?.telegram;
   const instagram = contact?.instagram ?? settings?.social?.instagram;
 

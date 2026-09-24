@@ -43,7 +43,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-amber-400 flex items-center justify-center font-bold text-[#0f1b4d] text-sm">BA</div>
           <div>
-            <p className="font-bold text-white text-sm leading-tight">Bekobod Admin</p>
+            <p className="font-bold text-white text-sm leading-tight">Bo'ka Admin</p>
             <p className="text-xs text-slate-400">Panel</p>
           </div>
         </div>

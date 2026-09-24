@@ -1,7 +1,7 @@
 {
   "schoolName": {
-    "uz": "Bekobod ixtisoslashtirilgan maktabi",
-    "en": "Bekobod Specialized School",
+    "uz": "Bo'ka ixtisoslashtirilgan maktabi",
+    "en": "Bo'ka Specialized School",
     "ru": "Бекабадская спецшкола"
   },
   "slogan": {
@@ -58,9 +58,9 @@
   "email": "info@qch-school.uz",
   "email2": "director@qch-school.uz",
   "address": {
-    "uz": "Toshkent viloyati, Bekobod tumani",
-    "en": "Bekobod district, Tashkent region, Uzbekistan",
-    "ru": "Ташкентская область, Бекабадский район"
+    "uz": "Toshkent viloyati, Bo'ka tumani",
+    "en": "Bo'ka district, Tashkent region, Uzbekistan",
+    "ru": "Ташкентская область, Букинский район"
   },
   "workingHours": "Dushanba–Shanba, 08:00–18:00",
   "mapUrl": "https://maps.app.goo.gl/6x1F4iZT48UBT9ZU7",
@@ -79,5 +79,5 @@
     "en": "Uzbekistan's premier specialized educational institution",
     "ru": "Ведущее специализированное учебное заведение Узбекистана"
   },
-  "copyright": "© 2026 Bekobod ixtisoslashtirilgan maktabi."
+  "copyright": "© 2026 Bo'ka ixtisoslashtirilgan maktabi."
 }
