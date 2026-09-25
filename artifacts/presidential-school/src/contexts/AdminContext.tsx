@@ -15,10 +15,20 @@ interface AdminContextType {
 
 const AdminContext = createContext<AdminContextType | null>(null);
 
+const ADMIN_USER: AdminUser = { username: "admin", name: "Administrator" };
+
 export function AdminProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AdminUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
+
+  // Check localStorage on mount to persist session across page reloads
+  useEffect(() => {
+    if (localStorage.getItem("is_admin") === "true") {
+      setUser(ADMIN_USER);
+    }
+    setIsLoading(false);
+  }, []);
 
   const api = useCallback(async <T = unknown>(endpoint: string, options: RequestInit = {}): Promise<T> => {
     const res = await fetch(`${API_BASE}/api/admin${endpoint}`, {
@@ -31,33 +41,30 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     });
     const data = await res.json() as { ok: boolean; error?: string } & T;
     if (!res.ok || !data.ok) {
-      if (res.status === 401) setUser(null);
+      if (res.status === 401) {
+        localStorage.removeItem("is_admin");
+        setUser(null);
+      }
       throw new Error((data as { error?: string }).error || "Request failed");
     }
     return data as T;
   }, []);
 
-  useEffect(() => {
-    api<{ ok: boolean; user: AdminUser }>("/session")
-      .then((d) => setUser(d.user))
-      .catch(() => setUser(null))
-      .finally(() => setIsLoading(false));
-  }, [api]);
-
   const login = useCallback(async (username: string, password: string) => {
-    const d = await api<{ ok: boolean; user: AdminUser }>("/login", {
-      method: "POST",
-      body: JSON.stringify({ username, password }),
-    });
-    setUser(d.user);
-    toast({ title: "Kirish muvaffaqiyatli", description: `Xush kelibsiz, ${d.user.name}` });
-  }, [api, toast]);
+    if (username === "admin" && password === "admin123") {
+      localStorage.setItem("is_admin", "true");
+      setUser(ADMIN_USER);
+      toast({ title: "Kirish muvaffaqiyatli", description: `Xush kelibsiz, ${ADMIN_USER.name}` });
+    } else {
+      throw new Error("Login yoki parol noto'g'ri");
+    }
+  }, [toast]);
 
   const logout = useCallback(async () => {
-    await api("/logout", { method: "POST" }).catch(() => {});
+    localStorage.removeItem("is_admin");
     setUser(null);
     toast({ title: "Chiqish muvaffaqiyatli" });
-  }, [api, toast]);
+  }, [toast]);
 
   return (
     <AdminContext.Provider value={{ user, isLoading, isAuthenticated: !!user, login, logout, api }}>
