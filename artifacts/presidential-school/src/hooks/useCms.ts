@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { API_BASE } from "@/lib/api-config";
 import {
   fetchContent,
   type CmsSettings,
@@ -188,7 +189,7 @@ export function useCmsAdminTimetable() {
   return useQuery({
     queryKey: ["admin", "timetable"],
     queryFn: async () => {
-      const res = await fetch("/api/admin/timetable");
+      const res = await fetch(`${API_BASE}/api/admin/timetable`, { credentials: "include" });
       const json = await res.json();
       return (json.data || []) as CmsTimetableItem[];
     },

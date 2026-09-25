@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { API_BASE } from "@/lib/api-config";
 
 interface AdminUser { username: string; name: string }
 
@@ -20,7 +21,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
   const { toast } = useToast();
 
   const api = useCallback(async <T = unknown>(endpoint: string, options: RequestInit = {}): Promise<T> => {
-    const res = await fetch(`/api/admin${endpoint}`, {
+    const res = await fetch(`${API_BASE}/api/admin${endpoint}`, {
       ...options,
       credentials: "include",
       headers: {

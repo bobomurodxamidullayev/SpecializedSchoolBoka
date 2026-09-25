@@ -1,4 +1,5 @@
 import type { Language } from "@/data/translations";
+import { API_BASE } from "@/lib/api-config";
 
 export type LangField = { uz: string; en: string; ru: string };
 
@@ -25,7 +26,7 @@ export function pickLang(field: LangField | string | undefined, lang: Language):
 }
 
 export async function fetchContent<T>(path: string): Promise<T> {
-  const res = await fetch(`/api/content/${path}`);
+  const res = await fetch(`${API_BASE}/api/content/${path}`, { credentials: "include" });
   const json = await res.json() as { ok: boolean; data?: T; error?: string };
   if (!res.ok || !json.ok || json.data === undefined) {
     throw new Error(json.error ?? "Failed to load content");

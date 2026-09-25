@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Upload, Search, Trash2, Copy, Check, Image as ImageIcon } from "lucide-react";
+import { API_BASE } from "@/lib/api-config";
 
 interface MediaFile { filename: string; url: string; size: number; createdAt: string }
 
@@ -36,7 +37,7 @@ export default function AdminMedia() {
     try {
       const fd = new FormData();
       Array.from(fileList).forEach((f) => fd.append("files", f));
-      const res = await fetch("/api/admin/upload/multiple", { method: "POST", credentials: "include", body: fd });
+      const res = await fetch(`${API_BASE}/api/admin/upload/multiple`, { method: "POST", credentials: "include", body: fd });
       const data = await res.json() as { ok: boolean; error?: string };
       if (!data.ok) throw new Error(data.error);
       toast({ title: `${fileList.length} ta rasm yuklandi` }); load();

@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { Upload, X, Image } from "lucide-react";
 import { useAdmin } from "@/contexts/AdminContext";
+import { API_BASE } from "@/lib/api-config";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
@@ -20,7 +21,7 @@ export function ImageUpload({ value, onChange, className }: ImageUploadProps) {
     try {
       const fd = new FormData();
       fd.append("file", file);
-      const res = await fetch("/api/admin/upload", {
+      const res = await fetch(`${API_BASE}/api/admin/upload`, {
         method: "POST",
         credentials: "include",
         body: fd,

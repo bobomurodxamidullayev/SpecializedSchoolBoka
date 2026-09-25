@@ -11,6 +11,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { useToast } from "@/hooks/use-toast";
 import { Plus, Pencil, Trash2, Search, X, Upload, Video, Image as ImageIcon } from "lucide-react";
 import { getYouTubeEmbedUrl } from "@/lib/cms";
+import { API_BASE } from "@/lib/api-config";
 
 type LangObj = { uz: string; en: string; ru: string };
 interface GalleryItem { id: string; title: LangObj; description: LangObj; category: string; date: string; images: string[]; mediaType?: "image" | "video"; videoUrl?: string; }
@@ -41,7 +42,7 @@ export default function AdminGallery() {
     try {
       const fd = new FormData();
       Array.from(files).forEach((f) => fd.append("files", f));
-      const res = await fetch("/api/admin/upload/multiple", { method: "POST", credentials: "include", body: fd });
+      const res = await fetch(`${API_BASE}/api/admin/upload/multiple`, { method: "POST", credentials: "include", body: fd });
       const data = await res.json() as { ok: boolean; data?: { url: string }[] };
       if (!data.ok) throw new Error("Upload failed");
       const urls = data.data!.map((f) => f.url);
