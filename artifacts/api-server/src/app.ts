@@ -93,6 +93,33 @@ app.use("/api/admin/upload", uploadRouter);
 
 app.use("/api", router);
 
+// 404 Handler for all unmatched routes - ensures JSON response instead of HTML
+app.use((req: any, res: any) => {
+  res.status(404).json({
+    ok: false,
+    error: `Route not found: ${req.method} ${req.originalUrl || req.url}`,
+  });
+});
+
+// Global JSON error handler - ensure Express ALWAYS returns JSON and never HTML on any failure
+app.use((err: any, _req: any, res: any, next: any) => {
+  console.error("Unhandled API error:", err);
+  if (res.headersSent) {
+    return next(err);
+  }
+  const statusCode =
+    typeof err.status === "number"
+      ? err.status
+      : typeof err.statusCode === "number"
+        ? err.statusCode
+        : 500;
+  res.status(statusCode).json({
+    ok: false,
+    error: err.message || "Internal Server Error",
+    stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
+  });
+});
+
 initializeData().catch((err: unknown) => {
   logger.error({ err }, "Failed to initialize data");
 });
