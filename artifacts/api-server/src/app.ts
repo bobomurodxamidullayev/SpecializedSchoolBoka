@@ -1,5 +1,6 @@
 import express, { type Express } from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import cookieSession from "cookie-session";
 import pinoHttpImport from "pino-http";
 import path from "path";
@@ -44,7 +45,9 @@ export const corsOptions: cors.CorsOptions = {
     "X-Requested-With",
     "Accept",
     "Origin",
+    "X-Admin-Token",
   ],
+  exposedHeaders: ["Set-Cookie"],
   optionsSuccessStatus: 204,
 };
 
@@ -62,6 +65,8 @@ try {
 }
 app.options(/.*/, corsMiddleware);
 
+app.use(cookieParser());
+
 app.use(
   cookieSession({
     name: "admin_session",
@@ -69,6 +74,8 @@ app.use(
     maxAge: 30 * 24 * 60 * 60 * 1000,
     secure: true,
     sameSite: "none",
+    httpOnly: true,
+    path: "/",
   })
 );
 
@@ -76,6 +83,7 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 app.use("/api/uploads", express.static(UPLOADS_DIR));
+app.use("/uploads", express.static(UPLOADS_DIR));
 
 app.use("/api", router);
 

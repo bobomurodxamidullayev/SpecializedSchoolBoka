@@ -189,7 +189,13 @@ export function useCmsAdminTimetable() {
   return useQuery({
     queryKey: ["admin", "timetable"],
     queryFn: async () => {
-      const res = await fetch(`${API_BASE}/api/admin/timetable`, { credentials: "include" });
+      const token = typeof window !== "undefined" ? localStorage.getItem("admin_token") : null;
+      const res = await fetch(`${API_BASE}/api/admin/timetable`, {
+        credentials: "include",
+        headers: {
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+      });
       const json = await res.json();
       return (json.data || []) as CmsTimetableItem[];
     },

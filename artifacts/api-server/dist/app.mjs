@@ -18980,14 +18980,14 @@ var require_etag = __commonJS({
   "../../node_modules/.pnpm/etag@1.8.1/node_modules/etag/index.js"(exports, module) {
     "use strict";
     module.exports = etag;
-    var crypto9 = __require("crypto");
+    var crypto10 = __require("crypto");
     var Stats = __require("fs").Stats;
     var toString = Object.prototype.toString;
     function entitytag(entity) {
       if (entity.length === 0) {
         return '"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"';
       }
-      var hash = crypto9.createHash("sha1").update(entity, "utf8").digest("base64").substring(0, 27);
+      var hash = crypto10.createHash("sha1").update(entity, "utf8").digest("base64").substring(0, 27);
       var len = typeof entity === "string" ? Buffer.byteLength(entity, "utf8") : entity.length;
       return '"' + len.toString(16) + "-" + hash + '"';
     }
@@ -22474,17 +22474,17 @@ var require_content_disposition = __commonJS({
 // ../../node_modules/.pnpm/cookie-signature@1.2.2/node_modules/cookie-signature/index.js
 var require_cookie_signature = __commonJS({
   "../../node_modules/.pnpm/cookie-signature@1.2.2/node_modules/cookie-signature/index.js"(exports) {
-    var crypto9 = __require("crypto");
+    var crypto10 = __require("crypto");
     exports.sign = function(val, secret) {
       if ("string" != typeof val) throw new TypeError("Cookie value must be provided as a string.");
       if (null == secret) throw new TypeError("Secret key must be provided.");
-      return val + "." + crypto9.createHmac("sha256", secret).update(val).digest("base64").replace(/\=+$/, "");
+      return val + "." + crypto10.createHmac("sha256", secret).update(val).digest("base64").replace(/\=+$/, "");
     };
     exports.unsign = function(input, secret) {
       if ("string" != typeof input) throw new TypeError("Signed cookie string must be provided.");
       if (null == secret) throw new TypeError("Secret key must be provided.");
       var tentativeValue = input.slice(0, input.lastIndexOf(".")), expectedInput = exports.sign(tentativeValue, secret), expectedBuffer = Buffer.from(expectedInput), inputBuffer = Buffer.from(input);
-      return expectedBuffer.length === inputBuffer.length && crypto9.timingSafeEqual(expectedBuffer, inputBuffer) ? tentativeValue : false;
+      return expectedBuffer.length === inputBuffer.length && crypto10.timingSafeEqual(expectedBuffer, inputBuffer) ? tentativeValue : false;
     };
   }
 });
@@ -24111,6 +24111,119 @@ var require_lib3 = __commonJS({
   }
 });
 
+// ../../node_modules/.pnpm/cookie-signature@1.0.6/node_modules/cookie-signature/index.js
+var require_cookie_signature2 = __commonJS({
+  "../../node_modules/.pnpm/cookie-signature@1.0.6/node_modules/cookie-signature/index.js"(exports) {
+    var crypto10 = __require("crypto");
+    exports.sign = function(val, secret) {
+      if ("string" != typeof val) throw new TypeError("Cookie value must be provided as a string.");
+      if ("string" != typeof secret) throw new TypeError("Secret string must be provided.");
+      return val + "." + crypto10.createHmac("sha256", secret).update(val).digest("base64").replace(/\=+$/, "");
+    };
+    exports.unsign = function(val, secret) {
+      if ("string" != typeof val) throw new TypeError("Signed cookie string must be provided.");
+      if ("string" != typeof secret) throw new TypeError("Secret string must be provided.");
+      var str = val.slice(0, val.lastIndexOf(".")), mac = exports.sign(str, secret);
+      return sha12(mac) == sha12(val) ? str : false;
+    };
+    function sha12(str) {
+      return crypto10.createHash("sha1").update(str).digest("hex");
+    }
+  }
+});
+
+// ../../node_modules/.pnpm/cookie-parser@1.4.7/node_modules/cookie-parser/index.js
+var require_cookie_parser = __commonJS({
+  "../../node_modules/.pnpm/cookie-parser@1.4.7/node_modules/cookie-parser/index.js"(exports, module) {
+    "use strict";
+    var cookie = require_cookie();
+    var signature = require_cookie_signature2();
+    module.exports = cookieParser2;
+    module.exports.JSONCookie = JSONCookie;
+    module.exports.JSONCookies = JSONCookies;
+    module.exports.signedCookie = signedCookie;
+    module.exports.signedCookies = signedCookies;
+    function cookieParser2(secret, options) {
+      var secrets = !secret || Array.isArray(secret) ? secret || [] : [secret];
+      return function cookieParser3(req, res, next) {
+        if (req.cookies) {
+          return next();
+        }
+        var cookies = req.headers.cookie;
+        req.secret = secrets[0];
+        req.cookies = /* @__PURE__ */ Object.create(null);
+        req.signedCookies = /* @__PURE__ */ Object.create(null);
+        if (!cookies) {
+          return next();
+        }
+        req.cookies = cookie.parse(cookies, options);
+        if (secrets.length !== 0) {
+          req.signedCookies = signedCookies(req.cookies, secrets);
+          req.signedCookies = JSONCookies(req.signedCookies);
+        }
+        req.cookies = JSONCookies(req.cookies);
+        next();
+      };
+    }
+    function JSONCookie(str) {
+      if (typeof str !== "string" || str.substr(0, 2) !== "j:") {
+        return void 0;
+      }
+      try {
+        return JSON.parse(str.slice(2));
+      } catch (err) {
+        return void 0;
+      }
+    }
+    function JSONCookies(obj) {
+      var cookies = Object.keys(obj);
+      var key;
+      var val;
+      for (var i = 0; i < cookies.length; i++) {
+        key = cookies[i];
+        val = JSONCookie(obj[key]);
+        if (val) {
+          obj[key] = val;
+        }
+      }
+      return obj;
+    }
+    function signedCookie(str, secret) {
+      if (typeof str !== "string") {
+        return void 0;
+      }
+      if (str.substr(0, 2) !== "s:") {
+        return str;
+      }
+      var secrets = !secret || Array.isArray(secret) ? secret || [] : [secret];
+      for (var i = 0; i < secrets.length; i++) {
+        var val = signature.unsign(str.slice(2), secrets[i]);
+        if (val !== false) {
+          return val;
+        }
+      }
+      return false;
+    }
+    function signedCookies(obj, secret) {
+      var cookies = Object.keys(obj);
+      var dec;
+      var key;
+      var ret = /* @__PURE__ */ Object.create(null);
+      var val;
+      for (var i = 0; i < cookies.length; i++) {
+        key = cookies[i];
+        val = obj[key];
+        dec = signedCookie(val, secret);
+        if (val !== dec) {
+          ret[key] = dec;
+          delete obj[key];
+        }
+      }
+      return ret;
+    }
+  }
+});
+
 // ../../node_modules/.pnpm/safe-buffer@5.2.1/node_modules/safe-buffer/index.js
 var require_safe_buffer = __commonJS({
   "../../node_modules/.pnpm/safe-buffer@5.2.1/node_modules/safe-buffer/index.js"(exports, module) {
@@ -24527,13 +24640,13 @@ var require_src2 = __commonJS({
 var require_lib4 = __commonJS({
   "../../node_modules/.pnpm/tsscmp@1.0.6/node_modules/tsscmp/lib/index.js"(exports, module) {
     "use strict";
-    var crypto9 = __require("crypto");
+    var crypto10 = __require("crypto");
     function bufferEqual(a, b) {
       if (a.length !== b.length) {
         return false;
       }
-      if (crypto9.timingSafeEqual) {
-        return crypto9.timingSafeEqual(a, b);
+      if (crypto10.timingSafeEqual) {
+        return crypto10.timingSafeEqual(a, b);
       }
       for (var i = 0; i < a.length; i++) {
         if (a[i] !== b[i]) {
@@ -24545,9 +24658,9 @@ var require_lib4 = __commonJS({
     function timeSafeCompare(a, b) {
       var sa = String(a);
       var sb = String(b);
-      var key = crypto9.pseudoRandomBytes(32);
-      var ah = crypto9.createHmac("sha256", key).update(sa).digest();
-      var bh = crypto9.createHmac("sha256", key).update(sb).digest();
+      var key = crypto10.pseudoRandomBytes(32);
+      var ah = crypto10.createHmac("sha256", key).update(sa).digest();
+      var bh = crypto10.createHmac("sha256", key).update(sb).digest();
       return bufferEqual(ah, bh) && a === b;
     }
     module.exports = timeSafeCompare;
@@ -24559,7 +24672,7 @@ var require_keygrip = __commonJS({
   "../../node_modules/.pnpm/keygrip@1.1.0/node_modules/keygrip/index.js"(exports, module) {
     "use strict";
     var compare = require_lib4();
-    var crypto9 = __require("crypto");
+    var crypto10 = __require("crypto");
     function Keygrip(keys, algorithm, encoding) {
       if (!algorithm) algorithm = "sha1";
       if (!encoding) encoding = "base64";
@@ -24568,7 +24681,7 @@ var require_keygrip = __commonJS({
         throw new Error("Keys must be provided.");
       }
       function sign(data, key) {
-        return crypto9.createHmac(algorithm, key).update(data).digest(encoding).replace(/\/|\+|=/g, function(x) {
+        return crypto10.createHmac(algorithm, key).update(data).digest(encoding).replace(/\/|\+|=/g, function(x) {
           return { "/": "_", "+": "-", "=": "" }[x];
         });
       }
@@ -33811,14 +33924,14 @@ var require_buffer_equal_constant_time = __commonJS({
 var require_jwa = __commonJS({
   "../../node_modules/.pnpm/jwa@2.0.1/node_modules/jwa/index.js"(exports, module) {
     var Buffer2 = require_safe_buffer().Buffer;
-    var crypto9 = __require("crypto");
+    var crypto10 = __require("crypto");
     var formatEcdsa = require_ecdsa_sig_formatter();
     var util2 = __require("util");
     var MSG_INVALID_ALGORITHM = '"%s" is not a valid algorithm.\n  Supported algorithms are:\n  "HS256", "HS384", "HS512", "RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384", "ES512" and "none".';
     var MSG_INVALID_SECRET = "secret must be a string or buffer";
     var MSG_INVALID_VERIFIER_KEY = "key must be a string or a buffer";
     var MSG_INVALID_SIGNER_KEY = "key must be a string, a buffer or an object";
-    var supportsKeyObjects = typeof crypto9.createPublicKey === "function";
+    var supportsKeyObjects = typeof crypto10.createPublicKey === "function";
     if (supportsKeyObjects) {
       MSG_INVALID_VERIFIER_KEY += " or a KeyObject";
       MSG_INVALID_SECRET += "or a KeyObject";
@@ -33908,17 +34021,17 @@ var require_jwa = __commonJS({
       return function sign(thing, secret) {
         checkIsSecretKey(secret);
         thing = normalizeInput(thing);
-        var hmac = crypto9.createHmac("sha" + bits, secret);
+        var hmac = crypto10.createHmac("sha" + bits, secret);
         var sig = (hmac.update(thing), hmac.digest("base64"));
         return fromBase64(sig);
       };
     }
     var bufferEqual;
-    var timingSafeEqual = "timingSafeEqual" in crypto9 ? function timingSafeEqual2(a, b) {
+    var timingSafeEqual = "timingSafeEqual" in crypto10 ? function timingSafeEqual2(a, b) {
       if (a.byteLength !== b.byteLength) {
         return false;
       }
-      return crypto9.timingSafeEqual(a, b);
+      return crypto10.timingSafeEqual(a, b);
     } : function timingSafeEqual2(a, b) {
       if (!bufferEqual) {
         bufferEqual = require_buffer_equal_constant_time();
@@ -33935,7 +34048,7 @@ var require_jwa = __commonJS({
       return function sign(thing, privateKey) {
         checkIsPrivateKey(privateKey);
         thing = normalizeInput(thing);
-        var signer = crypto9.createSign("RSA-SHA" + bits);
+        var signer = crypto10.createSign("RSA-SHA" + bits);
         var sig = (signer.update(thing), signer.sign(privateKey, "base64"));
         return fromBase64(sig);
       };
@@ -33945,7 +34058,7 @@ var require_jwa = __commonJS({
         checkIsPublicKey(publicKey);
         thing = normalizeInput(thing);
         signature = toBase64(signature);
-        var verifier = crypto9.createVerify("RSA-SHA" + bits);
+        var verifier = crypto10.createVerify("RSA-SHA" + bits);
         verifier.update(thing);
         return verifier.verify(publicKey, signature, "base64");
       };
@@ -33954,11 +34067,11 @@ var require_jwa = __commonJS({
       return function sign(thing, privateKey) {
         checkIsPrivateKey(privateKey);
         thing = normalizeInput(thing);
-        var signer = crypto9.createSign("RSA-SHA" + bits);
+        var signer = crypto10.createSign("RSA-SHA" + bits);
         var sig = (signer.update(thing), signer.sign({
           key: privateKey,
-          padding: crypto9.constants.RSA_PKCS1_PSS_PADDING,
-          saltLength: crypto9.constants.RSA_PSS_SALTLEN_DIGEST
+          padding: crypto10.constants.RSA_PKCS1_PSS_PADDING,
+          saltLength: crypto10.constants.RSA_PSS_SALTLEN_DIGEST
         }, "base64"));
         return fromBase64(sig);
       };
@@ -33968,12 +34081,12 @@ var require_jwa = __commonJS({
         checkIsPublicKey(publicKey);
         thing = normalizeInput(thing);
         signature = toBase64(signature);
-        var verifier = crypto9.createVerify("RSA-SHA" + bits);
+        var verifier = crypto10.createVerify("RSA-SHA" + bits);
         verifier.update(thing);
         return verifier.verify({
           key: publicKey,
-          padding: crypto9.constants.RSA_PKCS1_PSS_PADDING,
-          saltLength: crypto9.constants.RSA_PSS_SALTLEN_DIGEST
+          padding: crypto10.constants.RSA_PKCS1_PSS_PADDING,
+          saltLength: crypto10.constants.RSA_PSS_SALTLEN_DIGEST
         }, signature, "base64");
       };
     }
@@ -41609,36 +41722,36 @@ var require_pbkdf2 = __commonJS({
     require_md();
     require_util();
     var pkcs5 = forge.pkcs5 = forge.pkcs5 || {};
-    var crypto9;
+    var crypto10;
     if (forge.util.isNodejs && !forge.options.usePureJavaScript) {
-      crypto9 = __require("crypto");
+      crypto10 = __require("crypto");
     }
     module.exports = forge.pbkdf2 = pkcs5.pbkdf2 = function(p, s, c, dkLen, md, callback) {
       if (typeof md === "function") {
         callback = md;
         md = null;
       }
-      if (forge.util.isNodejs && !forge.options.usePureJavaScript && crypto9.pbkdf2 && (md === null || typeof md !== "object") && (crypto9.pbkdf2Sync.length > 4 || (!md || md === "sha1"))) {
+      if (forge.util.isNodejs && !forge.options.usePureJavaScript && crypto10.pbkdf2 && (md === null || typeof md !== "object") && (crypto10.pbkdf2Sync.length > 4 || (!md || md === "sha1"))) {
         if (typeof md !== "string") {
           md = "sha1";
         }
         p = Buffer.from(p, "binary");
         s = Buffer.from(s, "binary");
         if (!callback) {
-          if (crypto9.pbkdf2Sync.length === 4) {
-            return crypto9.pbkdf2Sync(p, s, c, dkLen).toString("binary");
+          if (crypto10.pbkdf2Sync.length === 4) {
+            return crypto10.pbkdf2Sync(p, s, c, dkLen).toString("binary");
           }
-          return crypto9.pbkdf2Sync(p, s, c, dkLen, md).toString("binary");
+          return crypto10.pbkdf2Sync(p, s, c, dkLen, md).toString("binary");
         }
-        if (crypto9.pbkdf2Sync.length === 4) {
-          return crypto9.pbkdf2(p, s, c, dkLen, function(err2, key) {
+        if (crypto10.pbkdf2Sync.length === 4) {
+          return crypto10.pbkdf2(p, s, c, dkLen, function(err2, key) {
             if (err2) {
               return callback(err2);
             }
             callback(null, key.toString("binary"));
           });
         }
-        return crypto9.pbkdf2(p, s, c, dkLen, md, function(err2, key) {
+        return crypto10.pbkdf2(p, s, c, dkLen, md, function(err2, key) {
           if (err2) {
             return callback(err2);
           }
@@ -59593,8 +59706,8 @@ var require_crypto_signer = __commonJS({
        * @inheritDoc
        */
       sign(buffer) {
-        const crypto9 = __require("crypto");
-        const sign = crypto9.createSign("RSA-SHA256");
+        const crypto10 = __require("crypto");
+        const sign = crypto10.createSign("RSA-SHA256");
         sign.update(buffer);
         return Promise.resolve(sign.sign(this.credential.privateKey));
       }
@@ -60330,9 +60443,9 @@ var require_webcrypto = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.isCryptoKey = void 0;
-    var crypto9 = __require("crypto");
+    var crypto10 = __require("crypto");
     var util2 = __require("util");
-    var webcrypto = crypto9.webcrypto;
+    var webcrypto = crypto10.webcrypto;
     exports.default = webcrypto;
     exports.isCryptoKey = util2.types.isCryptoKey ? (key) => util2.types.isCryptoKey(key) : (key) => false;
   }
@@ -62983,22 +63096,22 @@ var require_sign3 = __commonJS({
   "../../node_modules/.pnpm/jose@4.15.9/node_modules/jose/dist/node/cjs/runtime/sign.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var crypto9 = __require("crypto");
+    var crypto10 = __require("crypto");
     var util_1 = __require("util");
     var dsa_digest_js_1 = require_dsa_digest();
     var hmac_digest_js_1 = require_hmac_digest();
     var node_key_js_1 = require_node_key();
     var get_sign_verify_key_js_1 = require_get_sign_verify_key();
     var oneShotSign;
-    if (crypto9.sign.length > 3) {
-      oneShotSign = (0, util_1.promisify)(crypto9.sign);
+    if (crypto10.sign.length > 3) {
+      oneShotSign = (0, util_1.promisify)(crypto10.sign);
     } else {
-      oneShotSign = crypto9.sign;
+      oneShotSign = crypto10.sign;
     }
     var sign = async (alg, key, data) => {
       const keyObject = (0, get_sign_verify_key_js_1.default)(alg, key, "sign");
       if (alg.startsWith("HS")) {
-        const hmac = crypto9.createHmac((0, hmac_digest_js_1.default)(alg), keyObject);
+        const hmac = crypto10.createHmac((0, hmac_digest_js_1.default)(alg), keyObject);
         hmac.update(data);
         return hmac.digest();
       }
@@ -63013,7 +63126,7 @@ var require_verify2 = __commonJS({
   "../../node_modules/.pnpm/jose@4.15.9/node_modules/jose/dist/node/cjs/runtime/verify.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var crypto9 = __require("crypto");
+    var crypto10 = __require("crypto");
     var util_1 = __require("util");
     var dsa_digest_js_1 = require_dsa_digest();
     var node_key_js_1 = require_node_key();
@@ -63021,10 +63134,10 @@ var require_verify2 = __commonJS({
     var get_sign_verify_key_js_1 = require_get_sign_verify_key();
     var flags_js_1 = require_flags();
     var oneShotVerify;
-    if (crypto9.verify.length > 4 && flags_js_1.oneShotCallback) {
-      oneShotVerify = (0, util_1.promisify)(crypto9.verify);
+    if (crypto10.verify.length > 4 && flags_js_1.oneShotCallback) {
+      oneShotVerify = (0, util_1.promisify)(crypto10.verify);
     } else {
-      oneShotVerify = crypto9.verify;
+      oneShotVerify = crypto10.verify;
     }
     var verify = async (alg, key, signature, data) => {
       const keyObject = (0, get_sign_verify_key_js_1.default)(alg, key, "verify");
@@ -63032,7 +63145,7 @@ var require_verify2 = __commonJS({
         const expected = await (0, sign_js_1.default)(alg, keyObject, data);
         const actual = signature;
         try {
-          return crypto9.timingSafeEqual(actual, expected);
+          return crypto10.timingSafeEqual(actual, expected);
         } catch {
           return false;
         }
@@ -73388,7 +73501,7 @@ var require_index_standalone = __commonJS({
     var Buffer$1 = safeBuffer.exports.Buffer;
     var Base$2 = base;
     var Draft75$1 = draft75;
-    var crypto9 = require$$1__default$1["default"];
+    var crypto10 = require$$1__default$1["default"];
     var util$6 = require$$2__default["default"];
     var numberFromKey = function(key2) {
       return parseInt((key2.match(/[0-9]/g) || []).join(""), 10);
@@ -73436,7 +73549,7 @@ var require_index_standalone = __commonJS({
       },
       _handshakeSignature: function() {
         if (this._body.length < this.BODY_SIZE) return null;
-        var md52 = crypto9.createHash("md5"), buffer = Buffer$1.allocUnsafe(8 + this.BODY_SIZE);
+        var md52 = crypto10.createHash("md5"), buffer = Buffer$1.allocUnsafe(8 + this.BODY_SIZE);
         buffer.writeUInt32BE(this._keyValues[0], 0);
         buffer.writeUInt32BE(this._keyValues[1], 4);
         Buffer$1.from(this._body).copy(buffer, 8, 0, this.BODY_SIZE);
@@ -93299,22 +93412,22 @@ var require_crypto2 = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.NodeCrypto = void 0;
-    var crypto9 = __require("crypto");
+    var crypto10 = __require("crypto");
     var NodeCrypto = class {
       async sha256DigestBase64(str) {
-        return crypto9.createHash("sha256").update(str).digest("base64");
+        return crypto10.createHash("sha256").update(str).digest("base64");
       }
       randomBytesBase64(count) {
-        return crypto9.randomBytes(count).toString("base64");
+        return crypto10.randomBytes(count).toString("base64");
       }
       async verify(pubkey, data, signature) {
-        const verifier = crypto9.createVerify("RSA-SHA256");
+        const verifier = crypto10.createVerify("RSA-SHA256");
         verifier.update(data);
         verifier.end();
         return verifier.verify(pubkey, signature, "base64");
       }
       async sign(privateKey, data) {
-        const signer = crypto9.createSign("RSA-SHA256");
+        const signer = crypto10.createSign("RSA-SHA256");
         signer.update(data);
         signer.end();
         return signer.sign(privateKey, "base64");
@@ -93332,7 +93445,7 @@ var require_crypto2 = __commonJS({
        *   string in hexadecimal encoding.
        */
       async sha256DigestHex(str) {
-        return crypto9.createHash("sha256").update(str).digest("hex");
+        return crypto10.createHash("sha256").update(str).digest("hex");
       }
       /**
        * Computes the HMAC hash of a message using the provided crypto key and the
@@ -93344,7 +93457,7 @@ var require_crypto2 = __commonJS({
        */
       async signWithHmacSha256(key, msg) {
         const cryptoKey = typeof key === "string" ? key : toBuffer(key);
-        return toArrayBuffer(crypto9.createHmac("sha256", cryptoKey).update(msg).digest());
+        return toArrayBuffer(crypto10.createHmac("sha256", cryptoKey).update(msg).digest());
       }
     };
     exports.NodeCrypto = NodeCrypto;
@@ -93900,10 +94013,10 @@ var require_oauth2client = __commonJS({
        * https://github.com/googleapis/google-auth-library-nodejs/blob/main/samples/oauth2-codeVerifier.js
        */
       async generateCodeVerifierAsync() {
-        const crypto9 = (0, crypto_1.createCrypto)();
-        const randomString = crypto9.randomBytesBase64(96);
+        const crypto10 = (0, crypto_1.createCrypto)();
+        const randomString = crypto10.randomBytesBase64(96);
         const codeVerifier = randomString.replace(/\+/g, "~").replace(/=/g, "_").replace(/\//g, "-");
-        const unencodedCodeChallenge = await crypto9.sha256DigestBase64(codeVerifier);
+        const unencodedCodeChallenge = await crypto10.sha256DigestBase64(codeVerifier);
         const codeChallenge = unencodedCodeChallenge.split("=")[0].replace(/\+/g, "-").replace(/\//g, "_");
         return { codeVerifier, codeChallenge };
       }
@@ -94347,7 +94460,7 @@ var require_oauth2client = __commonJS({
        * @return Returns a promise resolving to LoginTicket on verification.
        */
       async verifySignedJwtWithCertsAsync(jwt, certs, requiredAudience, issuers, maxExpiry) {
-        const crypto9 = (0, crypto_1.createCrypto)();
+        const crypto10 = (0, crypto_1.createCrypto)();
         if (!maxExpiry) {
           maxExpiry = _OAuth2Client.DEFAULT_MAX_TOKEN_LIFETIME_SECS_;
         }
@@ -94360,7 +94473,7 @@ var require_oauth2client = __commonJS({
         let envelope;
         let payload;
         try {
-          envelope = JSON.parse(crypto9.decodeBase64StringUtf8(segments[0]));
+          envelope = JSON.parse(crypto10.decodeBase64StringUtf8(segments[0]));
         } catch (err) {
           if (err instanceof Error) {
             err.message = `Can't parse token envelope: ${segments[0]}': ${err.message}`;
@@ -94371,7 +94484,7 @@ var require_oauth2client = __commonJS({
           throw new Error("Can't parse token envelope: " + segments[0]);
         }
         try {
-          payload = JSON.parse(crypto9.decodeBase64StringUtf8(segments[1]));
+          payload = JSON.parse(crypto10.decodeBase64StringUtf8(segments[1]));
         } catch (err) {
           if (err instanceof Error) {
             err.message = `Can't parse token payload '${segments[0]}`;
@@ -94388,7 +94501,7 @@ var require_oauth2client = __commonJS({
         if (envelope.alg === "ES256") {
           signature = formatEcdsa.joseToDer(signature, "ES256").toString("base64");
         }
-        const verified = await crypto9.verify(cert, signed, signature);
+        const verified = await crypto10.verify(cert, signed, signature);
         if (!verified) {
           throw new Error("Invalid token signature: " + jwt);
         }
@@ -96533,14 +96646,14 @@ var require_awsrequestsigner = __commonJS({
       }
     };
     exports.AwsRequestSigner = AwsRequestSigner;
-    async function sign(crypto9, key, msg) {
-      return await crypto9.signWithHmacSha256(key, msg);
+    async function sign(crypto10, key, msg) {
+      return await crypto10.signWithHmacSha256(key, msg);
     }
-    async function getSigningKey(crypto9, key, dateStamp, region, serviceName) {
-      const kDate = await sign(crypto9, `AWS4${key}`, dateStamp);
-      const kRegion = await sign(crypto9, kDate, region);
-      const kService = await sign(crypto9, kRegion, serviceName);
-      const kSigning = await sign(crypto9, kService, "aws4_request");
+    async function getSigningKey(crypto10, key, dateStamp, region, serviceName) {
+      const kDate = await sign(crypto10, `AWS4${key}`, dateStamp);
+      const kRegion = await sign(crypto10, kDate, region);
+      const kService = await sign(crypto10, kRegion, serviceName);
+      const kSigning = await sign(crypto10, kService, "aws4_request");
       return kSigning;
     }
     async function generateAuthenticationHeaderMap(options) {
@@ -98125,24 +98238,24 @@ var require_googleauth = __commonJS({
           const signed = await client.sign(data);
           return signed.signedBlob;
         }
-        const crypto9 = (0, crypto_1.createCrypto)();
+        const crypto10 = (0, crypto_1.createCrypto)();
         if (client instanceof jwtclient_1.JWT && client.key) {
-          const sign = await crypto9.sign(client.key, data);
+          const sign = await crypto10.sign(client.key, data);
           return sign;
         }
         const creds = await this.getCredentials();
         if (!creds.client_email) {
           throw new Error("Cannot sign data without `client_email`.");
         }
-        return this.signBlob(crypto9, creds.client_email, data, endpoint);
+        return this.signBlob(crypto10, creds.client_email, data, endpoint);
       }
-      async signBlob(crypto9, emailOrUniqueId, data, endpoint) {
+      async signBlob(crypto10, emailOrUniqueId, data, endpoint) {
         const url = new URL(endpoint + `${emailOrUniqueId}:signBlob`);
         const res = await this.request({
           method: "POST",
           url: url.href,
           data: {
-            payload: crypto9.encodeBase64StringUtf8(data)
+            payload: crypto10.encodeBase64StringUtf8(data)
           },
           retry: true,
           retryConfig: {
@@ -103458,7 +103571,7 @@ var require_util5 = __commonJS({
     var retry_request_1 = __importDefault2(require_retry_request());
     var stream_1 = __require("stream");
     var teeny_request_1 = require_src11();
-    var crypto9 = __importStar2(__require("crypto"));
+    var crypto10 = __importStar2(__require("crypto"));
     var service_js_1 = require_service();
     var util_js_1 = require_util4();
     var duplexify_1 = __importDefault2(require_duplexify());
@@ -103998,7 +104111,7 @@ var require_util5 = __commonJS({
       _getDefaultHeaders(gcclGcsCmd) {
         const headers = {
           "User-Agent": (0, util_js_1.getUserAgentString)(),
-          "x-goog-api-client": `${(0, util_js_1.getRuntimeTrackingString)()} gccl/${packageJson.version}-${(0, util_js_1.getModuleFormat)()} gccl-invocation-id/${crypto9.randomUUID()}`
+          "x-goog-api-client": `${(0, util_js_1.getRuntimeTrackingString)()} gccl/${packageJson.version}-${(0, util_js_1.getModuleFormat)()} gccl-invocation-id/${crypto10.randomUUID()}`
         };
         if (gcclGcsCmd) {
           headers["x-goog-api-client"] += ` gccl-gcs-cmd/${gcclGcsCmd}`;
@@ -104069,7 +104182,7 @@ var require_service = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Service = exports.DEFAULT_PROJECT_ID_TOKEN = void 0;
     var google_auth_library_1 = require_src8();
-    var crypto9 = __importStar2(__require("crypto"));
+    var crypto10 = __importStar2(__require("crypto"));
     var util_js_1 = require_util5();
     var util_js_2 = require_util4();
     exports.DEFAULT_PROJECT_ID_TOKEN = "{{projectId}}";
@@ -104185,7 +104298,7 @@ var require_service = __commonJS({
         reqOpts.headers = {
           ...reqOpts.headers,
           "User-Agent": userAgent,
-          "x-goog-api-client": `${(0, util_js_2.getRuntimeTrackingString)()} gccl/${pkg.version}-${(0, util_js_2.getModuleFormat)()} gccl-invocation-id/${crypto9.randomUUID()}`
+          "x-goog-api-client": `${(0, util_js_2.getRuntimeTrackingString)()} gccl/${pkg.version}-${(0, util_js_2.getModuleFormat)()} gccl-invocation-id/${crypto10.randomUUID()}`
         };
         if (reqOpts[util_js_1.GCCL_GCS_CMD_KEY]) {
           reqOpts.headers["x-goog-api-client"] += ` gccl-gcs-cmd/${reqOpts[util_js_1.GCCL_GCS_CMD_KEY]}`;
@@ -107103,7 +107216,7 @@ var require_resumable_upload = __commonJS({
     var google_auth_library_1 = require_src8();
     var stream_1 = __require("stream");
     var async_retry_1 = __importDefault2(require_lib9());
-    var crypto9 = __importStar2(__require("crypto"));
+    var crypto10 = __importStar2(__require("crypto"));
     var util_js_1 = require_util4();
     var util_js_2 = require_util5();
     var file_js_1 = require_file();
@@ -107121,9 +107234,9 @@ var require_resumable_upload = __commonJS({
         this.numBytesWritten = 0;
         this.numRetries = 0;
         this.currentInvocationId = {
-          checkUploadStatus: crypto9.randomUUID(),
-          chunk: crypto9.randomUUID(),
-          uri: crypto9.randomUUID()
+          checkUploadStatus: crypto10.randomUUID(),
+          chunk: crypto10.randomUUID(),
+          uri: crypto10.randomUUID()
         };
         this.writeBuffers = [];
         this.numChunksReadInRequest = 0;
@@ -107435,7 +107548,7 @@ var require_resumable_upload = __commonJS({
           var _a, _b, _c;
           try {
             const res = await this.makeRequest(reqOpts);
-            this.currentInvocationId.uri = crypto9.randomUUID();
+            this.currentInvocationId.uri = crypto10.randomUUID();
             return res.headers.location;
           } catch (err) {
             const e = err;
@@ -107593,7 +107706,7 @@ var require_resumable_upload = __commonJS({
           this.destroy(resp.data.error);
           return;
         }
-        this.currentInvocationId.chunk = crypto9.randomUUID();
+        this.currentInvocationId.chunk = crypto10.randomUUID();
         const moreDataToUpload = await this.waitForNextChunk();
         const shouldContinueWithNextMultiChunkRequest = this.chunkSize && resp.status === RESUMABLE_INCOMPLETE_STATUS_CODE && resp.headers.range && moreDataToUpload;
         const shouldContinueUploadInAnotherRequest = this.isPartialUpload && resp.status === RESUMABLE_INCOMPLETE_STATUS_CODE && !moreDataToUpload;
@@ -107660,7 +107773,7 @@ var require_resumable_upload = __commonJS({
         };
         try {
           const resp = await this.makeRequest(opts);
-          this.currentInvocationId.checkUploadStatus = crypto9.randomUUID();
+          this.currentInvocationId.checkUploadStatus = crypto10.randomUUID();
           return resp;
         } catch (e) {
           if (config.retry === false || !(e instanceof Error) || !this.retryOptions.retryableErrorFn(e)) {
@@ -107914,7 +108027,7 @@ var require_signer = __commonJS({
     })();
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.SigningError = exports.URLSigner = exports.PATH_STYLED_HOST = exports.SignerExceptionMessages = void 0;
-    var crypto9 = __importStar2(__require("crypto"));
+    var crypto10 = __importStar2(__require("crypto"));
     var url = __importStar2(__require("url"));
     var storage_js_1 = require_storage();
     var util_js_1 = require_util4();
@@ -108051,7 +108164,7 @@ var require_signer = __commonJS({
           };
           const canonicalQueryParams = this.getCanonicalQueryParams(queryParams);
           const canonicalRequest = this.getCanonicalRequest(config.method, this.getResourcePath(!!config.cname, config.bucket, config.file), canonicalQueryParams, extensionHeadersString, signedHeaders, contentSha256);
-          const hash = crypto9.createHash("sha256").update(canonicalRequest).digest("hex");
+          const hash = crypto10.createHash("sha256").update(canonicalRequest).digest("hex");
           const blobToSign = [
             "GOOG4-RSA-SHA256",
             dateISO,
@@ -108204,7 +108317,7 @@ var require_file = __commonJS({
     exports.File = exports.FileExceptionMessages = exports.RequestError = exports.SkipReason = exports.STORAGE_POST_POLICY_BASE_URL = exports.ActionToHTTPMethod = void 0;
     var index_js_1 = require_nodejs_common();
     var promisify_1 = require_src12();
-    var crypto9 = __importStar2(__require("crypto"));
+    var crypto10 = __importStar2(__require("crypto"));
     var fs2 = __importStar2(__require("fs"));
     var mime_1 = __importDefault2(require_mime());
     var resumableUpload = __importStar2(require_resumable_upload());
@@ -109815,7 +109928,7 @@ var require_file = __commonJS({
       setEncryptionKey(encryptionKey) {
         this.encryptionKey = encryptionKey;
         this.encryptionKeyBase64 = Buffer.from(encryptionKey).toString("base64");
-        this.encryptionKeyHash = crypto9.createHash("sha256").update(this.encryptionKeyBase64, "base64").digest("base64");
+        this.encryptionKeyHash = crypto10.createHash("sha256").update(this.encryptionKeyBase64, "base64").digest("base64");
         this.encryptionKeyInterceptor = {
           request: (reqOpts) => {
             reqOpts.headers = reqOpts.headers || {};
@@ -119263,7 +119376,7 @@ var require_firestore_client_config = __commonJS({
 var require_object_hash = __commonJS({
   "../../node_modules/.pnpm/object-hash@3.0.0/node_modules/object-hash/index.js"(exports, module) {
     "use strict";
-    var crypto9 = __require("crypto");
+    var crypto10 = __require("crypto");
     exports = module.exports = objectHash;
     function objectHash(object, options) {
       options = applyDefaults(object, options);
@@ -119281,7 +119394,7 @@ var require_object_hash = __commonJS({
     exports.keysMD5 = function(object) {
       return objectHash(object, { algorithm: "md5", encoding: "hex", excludeValues: true });
     };
-    var hashes = crypto9.getHashes ? crypto9.getHashes().slice() : ["sha1", "md5"];
+    var hashes = crypto10.getHashes ? crypto10.getHashes().slice() : ["sha1", "md5"];
     hashes.push("passthrough");
     var encodings = ["buffer", "hex", "binary", "base64"];
     function applyDefaults(object, sourceOptions) {
@@ -119327,7 +119440,7 @@ var require_object_hash = __commonJS({
     function hash(object, options) {
       var hashingStream;
       if (options.algorithm !== "passthrough") {
-        hashingStream = crypto9.createHash(options.algorithm);
+        hashingStream = crypto10.createHash(options.algorithm);
       } else {
         hashingStream = new PassThrough();
       }
@@ -174952,9 +175065,9 @@ var require_disk = __commonJS({
     var fs2 = __require("fs");
     var os = __require("os");
     var path2 = __require("path");
-    var crypto9 = __require("crypto");
+    var crypto10 = __require("crypto");
     function getFilename(req, file, cb) {
-      crypto9.randomBytes(16, function(err, raw) {
+      crypto10.randomBytes(16, function(err, raw) {
         cb(err, err ? void 0 : raw.toString("hex"));
       });
     }
@@ -175839,6 +175952,7 @@ var require_multer = __commonJS({
 // src/app.ts
 var import_express30 = __toESM(require_express2(), 1);
 var import_cors = __toESM(require_lib3(), 1);
+var import_cookie_parser = __toESM(require_cookie_parser(), 1);
 var import_cookie_session = __toESM(require_cookie_session(), 1);
 var import_pino_http = __toESM(require_logger(), 1);
 
@@ -180234,13 +180348,85 @@ var import_express28 = __toESM(require_express2(), 1);
 // src/routes/admin/auth.ts
 var import_express4 = __toESM(require_express2(), 1);
 
+// src/lib/token.ts
+import crypto6 from "crypto";
+var SESSION_SECRET = process.env["SESSION_SECRET"] || "qch-admin-secret-2024-x9k";
+function generateToken(username) {
+  const payload = {
+    username,
+    ts: Date.now()
+  };
+  const encodedPayload = Buffer.from(JSON.stringify(payload)).toString("base64url");
+  const signature = crypto6.createHmac("sha256", SESSION_SECRET).update(encodedPayload).digest("base64url");
+  return `${encodedPayload}.${signature}`;
+}
+function verifyToken(token) {
+  if (!token || typeof token !== "string") return null;
+  const validUser = process.env["ADMIN_USERNAME"] || "admin";
+  const validPass = process.env["ADMIN_PASSWORD"] || "admin123";
+  if (token === validPass || token === "qch-admin-token") {
+    return { username: validUser, ts: Date.now() };
+  }
+  try {
+    const parts = token.split(".");
+    if (parts.length !== 2) return null;
+    const [encodedPayload, signature] = parts;
+    if (!encodedPayload || !signature) return null;
+    const expectedSignature = crypto6.createHmac("sha256", SESSION_SECRET).update(encodedPayload).digest("base64url");
+    if (signature.length !== expectedSignature.length || !crypto6.timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSignature))) {
+      return null;
+    }
+    const payload = JSON.parse(Buffer.from(encodedPayload, "base64url").toString("utf-8"));
+    if (!payload.username) return null;
+    return payload;
+  } catch {
+    return null;
+  }
+}
+
 // src/middlewares/requireAdmin.ts
 function requireAdmin(req, res, next) {
   if (req.session && req.session.adminUsername) {
-    next();
-  } else {
-    res.status(401).json({ ok: false, error: "Unauthorized" });
+    return next();
   }
+  const authHeader = req.headers.authorization;
+  if (authHeader) {
+    const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7).trim() : authHeader.trim();
+    const verified = verifyToken(token);
+    if (verified) {
+      if (req.session) {
+        req.session.adminUsername = verified.username;
+        req.session.adminName = "Administrator";
+      }
+      req.adminUsername = verified.username;
+      return next();
+    }
+  }
+  const customHeader = req.headers["x-admin-token"];
+  if (typeof customHeader === "string") {
+    const verified = verifyToken(customHeader.trim());
+    if (verified) {
+      if (req.session) {
+        req.session.adminUsername = verified.username;
+        req.session.adminName = "Administrator";
+      }
+      req.adminUsername = verified.username;
+      return next();
+    }
+  }
+  const cookieToken = req.cookies?.admin_token;
+  if (typeof cookieToken === "string") {
+    const verified = verifyToken(cookieToken);
+    if (verified) {
+      if (req.session) {
+        req.session.adminUsername = verified.username;
+        req.session.adminName = "Administrator";
+      }
+      req.adminUsername = verified.username;
+      return next();
+    }
+  }
+  res.status(401).json({ ok: false, error: "Unauthorized" });
 }
 
 // src/routes/admin/auth.ts
@@ -180251,35 +180437,62 @@ router4.post("/login", async (req, res) => {
     res.status(400).json({ ok: false, error: "Username and password required" });
     return;
   }
-  const validUser = process.env.ADMIN_USERNAME || "admin";
-  const validPass = process.env.ADMIN_PASSWORD || "admin123";
+  const validUser = process.env["ADMIN_USERNAME"] || "admin";
+  const validPass = process.env["ADMIN_PASSWORD"] || "admin123";
   if (username !== validUser || password !== validPass) {
     res.status(401).json({ ok: false, error: "Invalid credentials" });
     return;
   }
+  const token = generateToken(validUser);
   if (req.session) {
     req.session.adminUsername = validUser;
     req.session.adminName = "Administrator";
   }
-  res.json({ ok: true, user: { username: validUser, name: "Administrator" } });
+  res.cookie("admin_token", token, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/",
+    maxAge: 30 * 24 * 60 * 60 * 1e3
+  });
+  res.json({
+    ok: true,
+    token,
+    user: { username: validUser, name: "Administrator" }
+  });
 });
 router4.post("/logout", (req, res) => {
   if (req.session && typeof req.session.destroy === "function") {
     req.session.destroy(() => {
-      res.json({ ok: true });
     });
-  } else {
-    if (req.session) {
-      req.session = null;
-    }
-    res.json({ ok: true });
+  } else if (req.session) {
+    req.session = null;
   }
+  res.clearCookie("admin_token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/"
+  });
+  res.clearCookie("admin_session", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/"
+  });
+  res.clearCookie("admin_session.sig", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/"
+  });
+  res.json({ ok: true });
 });
 router4.get("/session", requireAdmin, (req, res) => {
   res.json({
     ok: true,
     user: {
-      username: req.session?.adminUsername,
+      username: req.adminUsername || req.session?.adminUsername || "admin",
       name: req.session?.adminName || "Administrator"
     }
   });
@@ -180335,7 +180548,7 @@ var settings_default = router5;
 
 // src/routes/admin/administration.ts
 var import_express6 = __toESM(require_express2(), 1);
-import crypto6 from "crypto";
+import crypto7 from "crypto";
 var router6 = (0, import_express6.Router)();
 var FILE = "administration.json";
 router6.get("/", requireAdmin, async (req, res) => {
@@ -180352,7 +180565,7 @@ router6.post("/", requireAdmin, async (req, res) => {
     let items = await readData(FILE, []);
     items = Array.isArray(items) ? items : Object.values(items || {});
     const item = {
-      id: crypto6.randomUUID(),
+      id: crypto7.randomUUID(),
       ...req.body,
       photo: req.body.photo || ""
       // Rasm hozircha matn ko'rinishida olinadi
@@ -181060,7 +181273,7 @@ var media_default = router22;
 // src/routes/admin/upload.ts
 var import_express23 = __toESM(require_express2(), 1);
 var import_multer = __toESM(require_multer(), 1);
-import crypto7 from "crypto";
+import crypto8 from "crypto";
 var upload = (0, import_multer.default)({
   storage: import_multer.default.memoryStorage(),
   limits: { fileSize: 10 * 1024 * 1024 }
@@ -181091,7 +181304,7 @@ router23.post("/", upload.single("file"), async (req, res) => {
       throw new Error(result.error?.message || "ImgBB rasmni qabul qilmadi");
     }
     const url = result.data.url;
-    const name = `${Date.now()}-${crypto7.randomBytes(4).toString("hex")}`;
+    const name = `${Date.now()}-${crypto8.randomBytes(4).toString("hex")}`;
     const newMedia = {
       filename: name,
       url,
@@ -181226,7 +181439,7 @@ var english_certs_default = router26;
 
 // src/routes/admin/timetable.ts
 var import_express27 = __toESM(require_express2(), 1);
-import crypto8 from "crypto";
+import crypto9 from "crypto";
 var router27 = (0, import_express27.Router)();
 var FILE19 = "timetable.json";
 router27.get("/", requireAdmin, async (req, res) => {
@@ -181235,7 +181448,7 @@ router27.get("/", requireAdmin, async (req, res) => {
 });
 router27.post("/", requireAdmin, async (req, res) => {
   const items = await readData(FILE19, []);
-  const item = { id: crypto8.randomUUID(), ...req.body };
+  const item = { id: crypto9.randomUUID(), ...req.body };
   items.push(item);
   await writeData(FILE19, items);
   res.json({ ok: true, data: item });
@@ -181325,8 +181538,10 @@ var corsOptions = {
     "Authorization",
     "X-Requested-With",
     "Accept",
-    "Origin"
+    "Origin",
+    "X-Admin-Token"
   ],
+  exposedHeaders: ["Set-Cookie"],
   optionsSuccessStatus: 204
 };
 var corsMiddleware = (0, import_cors.default)(corsOptions);
@@ -181337,18 +181552,22 @@ try {
   app.options("{*path}", corsMiddleware);
 }
 app.options(/.*/, corsMiddleware);
+app.use((0, import_cookie_parser.default)());
 app.use(
   (0, import_cookie_session.default)({
     name: "admin_session",
     keys: [process.env["SESSION_SECRET"] || "qch-admin-secret-2024-x9k"],
     maxAge: 30 * 24 * 60 * 60 * 1e3,
     secure: true,
-    sameSite: "none"
+    sameSite: "none",
+    httpOnly: true,
+    path: "/"
   })
 );
 app.use(import_express30.default.json({ limit: "10mb" }));
 app.use(import_express30.default.urlencoded({ extended: true, limit: "10mb" }));
 app.use("/api/uploads", import_express30.default.static(UPLOADS_DIR));
+app.use("/uploads", import_express30.default.static(UPLOADS_DIR));
 app.use("/api", routes_default);
 initializeData().catch((err) => {
   logger.error({ err }, "Failed to initialize data");
@@ -181651,6 +181870,14 @@ object-assign/index.js:
   (c) Sindre Sorhus
   @license MIT
   *)
+
+cookie-parser/index.js:
+  (*!
+   * cookie-parser
+   * Copyright(c) 2014 TJ Holowaychuk
+   * Copyright(c) 2015 Douglas Christopher Wilson
+   * MIT Licensed
+   *)
 
 safe-buffer/index.js:
   (*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> *)

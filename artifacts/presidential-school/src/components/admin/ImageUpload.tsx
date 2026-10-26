@@ -21,9 +21,13 @@ export function ImageUpload({ value, onChange, className }: ImageUploadProps) {
     try {
       const fd = new FormData();
       fd.append("file", file);
+      const token = typeof window !== "undefined" ? localStorage.getItem("admin_token") : null;
       const res = await fetch(`${API_BASE}/api/admin/upload`, {
         method: "POST",
         credentials: "include",
+        headers: {
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
         body: fd,
       });
       const data = await res.json() as { ok: boolean; data?: { url: string }; error?: string };

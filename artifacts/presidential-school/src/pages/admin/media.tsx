@@ -37,7 +37,15 @@ export default function AdminMedia() {
     try {
       const fd = new FormData();
       Array.from(fileList).forEach((f) => fd.append("files", f));
-      const res = await fetch(`${API_BASE}/api/admin/upload/multiple`, { method: "POST", credentials: "include", body: fd });
+      const token = typeof window !== "undefined" ? localStorage.getItem("admin_token") : null;
+      const res = await fetch(`${API_BASE}/api/admin/upload/multiple`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: fd,
+      });
       const data = await res.json() as { ok: boolean; error?: string };
       if (!data.ok) throw new Error(data.error);
       toast({ title: `${fileList.length} ta rasm yuklandi` }); load();
