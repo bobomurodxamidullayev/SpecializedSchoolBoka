@@ -55301,10 +55301,10 @@ var require_credential_internal = __commonJS({
       constructor(serviceAccountPathOrObject, httpAgent, implicit = false) {
         this.httpAgent = httpAgent;
         this.implicit = implicit;
-        const serviceAccount = typeof serviceAccountPathOrObject === "string" ? ServiceAccount.fromPath(serviceAccountPathOrObject) : new ServiceAccount(serviceAccountPathOrObject);
-        this.projectId = serviceAccount.projectId;
-        this.privateKey = serviceAccount.privateKey;
-        this.clientEmail = serviceAccount.clientEmail;
+        const serviceAccount2 = typeof serviceAccountPathOrObject === "string" ? ServiceAccount.fromPath(serviceAccountPathOrObject) : new ServiceAccount(serviceAccountPathOrObject);
+        this.projectId = serviceAccount2.projectId;
+        this.privateKey = serviceAccount2.privateKey;
+        this.clientEmail = serviceAccount2.clientEmail;
         this.httpClient = new api_request_1.HttpClient();
       }
       getAccessToken() {
@@ -59741,10 +59741,10 @@ var require_crypto_signer = __commonJS({
        * @inheritDoc
        */
       sign(buffer) {
-        return this.getAccountId().then((serviceAccount) => {
+        return this.getAccountId().then((serviceAccount2) => {
           const request = {
             method: "POST",
-            url: `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/${serviceAccount}:signBlob`,
+            url: `https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/${serviceAccount2}:signBlob`,
             data: { payload: buffer.toString("base64") }
           };
           return this.httpClient.send(request);
@@ -180019,121 +180019,133 @@ var health_default = router;
 // src/routes/contact.ts
 var import_express2 = __toESM(require_express2(), 1);
 
-// src/lib/logger.ts
-var import_pino = __toESM(require_pino(), 1);
-var isProduction = process.env.NODE_ENV === "production";
-var logger = (0, import_pino.default)({
-  level: process.env.LOG_LEVEL ?? "info",
-  redact: [
-    "req.headers.authorization",
-    "req.headers.cookie",
-    "res.headers['set-cookie']"
-  ],
-  ...isProduction ? {} : {
-    transport: {
-      target: "pino-pretty",
-      options: { colorize: true }
-    }
-  }
-});
-
 // src/lib/dataManager.ts
 var import_firebase_admin = __toESM(require_lib11(), 1);
 import fs from "fs";
 import path from "path";
-var serviceAccountKey = null;
-if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+var serviceAccount = null;
+var rawCreds = process.env.FIREBASE_SERVICE_ACCOUNT;
+if (rawCreds) {
+  const trimmed = typeof rawCreds === "string" ? rawCreds.trim() : "";
   try {
-    const rawEnv = process.env.FIREBASE_SERVICE_ACCOUNT.trim();
-    if (rawEnv.startsWith("{")) {
-      serviceAccountKey = JSON.parse(rawEnv);
-    } else {
-      const decoded = Buffer.from(rawEnv, "base64").toString("utf-8");
-      const cleanJson = decoded.replace(/\\n/g, "\\n");
-      serviceAccountKey = JSON.parse(cleanJson);
-    }
-  } catch (err) {
-    logger.error({ err }, "FIREBASE_SERVICE_ACCOUNT JSON parsing xatosi:");
-    serviceAccountKey = null;
-  }
-}
-if (serviceAccountKey && !import_firebase_admin.default.apps.length) {
-  try {
-    import_firebase_admin.default.initializeApp({
-      credential: import_firebase_admin.default.credential.cert(serviceAccountKey),
-      databaseURL: process.env.FIREBASE_DATABASE_URL
-    });
-    logger.info("Firebase Realtime Database ulandi");
-  } catch (err) {
-    logger.error({ err }, "Firebase initializeApp xatosi:");
-  }
-} else if (!serviceAccountKey) {
-  logger.info("Firebase sozlanmagan. Mahalliy / xotira rejimi ishlatiladi.");
-}
-var db = import_firebase_admin.default.apps.length ? import_firebase_admin.default.database() : null;
-var memoryStore = {};
-var DATA_DIR = path.join(process.cwd(), "data");
-function ensureDataDirSafe() {
-  try {
-    if (!fs.existsSync(DATA_DIR)) {
-      fs.mkdirSync(DATA_DIR, { recursive: true });
-    }
-    return true;
-  } catch (err) {
-    return false;
-  }
-}
-async function readData(filename, defaultValue) {
-  if (db) {
+    serviceAccount = typeof rawCreds === "object" ? rawCreds : JSON.parse(trimmed);
+  } catch (e1) {
     try {
-      const refName = filename.replace(".json", "");
-      const snapshot = await db.ref(refName).once("value");
-      if (snapshot.exists()) return snapshot.val();
-      return defaultValue;
-    } catch (error) {
-      logger.error({ err: error }, `Firebase o'qishda xato: ${filename}`);
-    }
-  }
-  if (memoryStore[filename] !== void 0) {
-    return memoryStore[filename];
-  }
-  try {
-    if (ensureDataDirSafe()) {
-      const filePath = path.join(DATA_DIR, filename);
-      if (fs.existsSync(filePath)) {
-        const raw = fs.readFileSync(filePath, "utf-8");
-        const parsed = JSON.parse(raw);
-        memoryStore[filename] = parsed;
-        return parsed;
+      serviceAccount = JSON.parse(trimmed.replace(/\\n/g, "\n"));
+    } catch (e2) {
+      try {
+        const decoded = Buffer.from(trimmed, "base64").toString("utf-8");
+        try {
+          serviceAccount = JSON.parse(decoded);
+        } catch {
+          serviceAccount = JSON.parse(decoded.replace(/\\n/g, "\n"));
+        }
+      } catch (e3) {
+        console.error(">>> [FIREBASE ERROR] Failed to parse FIREBASE_SERVICE_ACCOUNT:", e2);
       }
     }
-  } catch (error) {
-    logger.error({ err: error }, `Fayl o'qishda xato: ${filename}`);
   }
+} else {
+  console.error(">>> [FIREBASE ERROR] FIREBASE_SERVICE_ACCOUNT environment variable is not defined!");
+}
+if (serviceAccount && typeof serviceAccount === "object" && typeof serviceAccount.private_key === "string") {
+  serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, "\n");
+}
+var databaseURL = process.env.FIREBASE_DATABASE_URL;
+if (!databaseURL) {
+  console.error(">>> [FIREBASE ERROR] FIREBASE_DATABASE_URL environment variable is not defined!");
+}
+if (serviceAccount && databaseURL) {
+  try {
+    if (!import_firebase_admin.default.apps.length) {
+      import_firebase_admin.default.initializeApp({
+        credential: import_firebase_admin.default.credential.cert(serviceAccount),
+        databaseURL
+      });
+    }
+    console.log(">>> FIREBASE INITIALIZED SUCCESSFULLY ON DATABASE:", databaseURL);
+  } catch (err) {
+    console.error(">>> [FIREBASE ERROR] Firebase initializeApp failed:", err);
+  }
+} else {
+  console.error(
+    `>>> [FIREBASE ERROR] Firebase NOT initialized: serviceAccount=${serviceAccount ? "VALID" : "MISSING/INVALID"}, databaseURL=${databaseURL ? databaseURL : "MISSING"}`
+  );
+}
+var db = import_firebase_admin.default.apps.length ? import_firebase_admin.default.database() : null;
+var DATA_DIR = path.join(process.cwd(), "data");
+function getLocalData(filename) {
+  const possiblePaths = [
+    path.join(process.cwd(), "data", filename),
+    path.join(process.cwd(), "artifacts", "api-server", "data", filename),
+    path.join(DATA_DIR, filename)
+  ];
+  for (const p of possiblePaths) {
+    try {
+      if (fs.existsSync(p)) {
+        const raw = fs.readFileSync(p, "utf-8");
+        return JSON.parse(raw);
+      }
+    } catch {
+    }
+  }
+  return null;
+}
+async function readData(filename, defaultValue) {
+  const refName = filename.replace(/\.json$/, "");
+  if (db) {
+    try {
+      const snapshot = await db.ref(refName).once("value");
+      if (snapshot.exists()) {
+        const val = snapshot.val();
+        return val;
+      }
+      const localSeed = getLocalData(filename);
+      const initialData = localSeed !== null ? localSeed : defaultValue;
+      try {
+        await db.ref(refName).set(initialData);
+        console.log(`>>> [FIREBASE] Seeded initial data for '${refName}' into Realtime Database`);
+      } catch (seedErr) {
+        console.error(`>>> [FIREBASE ERROR] Failed to seed initial data for '${refName}':`, seedErr);
+      }
+      return initialData;
+    } catch (error) {
+      console.error(`>>> [FIREBASE ERROR] Failed to read '${refName}' from Firebase:`, error);
+      throw error;
+    }
+  }
+  console.error(
+    `>>> [FIREBASE CRITICAL ERROR] Cannot read '${refName}': Firebase Realtime Database is NOT initialized! Check FIREBASE_SERVICE_ACCOUNT and FIREBASE_DATABASE_URL in Vercel settings.`
+  );
+  const localData = getLocalData(filename);
+  if (localData !== null) return localData;
   return defaultValue;
 }
 async function writeData(filename, data) {
-  memoryStore[filename] = data;
+  const refName = filename.replace(/\.json$/, "");
   if (db) {
     try {
-      const refName = filename.replace(".json", "");
       await db.ref(refName).set(data);
+      console.log(`>>> [FIREBASE] Successfully persisted '${refName}' to Firebase Realtime Database`);
       return;
     } catch (error) {
-      logger.error({ err: error }, `Firebase yozishda xato: ${filename}`);
+      console.error(`>>> [FIREBASE ERROR] Failed to write '${refName}' to Firebase Realtime Database:`, error);
+      throw error;
     }
   }
-  try {
-    if (ensureDataDirSafe()) {
-      const filePath = path.join(DATA_DIR, filename);
-      fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
-    }
-  } catch (error) {
-    logger.warn(`Diskka yozib bo'lmadi (Vercel Read-Only): ${filename}`);
-  }
+  console.error(
+    `>>> [FIREBASE CRITICAL ERROR] Cannot persist '${refName}': Firebase Realtime Database is NOT initialized! Data was NOT persisted. Check FIREBASE_SERVICE_ACCOUNT and FIREBASE_DATABASE_URL in Vercel settings.`
+  );
+  throw new Error(`Firebase not initialized. Cannot persist ${refName}`);
 }
 async function initializeData() {
-  logger.info("Ma'lumotlar tizimi tayyor.");
+  if (db) {
+    console.log(">>> [FIREBASE] Realtime Database connection ready for requests.");
+  } else {
+    console.error(
+      ">>> [FIREBASE CRITICAL ERROR] Firebase is NOT initialized! Ensure FIREBASE_SERVICE_ACCOUNT and FIREBASE_DATABASE_URL are correctly set in Vercel Environment Variables."
+    );
+  }
 }
 var UPLOADS_DIR = path.join(process.cwd(), "uploads");
 
@@ -181546,6 +181558,24 @@ router29.use("/upload", upload_default);
 router29.use("/admin/upload", upload_default);
 router29.use("/admin", admin_default);
 var routes_default = router29;
+
+// src/lib/logger.ts
+var import_pino = __toESM(require_pino(), 1);
+var isProduction = process.env.NODE_ENV === "production";
+var logger = (0, import_pino.default)({
+  level: process.env.LOG_LEVEL ?? "info",
+  redact: [
+    "req.headers.authorization",
+    "req.headers.cookie",
+    "res.headers['set-cookie']"
+  ],
+  ...isProduction ? {} : {
+    transport: {
+      target: "pino-pretty",
+      options: { colorize: true }
+    }
+  }
+});
 
 // src/app.ts
 var pinoHttp = import_pino_http.default.default || import_pino_http.default;

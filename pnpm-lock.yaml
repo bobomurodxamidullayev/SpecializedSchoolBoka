@@ -199,6 +199,9 @@ importers:
       multer:
         specifier: ^2.1.1
         version: 2.2.0
+      pg:
+        specifier: ^8.20.0
+        version: 8.22.0
       pino:
         specifier: ^9
         version: 9.14.0
@@ -236,6 +239,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 25.9.5
+      '@types/pg':
+        specifier: ^8.18.0
+        version: 8.20.0
       '@types/uuid':
         specifier: ^11.0.0
         version: 11.0.0
