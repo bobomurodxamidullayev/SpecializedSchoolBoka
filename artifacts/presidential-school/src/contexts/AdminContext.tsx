@@ -45,13 +45,26 @@ export function AdminProvider({ children }: { children: ReactNode }) {
         ...options.headers,
       },
     });
-    const data = await res.json() as { ok: boolean; error?: string } & T;
-    if (!res.ok || !data.ok) {
+
+    if (!res.ok) {
       if (res.status === 401) {
         localStorage.removeItem("is_admin");
         localStorage.removeItem("admin_token");
         setUser(null);
       }
+      const text = await res.text();
+      let errorMsg = `Server error (${res.status}): ${text.slice(0, 100)}`;
+      try {
+        const json = JSON.parse(text);
+        if (json.error) errorMsg = json.error;
+      } catch {
+        // Response was not JSON
+      }
+      throw new Error(errorMsg);
+    }
+
+    const data = (await res.json()) as { ok: boolean; error?: string } & T;
+    if (!data.ok) {
       throw new Error((data as { error?: string }).error || "Request failed");
     }
     return data as T;
@@ -67,6 +80,16 @@ export function AdminProvider({ children }: { children: ReactNode }) {
       body: JSON.stringify({ username, password }),
     });
 
+    if (!res.ok) {
+      const text = await res.text();
+      let errorMsg = `Server error (${res.status}): ${text.slice(0, 100)}`;
+      try {
+        const json = JSON.parse(text);
+        if (json.error) errorMsg = json.error;
+      } catch {}
+      throw new Error(errorMsg);
+    }
+
     const data = (await res.json()) as {
       ok: boolean;
       token?: string;
@@ -74,7 +97,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
       error?: string;
     };
 
-    if (!res.ok || !data.ok) {
+    if (!data.ok) {
       throw new Error(data.error || "Login yoki parol noto'g'ri");
     }
 

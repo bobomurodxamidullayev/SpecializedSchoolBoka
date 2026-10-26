@@ -30,6 +30,12 @@ export function ImageUpload({ value, onChange, className }: ImageUploadProps) {
         },
         body: fd,
       });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`Server error (${res.status}): ${text.slice(0, 100)}`);
+      }
+
       const data = await res.json() as { ok: boolean; data?: { url: string }; error?: string };
       if (!data.ok) throw new Error(data.error);
       onChange(data.data!.url);

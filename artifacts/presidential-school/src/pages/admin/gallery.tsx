@@ -51,9 +51,15 @@ export default function AdminGallery() {
         },
         body: fd,
       });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`Server error (${res.status}): ${text.slice(0, 100)}`);
+      }
+
       const data = await res.json() as { ok: boolean; data?: { url: string }[] };
       if (!data.ok) throw new Error("Upload failed");
-      const urls = data.data!.map((f) => f.url);
+      const urls = (data.data || []).map((f) => f.url);
       setForm((f) => ({ ...f, images: [...f.images, ...urls] }));
     } catch (e) { toast({ title: "Xato", description: (e as Error).message, variant: "destructive" }); }
     finally { setUploading(false); }

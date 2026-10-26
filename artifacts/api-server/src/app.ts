@@ -5,6 +5,7 @@ import cookieSession from "cookie-session";
 import pinoHttpImport from "pino-http";
 import path from "path";
 import router from "./routes/index.js";
+import uploadRouter from "./routes/admin/upload.js";
 import { logger } from "./lib/logger.js";
 import { initializeData, UPLOADS_DIR } from "./lib/dataManager.js";
 
@@ -84,6 +85,11 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 app.use("/api/uploads", express.static(UPLOADS_DIR));
 app.use("/uploads", express.static(UPLOADS_DIR));
+
+// Direct upload route aliases to support any frontend path
+app.use("/upload", uploadRouter);
+app.use("/api/upload", uploadRouter);
+app.use("/api/admin/upload", uploadRouter);
 
 app.use("/api", router);
 
