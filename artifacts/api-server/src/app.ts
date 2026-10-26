@@ -27,12 +27,40 @@ app.use(
   })
 );
 
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
-);
+export const corsOptions: cors.CorsOptions = {
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps, curl, or server-to-server)
+    if (!origin) {
+      return callback(null, true);
+    }
+    // Allow all incoming origins (including boka-im.uz, www.boka-im.uz, localhost, vercel previews, etc.)
+    return callback(null, true);
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "X-Requested-With",
+    "Accept",
+    "Origin",
+  ],
+  optionsSuccessStatus: 204,
+};
+
+const corsMiddleware = cors(corsOptions);
+
+// Enable CORS middleware for all incoming requests
+app.use(corsMiddleware);
+
+// Explicit preflight handling before any router or route handlers
+try {
+  app.options("*", corsMiddleware);
+} catch {
+  // Express 5 (path-to-regexp v8) wildcard syntax compatibility
+  app.options("{*path}", corsMiddleware);
+}
+app.options(/.*/, corsMiddleware);
 
 app.use(
   cookieSession({

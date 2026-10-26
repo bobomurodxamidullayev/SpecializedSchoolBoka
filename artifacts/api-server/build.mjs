@@ -21,10 +21,11 @@ async function buildAll() {
     //                  Vercel's @vercel/node runtime manages the HTTP lifecycle
     //                  and calls the exported Express handler directly.
     //
-    // src/index.ts → calls `app.listen()`  ← correct for standalone long-running
-    //                  server (e.g. local dev, Docker), but WRONG for serverless
-    //                  because listen() can't bind a port in a serverless context.
-    entryPoints: [path.resolve(artifactDir, "src/app.ts")],
+    // Builds both dist/index.mjs (required by vercel.json) and dist/app.mjs (for local runtime).
+    entryPoints: [
+      { in: path.resolve(artifactDir, "src/app.ts"), out: "index" },
+      { in: path.resolve(artifactDir, "src/app.ts"), out: "app" },
+    ],
     platform: "node",
     bundle: true,
     format: "esm",
